@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: "Geologica", serif;
+}
+
+.active{
+color: #0495FF;
+}
+/* .nav:hover{
+  color: #0495FF;
+  /* transform: scale(0.1); */
+  /* transition-timing-function: 0.1s ,ease-in-out; */
+/* } */ 
+
+.nav:hover {
+  color: #0495FF;
+  transform: scale(1.1);
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}

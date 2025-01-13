@@ -1,0 +1,75 @@
+[
+    {
+      "name": "Eye Care Camp",
+      "image": "https://i.ibb.co.com/TmPndZT/camps1.jpg",
+      "fees": "Free",
+      "dateTime": "Jan 25, 2025 | 10:00 AM",
+      "location": "Dhaka, Bangladesh",
+      "professional": "Dr. John Doe",
+      "participants": 50
+    },
+    {
+      "name": "Essential Dermatology Camp",
+      "image": "https://i.ibb.co.com/YhDd0jd/camps2.jpg",
+      "fees": "$10",
+      "dateTime": "Feb 15, 2025 | 9:00 AM",
+      "location": "Chittagong, Bangladesh",
+      "professional": "Dr. Jane Smith",
+      "participants": 30
+    },
+    {
+      "name": "Cancer Awareness Camp",
+      "image": "https://i.ibb.co.com/zJtKt1L/camps3.png",
+      "fees": "$5",
+      "dateTime": "Mar 10, 2025 | 11:00 AM",
+      "location": "Sylhet, Bangladesh",
+      "professional": "Dr. Alice Johnson",
+      "participants": 20
+    },
+    {
+      "name": "Cardiology Check-up Camp",
+      "image": "https://i.ibb.co.com/5rw6L74/camps4.png",
+      "fees": "Free",
+      "dateTime": "Apr 5, 2025 | 8:30 AM",
+      "location": "Rajshahi, Bangladesh",
+      "professional": "Dr. Michael Brown",
+      "participants": 40
+    },
+    {
+      "name": "Diabetes Management Camp",
+      "image": "https://i.ibb.co.com/TMZ6zx2/camps5.png",
+      "fees": "$15",
+      "dateTime": "May 20, 2025 | 10:30 AM",
+      "location": "Khulna, Bangladesh",
+      "professional": "Dr. Emily Davis",
+      "participants": 25
+    },
+    {
+      "name": "Orthopedic Wellness Camp",
+      "image": "https://i.ibb.co.com/jb8QFrr/camps7.jpg",
+      "fees": "$8",
+      "dateTime": "Jun 12, 2025 | 9:45 AM",
+      "location": "Barisal, Bangladesh",
+      "professional": "Dr. Richard Lee",
+      "participants": 35
+    },
+    {
+      "name": "Mental Health Awareness Camp",
+      "image": "mentalHealthCamp.jpg",
+      "fees": "Free",
+      "dateTime": "Jul 18, 2025 | 10:15 AM",
+      "location": "Rangpur, Bangladesh",
+      "professional": "Dr. Laura Wilson",
+      "participants": 45
+    },
+    {
+      "name": "Pediatric Health Camp",
+      "image": "pediatricCamp.jpg",
+      "fees": "$20",
+      "dateTime": "Aug 25, 2025 | 11:30 AM",
+      "location": "Mymensingh, Bangladesh",
+      "professional": "Dr. Daniel Martinez",
+      "participants": 28
+    }
+  ]
+  
