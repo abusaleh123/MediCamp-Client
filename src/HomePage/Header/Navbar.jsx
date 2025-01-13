@@ -98,7 +98,7 @@ const Navbar = () => {
 
           </ul>
         </div>
-              <Link to={'/login'}  className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg text-sm w-14 md:w-fit font-semibold">Join US</Link>
+              <Link to={'/login'}  className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg px-8 text-sm w-14 md:w-fit font-semibold">Join US</Link>
               {/* TODO: Sign up and profile pic show with dropdown */}
           
         
