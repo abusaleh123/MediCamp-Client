@@ -31,13 +31,16 @@ const Navbar = () => {
     else if (location.pathname === '/availableCamp'){
         return 'bg-[#031B33] text-white'
     }
+    else if (location.pathname === '/register'){
+        return 'bg-[#031B33] text-white'
+    }
    else if (location.pathname.startsWith('/camp-details/')) {
       return 'bg-[#031B33] text-white';
     }
     else {
       return "w-11/12 mx-auto"; 
     }
-  })();
+  })(); 
 
 
   return (
@@ -65,11 +68,8 @@ const Navbar = () => {
               }}
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 text-white font-bold text-lg rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                <NavLink className={'text-gray-700'} to={'/'}>Home</NavLink>
-          <NavLink  className={'text-gray-700'} to={'/addBlogs'}>Solutions</NavLink>
-            <NavLink  className={'text-gray-700'} to={'/allBlogs'}>Features</NavLink>
-            <NavLink className={'text-gray-700'} to={'/featured'}>Resources</NavLink>
-           <NavLink  className={'text-gray-700'} to={'/wishList'}>Blog</NavLink>
+                 <NavLink className={'nav'} to={'/'}>Home</NavLink>
+                 <NavLink  className={'nav'} to={'/availableCamp'}>Available Camps</NavLink>
             </ul>
           </div>
           <Link to={'/'} className="flex items-center gap-2  justify-center ">
@@ -92,7 +92,7 @@ const Navbar = () => {
 
           </ul>
         </div>
-              <Link to={'/login'}  className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg px-8 text-sm w-14 md:w-fit font-semibold">Join US</Link>
+              <Link to={'/register'}  className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg px-8 text-sm w-14 md:w-fit font-semibold">Join US</Link>
               {/* TODO: Sign up and profile pic show with dropdown */}
           
         

@@ -38,13 +38,65 @@ const CampDetails = () => {
     <p className="text-gray-600 mb-6 text-lg">
       {data.description}
     </p>
-    <button className="px-6 py-3 bg-blue-500 text-lg text-white rounded-lg hover:bg-blue-600 transition duration-300">
+    <button onClick={()=>document.getElementById('my_modal_4').showModal()}  className="px-6 py-3 bg-blue-500 text-lg text-white rounded-lg hover:bg-blue-600 transition duration-300">
       Join Camp
     </button>
   </div>
 </div>
 
     </div>
+
+{/* Modal */}
+
+
+<dialog id="my_modal_4" className="modal">
+  <div className="modal-box w-11/12 max-w-5xl">
+   
+{/*  */}
+<div className="hero ">
+  <div className="hero-content flex-col lg:flex-row-reverse">
+    
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <form className="card-body">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input type="email" placeholder="email" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
+          </label>
+          <input type="password" placeholder="password" className="input input-bordered" required />
+          <label className="label">
+            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+          </label>
+        </div>
+        <div className="form-control mt-6">
+          <button className="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{/*  */}
+
+
+
+   
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+{/* Modal */}
+    
         </div>
 
  
