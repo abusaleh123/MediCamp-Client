@@ -47,7 +47,7 @@ const Navbar = () => {
 
 
   return (
-    <div className={`w-full  ${navStyle} sticky top-0 z-50 bg-[#10273D]`}>
+    <div className={`w-full  ${navStyle} sticky top-0 z-50 `}>
       <div className={`navbar w-11/12 z-50  mx-auto flex justify-center py-8`}>
         <div className="navbar-start">
           <div className="dropdown">
@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
           <Link to={'/'} className="flex items-center gap-2  justify-center ">
               <img className="w-14" src={logo} alt="" />
-            <span className=" font-semibold   hidden text-5xl  md:inline-block items-center md:text-5xl">MediCamp</span>
+            <span className=" font-semibold text-white  hidden text-5xl  md:inline-block items-center md:text-5xl">MediCamp</span>
           </Link>
         </div>
      
@@ -93,7 +93,7 @@ const Navbar = () => {
            <div className=" hidden lg:flex">
           <ul className="menu menu-horizontal md:gap-6 lg:gap-8 px-3 lg:text-xl font-semibold">
             <NavLink className={'nav'} to={'/'}>Home</NavLink>
-          <NavLink  className={'nav'} to={'/available'}>Available Camps</NavLink>
+          <NavLink  className={'nav'} to={'/availableCamp'}>Available Camps</NavLink>
             
 
           </ul>

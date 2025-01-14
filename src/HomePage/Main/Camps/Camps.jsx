@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MedicalCamps = () => {
 const [camps, setCamps] = useState([])
@@ -34,9 +35,9 @@ useEffect(() => {
         ))}
       </div>
       <div className="text-center mt-8">
-        <button className="px-6 py-3 text-lg text-white rounded-full bg-[#007EFF] hover:bg-[#007EFF] transition duration-300">
+        <Link to={'/availableCamp'} className="px-6 py-3 text-lg text-white rounded-full bg-[#007EFF] hover:bg-[#007EFF] transition duration-300">
           See All Camps
-        </button>
+        </Link>
       </div>
     </section>
   );
