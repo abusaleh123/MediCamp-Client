@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../HomePage/Home/Home";
 import Base from "../Base/Base";
 import AvailableCamps from "../Pages/AvailableCamps";
+import CampDetails from "../Pages/CampDetails/CampDetails";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
             {
                 path: '/availableCamp',
                 element: <AvailableCamps></AvailableCamps>
+            },
+            {
+                path: '/camp-details/:id',
+                element: <CampDetails></CampDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/camp-details/${params.id}`)
             }
         ]
     }

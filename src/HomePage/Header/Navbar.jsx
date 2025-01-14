@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink,  useLocation, useNavigate } from "react-router-dom";
 import logo from '../../assets/medical.png';
 import {  useEffect, useState } from "react";
 
@@ -9,6 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,29 +22,22 @@ const Navbar = () => {
     };
   }, []);
 
-
-
-
-
   const navStyle = (() => {
     if (location.pathname === '/') {
       return scrollPosition === 0 
         ? "sticky top-0 z-10 md:bg-[#10273D] md:text-white w-11/12" 
         : "sticky top-0 z-50 bg-[#031B33] w-11/12 text-white mx-auto shadow-md";
     } 
+    else if (location.pathname === '/availableCamp'){
+        return 'bg-[#031B33] text-white'
+    }
+   else if (location.pathname.startsWith('/camp-details/')) {
+      return 'bg-[#031B33] text-white';
+    }
     else {
       return "w-11/12 mx-auto"; 
     }
   })();
-
-
-
-
-
-
-
-
-
 
 
   return (
