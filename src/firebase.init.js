@@ -4,15 +4,7 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: "AIzaSyC-BD6-NbJYYr5cnsAjoQXbdkP2gmf2gBU",
-//   authDomain: "medicamp-a1652.firebaseapp.com",
-//   projectId: "medicamp-a1652",
-//   storageBucket: "medicamp-a1652.firebasestorage.app",
-//   messagingSenderId: "298536094908",
-//   appId: "1:298536094908:web:c69e23fb64008ddefb14b9"
-// };
+
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_apiKey,
     authDomain: import.meta.env.VITE_authDomain,

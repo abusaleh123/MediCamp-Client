@@ -1,14 +1,47 @@
 import { Link, NavLink,  useLocation, useNavigate } from "react-router-dom";
 import logo from '../../assets/medical.png';
 import {  useEffect, useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import auth from "../../firebase.init";
+import Swal from "sweetalert2";
 
 
 
 const Navbar = () => {
-//   const { user } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  
+const handleLogOut = () => {
+  logOut(auth)
+  .then(res => {
+    navigate('/')
+      Swal.fire({
+            icon: "success",
+            title: "Log Out Successful!",
+            text: "You Are Successfully Logged Out",
+             
+            confirmButtonText: 'Close',
+         
+            showCancelButton: false,
+            customClass: {
+              confirmButton: 'custom-confirm-button',
+            
+              popup: 'custom-popup', 
+              title: 'custom-title', 
+              icon: 'custom-icon' ,
+              
+            },
+            buttonsStyling: true
+          });
+  })
+}
 
 
   useEffect(() => {
@@ -25,7 +58,7 @@ const Navbar = () => {
   const navStyle = (() => {
     if (location.pathname === '/') {
       return scrollPosition === 0 
-        ? "sticky top-0 z-10 md:bg-[#10273D] md:text-white w-11/12" 
+        ? "sticky top-0 z-10 bg-[#10273D] md:text-white w-11/12" 
         : "sticky top-0 z-50 bg-[#031B33] w-11/12 text-white mx-auto shadow-md";
     } 
     else if (location.pathname === '/availableCamp'){
@@ -92,7 +125,51 @@ const Navbar = () => {
 
           </ul>
         </div>
-              <Link to={'/register'}  className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg px-8 text-sm w-14 md:w-fit font-semibold">Join US</Link>
+             {/* {
+              user ?  <>
+              <img className="w-14 rounded-full h-14 object-cover" src={user.photoURL} alt="" />
+              </> : <Link to={'/register'}  className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg px-8 text-sm w-14 md:w-fit font-semibold">Join US</Link>
+             } */}
+
+
+
+
+{user ? (
+        <div className="relative">
+          <img
+            onClick={toggleDropdown}
+            className="w-14 rounded-full h-14 object-cover cursor-pointer"
+            src={user.photoURL}
+            alt="User"
+          />
+          {isDropdownOpen && (
+            <div className="absolute  mt-2   bg-white shadow-lg rounded-lg py-2">
+              <div className="px-4 py-2 text-gray-800 font-semibold">
+                {user.displayName}
+              </div>
+              <Link
+                to="/dashboard"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              >
+                Dashboard
+              </Link>
+              <button
+               onClick={handleLogOut}
+                className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <Link
+          to={'/register'}
+          className="btn bg-[#0495FF] hover:bg-[#3e8bff] btn-ghost text-white md:text-lg px-8 text-sm w-14 md:w-fit font-semibold"
+        >
+          Join Us
+        </Link>
+      )}
               {/* TODO: Sign up and profile pic show with dropdown */}
           
         
