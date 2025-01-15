@@ -8,11 +8,13 @@ import { Bounce, toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
 import moment from 'moment/moment';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 
 const Register = () => {
 const navigate = useNavigate();
   const {signUpWithEmailPass, setUser, user, profileUpdate} = useAuth()
+  const {axiosPublic} = useAxiosPublic()
 
 
 
@@ -60,7 +62,7 @@ const handleRegister = (e) => {
     .then(result => {
     // console.log(result.user.metadata.creationTime);
     const newUser = {name, email, photo, date, creationTime: result.user.metadata.creationTime, lastLogin: result.user.metadata.lastSignInTime };
-        axios.post('http://localhost:5000/users', newUser)
+        axiosPublic.post('/users', newUser)
         .then(res => {
           console.log(res.data);
         })

@@ -3,66 +3,6 @@
 
 
 
-// import React, { useEffect, useState } from 'react';
-// import { useQuery } from '@tanstack/react-query';
- 
-// import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
-// import useAxiosSecure from '../../Hooks/useAxiosSecure';
-// import useAuth from '../../Hooks/useAuth';
-
-
-
-
-// const Analytics = () => {
-//   const { user } = useAuth();
-// const {axiosSecure} = useAxiosSecure();
-// const [camps, setCamps] = useState([])
-
-// useEffect(() => {
-//     if (user && user.email) {
-//         axiosSecure.get(`/register?email=${user.email}`)
-//             .then(res => {
-//                 // console.log(res.data);
-//                 // setLoading(true);
-//                 setCamps(res.data);
-//                 setLoading(false)
-//             })
-//             .catch(error => {
-//                 // console.log(error);
-//             });
-//     }
-// }, []);
-// console.log(camps);
-//   // Transform data for the chart
-//   const chartData = camps.map(camp => ({
-//     dateTime: camp.dateTime, // Format date as needed
-//     fees: camp.fees
-//   }));
-
-//   return (
-//     <div className=' border w-full border-black'>
-//       <h2>Analytics</h2>
-//       <BarChart
-//         width={600}
-//         height={300}
-//         data={chartData}
-//         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-//       >
-//         <CartesianGrid strokeDasharray="3 3" />
-//         <XAxis dataKey="dateTime" />
-//         <YAxis />
-//         <Tooltip />
-//         <Bar dataKey="fees" fill="#8884d8" />
-//       </BarChart>
-//     </div>
-//   );
-// };
-
-// export default Analytics;
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
@@ -98,8 +38,11 @@ const Analytics = () => {
   });
 
   return (
-    <div className="w-11/12 border border-black">
-      <h2>Analytics</h2>
+    <div className="w-11/12  mx-auto  pt-20 ">
+      <h2 className='text-7xl text-white mb-10'>Analytics</h2>
+      <div className='bg-[#10273D] py-6 pr-8 rounded-xl '>
+
+      <p className="text-2xl text-white/70 mb-10 pl-10">Camp Name And Fees</p>
       <ResponsiveContainer width="100%" height={300}>
      
       <LineChart data={chartData}>
@@ -118,110 +61,10 @@ const Analytics = () => {
       </LineChart>
     </ResponsiveContainer>
     </div>
+    </div>
   );
 };
 
 export default Analytics;
 
 
-
-
-// import React, { useEffect, useState } from 'react';
-// import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
-// import useAxiosSecure from '../../Hooks/useAxiosSecure';
-// import useAuth from '../../Hooks/useAuth';
-
-// const Analytics = () => {
-//   const { user } = useAuth();
-//   const { axiosSecure } = useAxiosSecure();
-//   const [camps, setCamps] = useState([]);
-
-//   useEffect(() => {
-//     if (user && user.email) {
-//       axiosSecure.get(`/register?email=${user.email}`)
-//         .then(res => {
-//           setCamps(res.data);
-//         })
-//         .catch(error => {
-//           console.error(error);
-//         });
-//     }
-//   }, [user.email, axiosSecure]);
-
-//   // Transform data for the chart
-//   const chartData = camps.map(camp => ({
-//     dateTime: camp.dateTime.split(' ')[0], // Format date as needed
-//     fees: camp.fees
-//   }));
-
-//   return (
-//     <div className="w-11/12 border border-black">
-//       <h2>Analytics</h2>
-//       <ResponsiveContainer width={'100%'} height={300} >
-//       <AreaChart
-    
-//         data={chartData}
-//         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-//       >
-//         <CartesianGrid strokeDasharray="3 3" />
-//         <XAxis dataKey="dateTime" />
-//         <YAxis />
-//         <Tooltip />
-//         <Area type="monotone" dataKey="fees" stroke="#2196F3" fill="#e0f2fe" strokeWidth={6} />
-//       </AreaChart>
-//       </ResponsiveContainer>
-//     </div>
-//   );
-// };
-
-// export default Analytics;
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
-// import useAxiosSecure from '../../Hooks/useAxiosSecure';
-// import useAuth from '../../Hooks/useAuth';
-
-// const Analytics = () => {
-//   const { user } = useAuth();
-//   const { axiosSecure } = useAxiosSecure();
-//   const [camps, setCamps] = useState([]);
-
-//   useEffect(() => {
-//     if (user && user.email) {
-//       axiosSecure.get(`/register?email=${user.email}`)
-//         .then(res => {
-//           setCamps(res.data);
-//         })
-//         .catch(error => {
-//           console.error(error);
-//         });
-//     }
-//   }, [user.email, axiosSecure]);
-
-//   // Transform data for the chart
-  
-
-//   return (
-//     <div className="w-11/12 border border-black">
-//       <h2>Analytics</h2>
-//       <ResponsiveContainer width={'100%'} height={300}>
-//         <AreaChart
-//           data={chartData}
-//           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-//         >
-//           <CartesianGrid strokeDasharray="3 3" />
-//           <XAxis dataKey="dateTime" />
-//           <YAxis />
-//           <Tooltip />
-//           <Area type="monotone" dataKey="fees" stackId="1" stroke="#2196F3" fill="#e0f2fe" strokeWidth={2} />
-//           <Area type="monotone" dataKey="additionalMetric" stackId="1" stroke="#FF5722" fill="#ffe0b2" strokeWidth={2} />
-//         </AreaChart>
-//       </ResponsiveContainer>
-//     </div>
-//   );
-// };
-
-// export default Analytics;

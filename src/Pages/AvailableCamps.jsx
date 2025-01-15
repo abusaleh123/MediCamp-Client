@@ -81,13 +81,14 @@ const AvailableCamps = () => {
 
                 
             </div>
+            <div className='bg-slate-100'>
 
             <div className={`w-10/12 ${layOut === true ? 'w-10/12' : 'w-8/12'} mx-auto`}>
                 <div className={`grid grid-cols-1  ${layOut === true ? 'grid-cols-3' : 'grid-cols-2' } gap-8`}>
                  
                      {available.length > 0 ? (
                         available.map((camp, index) => (
-                            <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+                            <div key={index} className="bg-[#ECF7FF] p-6 rounded-lg shadow-lg">
                                 <img src={camp.image} alt={camp.name} className="w-full h-96 object-cover rounded-lg mb-4" />
                                 <h3 className="text-2xl font-bold text-gray-800 mb-2">{camp.name}</h3>
                                 <div className="flex justify-between items-center">
@@ -112,7 +113,7 @@ const AvailableCamps = () => {
                     
                 </div>
             </div>
-            
+            </div>
         </div>
     );
 };

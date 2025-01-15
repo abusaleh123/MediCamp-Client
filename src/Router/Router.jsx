@@ -69,6 +69,8 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Dashboard from "../Dashboard/Dashboard";
 import Analytics from "../Dashboard/Analylics/Analytics";
+import UserProfile from "../Dashboard/User/UserProfile";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -100,12 +102,18 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute>
+            <Dashboard></Dashboard>
+        </PrivateRoute>,
         children: [
             {
                 path: 'analytics',
                 element: <Analytics></Analytics>,
             },
+            {
+                path: '/dashboard/user-profile',
+                element: <UserProfile></UserProfile>
+            }
         ],
     },
 ]);
