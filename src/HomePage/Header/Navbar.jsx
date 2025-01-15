@@ -11,6 +11,8 @@ const Navbar = () => {
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+ 
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -146,12 +148,8 @@ const Navbar = () => {
                   <div className="px-4 py-2 text-white font-semibold">
                     {user.displayName}
                   </div>
-                  <Link
-                    to="/dashboard"
-                    className="block px-4 py-2 text-white "
-                  >
-                    Dashboard
-                  </Link>
+                <Link className="text-left px-4 py-2 text-white " to={'/dashboard/analytics'}>Dashboard</Link>
+
                   <button
                     onClick={handleLogOut}
                     className="w-full text-left px-4 py-2 text-white "
@@ -172,6 +170,7 @@ const Navbar = () => {
           {/* TODO: Sign up and profile pic show with dropdown */}
         </div>
       </div>
+     
     </div>
   );
 };

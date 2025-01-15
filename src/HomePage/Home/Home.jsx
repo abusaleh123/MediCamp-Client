@@ -6,7 +6,7 @@ import MedicalCamps from '../Main/Camps/Camps';
 const Home = () => {
     return (
         <div>
-            <Navbar></Navbar>
+            {/* <Navbar></Navbar> */}
             <Banner></Banner>
             <MedicalCamps></MedicalCamps>
         </div>

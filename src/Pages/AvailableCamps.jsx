@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
-import bg from '../../src/assets/detailsBanner.jpg';
+import bg from '../../src/assets/Images/blog12.jpg';
 import { Link } from 'react-router-dom';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 import { useState } from 'react';
@@ -40,7 +40,7 @@ const AvailableCamps = () => {
             <div style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="py-28 relative object-cover">
                 <div className="absolute inset-0 bg-[#0a1f31] bg-opacity-90"></div>
                 <div className="relative z-10 text-white p-8 flex flex-col justify-center items-center text-center mx-auto">
-                    <h1 className="text-7xl font-bold">Available Camp Of Medi Camp</h1>
+                    <h1 className="text-7xl font-bold">Available Camp</h1>
                     <p className="mt-4 text-xl">Join us for an enriching experience at our medical camps.</p>
                     <p className="flex justify-center items-center gap-1 mt-2">
                         <span className="flex justify-center items-center text-xl text-[#3E8BFF]">
@@ -69,7 +69,7 @@ const AvailableCamps = () => {
                         onChange={(e) => setSort(e.target.value)}
                         className="select bg-[#35485B]  select-bordered w-full md:w-1/4"
                     >
-                        <option value="">Sort by</option>
+                        <option selected disabled value="">Sort by</option>
                         <option value="participants">Most Participants</option>
                         <option value="feess">Fees</option>
                         <option value="names">Alphabetical Order</option>

@@ -40,6 +40,7 @@ const handleSubmit = async (event) => {
   const gender = form.gender.value;
   const eContact = form.eContact.value;
   const participantName = form.participantName.value;
+  const email = form.email.value;
   const date = moment().format('MMMM Do YYYY, h:mm:ss a');
 console.log(gender);
   // Optionally close the modal after submission
@@ -59,6 +60,7 @@ console.log(gender);
     gender,
     eContact,
     date,
+    email
   };
 
   try {
