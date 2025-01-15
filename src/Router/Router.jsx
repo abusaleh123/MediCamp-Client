@@ -4,6 +4,7 @@ import Base from "../Base/Base";
 import AvailableCamps from "../Pages/AvailableCamps";
 import CampDetails from "../Pages/CampDetails/CampDetails";
 import Register from "../Pages/Register/Register";
+import Login from "../Pages/Login/Login";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element:<Register></Register>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             }
         ]
     }

@@ -26,7 +26,7 @@ const handleRegister = (e) => {
         const password = form.password.value;
         console.log(name, email, photo, password);
         const date = moment().format('MMMM Do YYYY, h:mm:ss a');
-        console.log(date);
+        // console.log(date);
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/;
     if(password.length < 6){
         toast.error('Password Should be at least 6 character')
@@ -107,7 +107,7 @@ const handleRegister = (e) => {
     return (
         <div
         className='py-10 '
-        style={{backgroundImage: `url(${bg})`}}
+  
        >
            {/* <Helmet>
                 <meta charSet="utf-8" />
@@ -127,11 +127,7 @@ const handleRegister = (e) => {
     <div className="card bg-blend-hard-light rounded-xl w-full max-w-sm shrink-0  shadow-2xl">
       <form onSubmit={handleRegister}  className="card-body  backdrop-blur-sm bg-white/20 flex justify-center">
       <div>
-        <h1 style={{
- background: "linear-gradient(to top, #5350C3 10%, #8784F8 79%)",
- WebkitBackgroundClip: "text",
- WebkitTextFillColor: "transparent"
- }} className='text-4xl font-bold text-white'>Register Now</h1>
+        <h1  className='text-4xl font-bold text-[#0495FF]'>Register Now</h1>
       </div>
         <div className="form-control">
           <label className="label">
