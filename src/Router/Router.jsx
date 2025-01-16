@@ -74,6 +74,7 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import AddCamp from "../Dashboard/AddCamp/AddCamp";
 import AdminRoute from "../Provider/AdminRoute";
 import ManageCamps from "../Dashboard/ManageCamps/ManageCamps";
+import UpdateCamp from "../Dashboard/UpdateCamp/UpdateCamp";
 
 const router = createBrowserRouter([
     {
@@ -132,7 +133,15 @@ const router = createBrowserRouter([
                 element: <AdminRoute>
                     <ManageCamps></ManageCamps>
                 </AdminRoute>
-            }
+            },
+            {
+                path: '/dashboard/update-camp/:id',
+                element: <AdminRoute>
+                  <UpdateCamp></UpdateCamp>
+                  
+                </AdminRoute>,
+                loader : ({ params }) => fetch(`http://localhost:5000/dashboard/update-camp/${params.id}`)
+            },
         ],
     },
 ]);

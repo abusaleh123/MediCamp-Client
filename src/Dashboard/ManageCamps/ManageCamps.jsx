@@ -7,6 +7,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { Card, IconButton, Typography } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
  
 const TABLE_HEAD = [
     "Image",
@@ -30,63 +31,71 @@ const ManageCamps = () => {
     })
 
 
-
-const handleDelete = (id) => {
-   
-        axiosSecure.delete(`/delete-camp/${id}`)
-        .then(res => {
-             Swal.fire({
+    const handleDelete = (id) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axiosSecure
+              .delete(`/delete-camp/${id}`)
+              .then((res) => {
+                if (res.data.deletedCount > 0) {
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
                     icon: "success",
-                    title: "Camp Delete Successful!",
-                    text: "You Are Successfully Deleted The Camp",
-                     
-                    confirmButtonText: 'Close',
-                 
-                    showCancelButton: false,
-                    customClass: {
-                      confirmButton: 'custom-confirm-button',
-                    
-                      popup: 'custom-popup', 
-                      title: 'custom-title', 
-                      icon: 'custom-icon' ,
-                      
-                    },
-                    buttonsStyling: true
                   });
-            refetch()
-
-            // console.log('Deleted', res.data);
-        })
-        .catch(err => {
-             Swal.fire({
+                  refetch(); // To refresh the data after deletion
+                } else {
+                  Swal.fire({
+                    title: "Failed!",
+                    text: "Could not delete the camp.",
                     icon: "error",
-                    title: "Delete Failed",
-                    text: "You Are Failed to delete camp",
-                     
-                    confirmButtonText: 'Close',
-                 
-                    showCancelButton: false,
-                    customClass: {
-                      confirmButton: 'custom-confirm-button',
-                    
-                      popup: 'custom-popup', 
-                      title: 'custom-title', 
-                      icon: 'custom-icon' ,
-                      
-                    },
-                    buttonsStyling: true
                   });
-        })
-        // console.log(id);
-  
-}
-
+                }
+              })
+              .catch((err) => {
+                Swal.fire({
+                  icon: "error",
+                  title: "Delete Failed",
+                  text: "You failed to delete the camp.",
+                  confirmButtonText: 'Close',
+                  showCancelButton: false,
+                  customClass: {
+                    confirmButton: 'custom-confirm-button',
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    icon: 'custom-icon',
+                  },
+                  buttonsStyling: true,
+                });
+              });
+          }
+        });
+      };
+      
+// const handleUpdate = (id) => {
+//     axiosSecure.put(`/update-camp/${id}`)
+//     .then(res => {
+//         console.log(res.data);
+//        return res.data;
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
+// }
 
 
 
    
     return (
-        <div className='w-full border mx-auto text-center'>
+        <div className='w-full px-10 mx-auto text-center'>
           <div>
             <h1 className="text-7xl text-white pt-20 pb-10">Manage Camps </h1>
           </div>
@@ -156,10 +165,10 @@ const handleDelete = (id) => {
                 </td>
                 <td className="p-4">
                   <div className="flex items-center gap-2">
-                <button className='bg-[#0495FF] p-2 rounded-md '>
+                <Link to={`/dashboard/update-camp/${_id}`}  className='bg-[#0495FF] p-2 rounded-md '>
 
                     <MdModeEditOutline className=' text-xl text-white  '/>
-                </button>
+                </Link>
                    
                     <button onClick={() => handleDelete(_id)} className="bg-red-600 p-2 rounded-md"><MdDelete  className='text-xl text-white'/></button>
                   </div>

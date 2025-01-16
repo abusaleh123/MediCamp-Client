@@ -21,7 +21,7 @@ const [isAdmin] = useAdmin()
     <div className="flex  bg-[#1A202E]">
  
       {/* Dashboard side bar */}
-      <div className="w-72 min-h-screen  shadow-2xl  bg-[#031B33] text-center">
+      <div className="w-96 min-h-screen  shadow-2xl shadow-[#383F52]  bg-[#1A202E] text-center">
         
         <ul className="menu flex justify-center text-start w-11/12 mx-auto gap-4 py-10 px-6">
 
@@ -35,7 +35,10 @@ const [isAdmin] = useAdmin()
        
           <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/ManageCamp"><MdManageHistory /> Manage Camps</NavLink>
        
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/ManageRegisteredCamp"><MdManageAccounts /> Manage Registered </NavLink></> 
+          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/ManageRegisteredCamp"><MdManageAccounts /> Manage Registered </NavLink>
+          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/"><MdManageAccounts /> Home </NavLink>
+          
+          </> 
           : 
           
           <>
