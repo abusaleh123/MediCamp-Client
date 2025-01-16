@@ -75,6 +75,7 @@ import AddCamp from "../Dashboard/AddCamp/AddCamp";
 import AdminRoute from "../Provider/AdminRoute";
 import ManageCamps from "../Dashboard/ManageCamps/ManageCamps";
 import UpdateCamp from "../Dashboard/UpdateCamp/UpdateCamp";
+import AdminProfile from "../Dashboard/AdminProfile/AdminProfile";
 
 const router = createBrowserRouter([
     {
@@ -142,6 +143,10 @@ const router = createBrowserRouter([
                 </AdminRoute>,
                 loader : ({ params }) => fetch(`http://localhost:5000/dashboard/update-camp/${params.id}`)
             },
+            {
+                path: '/dashboard/admin-profile',
+                element: <AdminProfile></AdminProfile>
+            }
         ],
     },
 ]);

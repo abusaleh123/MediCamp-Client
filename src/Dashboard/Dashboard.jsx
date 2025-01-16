@@ -12,16 +12,43 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import { MdManageHistory } from "react-icons/md";
 import { MdManageAccounts } from "react-icons/md";
 import useAdmin from "../Hooks/useAdmin";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const Dashboard = () => {
   //? TODO : get isAdmin value from the database
 const [isAdmin] = useAdmin()
+const {axiosSecure} = useAxiosSecure()
+const {user} = useAuth();
+const fetchAdminProfile = async (email) => {
+    const response = await axiosSecure.get(`/profile?email=${email}`);
+    return response.data;
+  };
+const { data: profile, error, isLoading, refetch } = useQuery({
+    queryKey: ['profile', user?.email],
+    queryFn: () => fetchAdminProfile(user.email),
+    enabled: !!user?.email, // Only run the query if user.email is defined
+  });
+
+  console.log(profile);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading profile</div>;
 
   return (
-    <div className="flex  bg-[#1A202E]">
+    <div className="lg:flex bg-[#1A202E]">
  
       {/* Dashboard side bar */}
-      <div className="w-96 min-h-screen  shadow-2xl shadow-[#383F52]  bg-[#1A202E] text-center">
+      <div className="w-96 min-h-screen  shadow-2xl shadow-[#383F52] pt-10  bg-[#1A202E] text-center ">
+        <div className=" flex justify-center">
+          {
+            profile.map(prof => <div key={prof._id}>
+              <img className="lg:w-52 border-2 p-2 border-blue-500 lg:h-52 w-28 h-28 object-cover rounded-full" src={prof.photo} alt="" />
+              <h1 className="text-2xl text-blue-500 mt-4">{prof.name}</h1>
+              <p className="text-lg text-blue-500">{isAdmin && 'Admin'}</p>
+            </div>)
+          }
+        </div>
         
         <ul className="menu flex justify-center text-start w-11/12 mx-auto gap-4 py-10 px-6">
 

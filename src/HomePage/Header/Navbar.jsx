@@ -147,6 +147,8 @@ const Navbar = () => {
               />
               {isDropdownOpen && (
                 <div className="absolute md:w-52 mt-2 -right-10  bg-[#031B33] shadow-lg border border-[#0495FF]  rounded-lg py-6">
+                  <img className="w-16 h-16 rounded-full object-cover" src={user.photoURL} alt="" />
+
                   <div className="px-4 py-2 text-white font-semibold">
                     {user.displayName}
                   </div>
