@@ -4,32 +4,36 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import auth from "../../firebase.init";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+// import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+// import axios from "axios";
 // import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const {axiosSecure} = useAxiosSecure()
+  const {axiosPublic} = useAxiosPublic()
   const navigate = useNavigate();
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // const [isAdmin] = useAdmin()
-  const fetchAdminProfile = async (email) => {
-    const response = await axiosSecure.get(`/profile?email=${email}`);
-    refetch()
-    return response.data;
-  };
-const { data: profile, error, isLoading, refetch } = useQuery({
-    queryKey: ['profile', user?.email],
-    queryFn: () => fetchAdminProfile(user.email),
-    enabled: !!user?.email, // Only run the query if user.email is defined
-  });
+  const [users, setUsers] = useState([])
 
-  refetch()
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading profile</div>;
+  useEffect(() => {
+    if (user?.email) { // Ensure email exists before making the request
+      axiosPublic.get(`/profilePublic?email=${user.email}`)
+        .then((res) => {
+          setUsers(res.data);
+          // console.log(res.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching profile:", error);
+        });
+    }
+  }, [user?.email, axiosPublic]); // Add axiosPublic to dependencies as well
+
+ 
+
  
 
 
@@ -40,6 +44,7 @@ const { data: profile, error, isLoading, refetch } = useQuery({
   const handleLogOut = () => {
     logOut(auth).then((res) => {
       navigate("/login");
+      refetch()
       Swal.fire({
         icon: "success",
         title: "Log Out Successful!",
@@ -157,13 +162,14 @@ const { data: profile, error, isLoading, refetch } = useQuery({
           {user ? (
             <div className="relative">
             {
-              profile.map(prof =>   <img
+              users?.map(prof => <img
                 onClick={toggleDropdown}
                 className="w-14 rounded-full h-14 object-cover cursor-pointer"
-                src={prof.photo}
+                src={prof?.photo}
                 alt="User"
               />)
             }
+            
               {isDropdownOpen && (
                 <div className="absolute md:w-52 mt-2 -right-10  bg-[#031B33] shadow-lg border border-[#0495FF]  rounded-lg py-6">
                   <img className="w-16 h-16 rounded-full object-cover" src={user.photoURL} alt="" />

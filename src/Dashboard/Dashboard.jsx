@@ -22,8 +22,8 @@ const [isAdmin] = useAdmin()
 const {axiosSecure} = useAxiosSecure()
 const {user} = useAuth();
 const fetchAdminProfile = async (email) => {
-    const response = await axiosSecure.get(`/profile?email=${email}`);
-    refetch()
+    const response = await axiosSecure.get(`/profilePublic?email=${email}`);
+    // refetch()
     return response.data;
   };
 const { data: profile, error, isLoading, refetch } = useQuery({
