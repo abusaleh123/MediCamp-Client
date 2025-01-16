@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import auth from "../../firebase.init";
 import Swal from "sweetalert2";
+// import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -11,6 +12,7 @@ const Navbar = () => {
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [isAdmin] = useAdmin()
  
 
 
@@ -144,11 +146,11 @@ const Navbar = () => {
                 alt="User"
               />
               {isDropdownOpen && (
-                <div className="absolute  mt-2   bg-[#031B33] shadow-lg border border-[#0495FF]  rounded-lg py-6">
+                <div className="absolute md:w-52 mt-2 -right-10  bg-[#031B33] shadow-lg border border-[#0495FF]  rounded-lg py-6">
                   <div className="px-4 py-2 text-white font-semibold">
                     {user.displayName}
                   </div>
-                <Link className="text-left px-4 py-2 text-white " to={'/dashboard/analytics'}>Dashboard</Link>
+                <Link className="text-left px-4 py-2 text-white " to={`${ '/dashboard'}`}>Dashboard</Link>
 
                   <button
                     onClick={handleLogOut}

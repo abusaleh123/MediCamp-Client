@@ -18,7 +18,7 @@ const Dashboard = () => {
 const [isAdmin] = useAdmin()
 
   return (
-    <div className="flex  bg-[#031B33]">
+    <div className="flex  bg-[#1A202E]">
  
       {/* Dashboard side bar */}
       <div className="w-72 min-h-screen  shadow-2xl  bg-[#031B33] text-center">
@@ -41,7 +41,7 @@ const [isAdmin] = useAdmin()
           <>
           
           
-          <NavLink className={'flex items-center nav gap-1  text-lg text-white'} to="/dashboard/analytics"><IoMdAnalytics className="" /> Analytics</NavLink>
+          <NavLink className={'flex items-center nav gap-1  text-lg text-white'} to={'/dashboard/analytics'}><IoMdAnalytics className="" />Analytics</NavLink>
           
           
           <NavLink  className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/user-profile"><CgProfile /> Profile</NavLink>
@@ -65,7 +65,7 @@ const [isAdmin] = useAdmin()
        
       </div>
       {/* Dashboard Content */}
-      <div className=" w-9/12">
+      <div className="w-full">
      
         <Outlet />
       </div>

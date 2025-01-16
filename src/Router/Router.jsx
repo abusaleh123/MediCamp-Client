@@ -71,6 +71,9 @@ import Dashboard from "../Dashboard/Dashboard";
 import Analytics from "../Dashboard/Analylics/Analytics";
 import UserProfile from "../Dashboard/User/UserProfile";
 import PrivateRoute from "../Provider/PrivateRoute";
+import AddCamp from "../Dashboard/AddCamp/AddCamp";
+import AdminRoute from "../Provider/AdminRoute";
+import ManageCamps from "../Dashboard/ManageCamps/ManageCamps";
 
 const router = createBrowserRouter([
     {
@@ -106,13 +109,29 @@ const router = createBrowserRouter([
             <Dashboard></Dashboard>
         </PrivateRoute>,
         children: [
+            // ! Normal User Route
             {
                 path: 'analytics',
-                element: <Analytics></Analytics>,
+                element: <PrivateRoute>
+                    <Analytics></Analytics>
+                </PrivateRoute>,
             },
             {
                 path: '/dashboard/user-profile',
                 element: <UserProfile></UserProfile>
+            },
+            // ! Admin Route
+            {
+                path: '/dashboard/AddCamp',
+                element: <AdminRoute>
+                    <AddCamp></AddCamp>
+                </AdminRoute>
+            },
+            {
+                path: '/dashboard/ManageCamp',
+                element: <AdminRoute>
+                    <ManageCamps></ManageCamps>
+                </AdminRoute>
             }
         ],
     },

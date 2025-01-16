@@ -9,7 +9,7 @@ const PrivateRoute = ({children}) => {
 
     const {user, loading} = useAuth()
    if(loading){
-    return <div>Loading</div>
+    return <progress className="progress w-56"></progress>
    }
    if(user){
     return children;
