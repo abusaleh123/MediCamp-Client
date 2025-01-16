@@ -23,6 +23,7 @@ const {axiosSecure} = useAxiosSecure()
 const {user} = useAuth();
 const fetchAdminProfile = async (email) => {
     const response = await axiosSecure.get(`/profile?email=${email}`);
+    refetch()
     return response.data;
   };
 const { data: profile, error, isLoading, refetch } = useQuery({
@@ -31,7 +32,7 @@ const { data: profile, error, isLoading, refetch } = useQuery({
     enabled: !!user?.email, // Only run the query if user.email is defined
   });
 
-  console.log(profile);
+  refetch()
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading profile</div>;
 
