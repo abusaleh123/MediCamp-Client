@@ -79,7 +79,7 @@ const { data: profile, error, isLoading, refetch } = useQuery({
        
           <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/registered"><TbCampfireFilled /> Registered Camps</NavLink>
        
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/payment"><RiSecurePaymentLine /> Payment History</NavLink>
+          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/paymentHistory"><RiSecurePaymentLine /> Payment History</NavLink>
          
           <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/"><FaHome />Home</NavLink>
           </>

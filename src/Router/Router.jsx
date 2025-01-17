@@ -76,6 +76,8 @@ import AdminRoute from "../Provider/AdminRoute";
 import ManageCamps from "../Dashboard/ManageCamps/ManageCamps";
 import UpdateCamp from "../Dashboard/UpdateCamp/UpdateCamp";
 import AdminProfile from "../Dashboard/AdminProfile/AdminProfile";
+import RegisterCamp from "../Dashboard/User/RegisteredCamp/RegisterCamp";
+import Payment from "../Dashboard/User/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -120,7 +122,18 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/user-profile',
-                element: <UserProfile></UserProfile>
+                element: <PrivateRoute>
+                    <UserProfile></UserProfile>
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/registered',
+                element: <RegisterCamp></RegisterCamp>
+            },
+            
+            {
+                path:'/dashboard/payment',
+                element: <Payment></Payment>
             },
             // ! Admin Route
             {

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import banner from '../../assets/banner.jpg'
 import bannerMain from '../../assets/bannerMain.png'
 import heartBeat from '../../assets/heart-beating.png'
@@ -20,7 +21,7 @@ const Banner = () => {
                 <p className='mt-5 text-white/80 text-xl'>Free medical camp offering health check-ups, consultations, and treatments to ensure better community wellness.</p>
 
 
-                <button className="btn btn-ghost md:px-6 bg-[#007EFF] hover:bg-[#007EFF] text-white text-lg rounded-full mt-8">Discover More <LuArrowUpRight className='text-xl font-extrabold '/></button>
+                <Link to={'/availableCamp'} className="btn btn-ghost md:px-6 bg-[#007EFF] hover:bg-[#007EFF] text-white text-lg rounded-full mt-8">Discover More <LuArrowUpRight className='text-xl font-extrabold '/></Link>
                     <p className="text-xl mt-6 text-white font-bold">Since 2024</p>
 
 
