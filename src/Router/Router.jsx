@@ -16,6 +16,8 @@ import UpdateCamp from "../Dashboard/UpdateCamp/UpdateCamp";
 import AdminProfile from "../Dashboard/AdminProfile/AdminProfile";
 import RegisterCamp from "../Dashboard/User/RegisteredCamp/RegisterCamp";
 import Payment from "../Dashboard/User/Payment/Payment";
+import PaymentHistory from "../Dashboard/User/PaymentHistory/PaymentHistory";
+import ManageRegister from "../Dashboard/AdminRegister/ManageRegister";
 
 const router = createBrowserRouter([
     {
@@ -73,6 +75,10 @@ const router = createBrowserRouter([
                 element: <Payment></Payment>,
                 loader: ({params}) => fetch(`http://localhost:5000/dashboard/registerById/${params.id}`)
             },
+            {
+                path: '/dashboard/paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
+            },
             
             // ! Admin Route
             {
@@ -98,6 +104,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/admin-profile',
                 element: <AdminProfile></AdminProfile>
+            },
+            {
+                path: '/dashboard/ManageRegisteredCamp',
+                element: <ManageRegister></ManageRegister>
             }
         ],
     },
