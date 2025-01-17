@@ -8,7 +8,8 @@ export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true);
-    const {axiosPublic} = useAxiosPublic()
+    const {axiosPublic} = useAxiosPublic();
+    
     
 
     const signUpWithEmailPass = (email, password) => {
