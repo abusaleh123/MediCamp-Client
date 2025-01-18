@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/medical.png";
+import logo from "../../assets/Images/m.png";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import auth from "../../firebase.init";

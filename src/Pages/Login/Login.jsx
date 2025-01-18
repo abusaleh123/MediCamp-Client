@@ -1,37 +1,44 @@
-import register from "../../assets/Json/register.json";
-import bg from "../../assets/Images/registerbg.jpg";
+
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import registerAnimation from '../../assets/Json/Registeer.json';
+import bg from '../../assets/Images/19373.jpg';
 import { Link, useNavigate } from "react-router-dom";
-import google from "../../assets/Images/google.png";
 import Lottie from "lottie-react";
-import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+// import registerAnimation from "../../assets/Json/register.json";
+import googleIcon from "../../assets/Images/google.png";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
+  const [togglePassword, setTogglePassword] = useState(false)
   const { SignInWithEmailPass, setUser } = useAuth();
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const handleTogglePassword = () => {
+    setTogglePassword(!togglePassword)
+  }
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-
-    const email = form.email.value;
-    const password = form.password.value;
+  const onSubmit = (data) => {
+    const { email, password } = data;
 
     SignInWithEmailPass(email, password)
       .then((result) => {
-        // console.log(result);
         setUser(result);
         Swal.fire({
           icon: "success",
           title: "Login Successful!",
-          text: "You Are Successfully Loged In",
-
+          text: "You Are Successfully Logged In",
           confirmButtonText: "Close",
-
-          showCancelButton: false,
           customClass: {
             confirmButton: "custom-confirm-button",
-
             popup: "custom-popup",
             title: "custom-title",
             icon: "custom-icon",
@@ -44,18 +51,14 @@ const Login = () => {
         }, 1000);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         Swal.fire({
           icon: "error",
           title: "Login Failed!",
-          text: "You are failed to login",
-
+          text: "You failed to login",
           confirmButtonText: "Close",
-
-          showCancelButton: false,
           customClass: {
             confirmButton: "custom-confirm-button",
-
             popup: "custom-popup",
             title: "custom-title",
             icon: "custom-icon",
@@ -64,96 +67,64 @@ const Login = () => {
         });
       });
   };
+
   return (
-    <div className="py-10 ">
-      {/* <Helmet>
-                <meta charSet="utf-8" />
-                <title>Blog Sphere || Register</title>
-             
-            </Helmet> */}
-      <div className="  lg:flex-row flex-col-reverse flex pr-4 w-10/12 mx-auto rounded-xl md:w-10/12  justify-center items-center backdrop-blur-2xl shadow-2xl">
-        <div className="lg:w-7/12">
-          <div className="pt-10 lg:pb-28 pb-10">
-            <div className="">
-              <div className="  md:w-10/12 lg:w-11/12 mx-auto   flex flex-col justify-center rounded-xl  backdrop-blur-md  bg-transparent ">
-                <div className="hero-content flex-col  ">
-                  <div className="card bg-blend-hard-light rounded-xl w-full max-w-sm shrink-0  shadow-2xl">
-                    <form
-                      onSubmit={handleLogin}
-                      className="card-body  backdrop-blur-sm bg-white/20 flex justify-center  rounded-xl"
-                    >
-                      <div>
-                        <h1 className="text-4xl font-bold  text-[#0495FF]">
-                          Login Now
-                        </h1>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text ">Email</span>
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          placeholder="Your Email"
-                          className="input focus:outline-none  bg-white/20 input-bordered"
-                          required
-                        />
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text  text-md">Password</span>
-                        </label>
-                        <input
-                          type="password"
-                          name="password"
-                          placeholder="password"
-                          className="input focus:outline-none  bg-white/20 input-bordered"
-                          required
-                        />
-                      </div>
-                      <div className="form-control mt-6">
-                        <button className="btn bg-[#0495FF] btn-ghost hover:bg-[#0495FF] hover:border-none  hover:border-white text-white font-bold text-lg">
-                          Login
-                        </button>
-                      </div>
-                      <p className="mt-2">
-                        Already Have An Account?please{" "}
-                        <span
-                          style={{
-                            background:
-                              "linear-gradient(to top, #5350C3 10%, #8784F8 79%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                          }}
-                          className="font-bold "
-                        >
-                          <Link className="text-lg" to={"/login"}>
-                            Register
-                          </Link>
-                        </span>
-                      </p>
-                    </form>
-                  </div>
+    <div className="">
+      <div className="bg-cover bg-center bg-[#031B33]">
+        <div className="gap-20 mx-auto flex justify-center items-center">
+          <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="min-h-screen flex justify-center items-center w-6/12">
+            <Lottie className="w-10/12" animationData={registerAnimation} loop={true} />
+          </div>
+          <div className="w-6/12 ">
+            <div className=" shadow-md rounded-lg p-8  pb-28 backdrop-blur-2xl  bg-white/10 w-5/6">
+              <h2 className="md:text-4xl  font-bold text-center py-16 text-white">Login to Medi Camp </h2>
+              <form className="w-10/12  mx-auto flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
+               
+              
+                <div className="form-group mb-4 md:w-3/4">
+                  <label className="block  font-medium text-gray-400">Email</label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    {...register("email", { required: true })}
+                    className="input bg-[#35485B] w-full px-4 py-2 border text-white rounded-md"
+                  />
                 </div>
+                <div className="form-group mb-4 md:w-3/4">
+                  <label className="block  font-medium text-gray-400">Password</label>
+                  <div>
+
+                  <input
+                    type={togglePassword ? 'text' : 'password'}
+                    placeholder="Password"
+                    {...register("password", { required: true })}
+                    className="input w-full px-4 py-2 border bg-[#35485B] text-white rounded-md"
+                  />
+                  <button onClick={handleTogglePassword} className='text-white absolute right-44 bottom-[235px] '> {togglePassword ? <FaEyeSlash /> : <FaEye />}</button>
+                  </div>
+                  
+                </div>
+                <div className="form-group md:w-3/4">
+                  <button type="submit" className="btn btn-ghost w-full py-2 px-4 bg-[#007EFF] hover:bg-[#007EFF] text-lg text-white rounded-md">
+                    Login
+                  </button>
+                </div>
+              </form>
+              <div className="text-center mt-4">
+                <Link to="/register" className=" text-white ">
+                  Already have an account? <span className='text-[#007EFF] text-lg hover:underline'>Register</span>
+                </Link>
+                <div className="border-t mt-6"></div>
+                <button  className="mt-10 flex justify-center border w-fit mx-auto py-1 px-6 gap-4 text-white/80 rounded-full items-center">
+                  <img className="w-8" src={googleIcon } alt="" />
+                  <p className="text-lg">Sign In With Google</p>
+                </button>
               </div>
-            </div>
-            <div>
-              <div className="divider w-1/4  mx-auto">OR</div>
-              <button className="border border-gray-400 py-1 rounded-full flex items-center justify-center backdrop-blur-3xl bg-white/20 gap-4 xl:w-7/12 md:w-8/12 w-fit lg:w-9/12 2xl:w-6/12  mx-auto px-4">
-                <img className="w-10" src={google} alt="" />
-                <h1 className="md:text-lg md:w-96 xl:w-96  2xl:w-fit">
-                  Register With Google
-                </h1>
-              </button>
             </div>
           </div>
         </div>
-        <div>
-          <Lottie animationData={register} loop={true}></Lottie>
-        </div>
       </div>
+      <ToastContainer transition={Bounce} />
     </div>
   );
 };

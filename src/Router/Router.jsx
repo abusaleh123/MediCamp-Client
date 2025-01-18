@@ -21,6 +21,14 @@ import ManageRegister from "../Dashboard/AdminRegister/ManageRegister";
 
 const router = createBrowserRouter([
     {
+        path: '/register',
+        element: <Register></Register>,
+    },
+    {
+        path: '/login',
+        element: <Login></Login>,
+    },
+    {
         path: '/',
         element: <Base></Base>,
         children: [
@@ -37,14 +45,8 @@ const router = createBrowserRouter([
                 element: <CampDetails></CampDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/camp-details/${params.id}`),
             },
-            {
-                path: '/register',
-                element: <Register></Register>,
-            },
-            {
-                path: '/login',
-                element: <Login></Login>,
-            },
+          
+            
         ],
     },
     {

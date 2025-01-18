@@ -5,87 +5,85 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AdminProfile = () => {
+    const { axiosSecure } = useAxiosSecure();
+    const { user } = useAuth();
 
-const { axiosSecure } = useAxiosSecure();
-const { user } = useAuth();
+    const fetchAdminProfile = async (email) => {
+        const response = await axiosSecure.get(`/admin-profile?email=${email}`);
+        return response.data;
+    };
 
-const fetchAdminProfile = async (email) => {
-    const response = await axiosSecure.get(`/admin-profile?email=${email}`);
-    return response.data;
-};
+    const { data: profile, error, isLoading, refetch } = useQuery({
+        queryKey: ['adminProfile', user?.email],
+        queryFn: () => fetchAdminProfile(user.email),
+        enabled: !!user?.email,
+    });
 
-const { data: profile, error, isLoading, refetch } = useQuery({
-    queryKey: ['adminProfile', user?.email],
-    queryFn: () => fetchAdminProfile(user.email),
-    enabled: !!user?.email,
-});
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+    const handleUpdate = async (e, id) => {
+        e.preventDefault(); // Prevent form submission and page reload
+        
+        // Create FormData object from the form
+        const formData = new FormData(e.target);
 
-const handleUpdate = async (e, id) => {
-    e.preventDefault(); // Prevent form submission and page reload
-    
-    // Create FormData object from the form
-    const formData = new FormData(e.target);
+        try {
+            let imageUrl = formData.get('photo'); // Default to existing image URL if no new image is selected
 
-    try {
-        let imageUrl = formData.get('photo'); // Default to existing image URL if no new image is selected
+            // Check if a new image is selected
+            if (formData.get('image') && formData.get('image').size > 0) {
+                const imageFile = formData.get('image'); // Get the selected image file
+                const imageUploadFormData = new FormData();
+                imageUploadFormData.append('image', imageFile);
 
-        // Check if a new image is selected
-        if (formData.get('image') && formData.get('image').size > 0) {
-            const imageFile = formData.get('image'); // Get the selected image file
-            const imageUploadFormData = new FormData();
-            imageUploadFormData.append('image', imageFile);
+                // Upload image to the image hosting service
+                const imageUploadRes = await axios.post(image_hosting_API, imageUploadFormData, {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                });
 
-            // Upload image to the image hosting service
-            const imageUploadRes = await axios.post(image_hosting_API, imageUploadFormData, {
+                // Get the uploaded image URL
+                imageUrl = imageUploadRes.data.data.url; // Update with new image URL
+            }
+
+            // Update the form data with the new or existing image URL
+            formData.set('photo', imageUrl);
+
+            // Prepare the updated data object from formData
+            const updatedData = Object.fromEntries(formData.entries());
+
+            // Send the updated data to the backend
+            await axiosSecure.put(`/admin-profile/${id}`, updatedData, {
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    'Content-Type': 'application/json'
                 }
             });
 
-            // Get the uploaded image URL
-            imageUrl = imageUploadRes.data.data.url; // Update with new image URL
-            
+            Swal.fire({
+                icon: 'success',
+                title: 'Profile Update Successful!',
+                text: 'Your Profile Update Successfully',
+                confirmButtonText: 'Close',
+                customClass: {
+                    confirmButton: 'custom-confirm-button',
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    icon: 'custom-icon',
+                },
+                buttonsStyling: true,
+            });
+
+            refetch(); // Refetch the profile data after updating
+            document.getElementById('my_modal_4').close(); // Close the modal
+        } catch (error) {
+            console.error("Error updating profile:", error);
         }
+    };
 
-        // Update the form data with the new image URL
-        formData.set('photo', imageUrl);
-
-        // Prepare the updated data object from formData
-        const updatedData = Object.fromEntries(formData.entries());
-
-        // Send the updated data to the backend
-        await axiosSecure.put(`/admin-profile/${id}`, updatedData, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        Swal.fire({
-            icon: 'success',
-            title: 'Profile Update Successful!',
-            text: 'Your Profile Update Successfully ',
-            confirmButtonText: 'Close',
-            customClass: {
-              confirmButton: 'custom-confirm-button',
-              popup: 'custom-popup',
-              title: 'custom-title',
-              icon: 'custom-icon',
-            },
-            buttonsStyling: true,
-          });
-
-        refetch(); // Refetch the profile data after updating
-        document.getElementById('my_modal_4').close(); // Close the modal
-    } catch (error) {
-        console.error("Error updating profile:", error);
-    }
-};
-
-if (isLoading) return <div>Loading...</div>;
-if (error) return <div>Error loading profile</div>;
-
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading profile</div>;
 
     return (
         <div className="text-white my-20 bg-[#232B3E] rounded-xl ml-12 py-10 w-8/12">
@@ -153,18 +151,21 @@ if (error) return <div>Error loading profile</div>;
                                                     />
                                                 </div>
                                             </div>
+
                                             <div className="form-control">
                                                 <label className="label">
-                                                    <span className="label-text text-white/80 text-lg">Email</span>
+                                                    <span className="label-text text-white/80 text-lg">Photo</span>
                                                 </label>
                                                 <div className="flex items-center px-3 bg-[#35485B] rounded-full">
                                                     <input
                                                         type="file"
-                                                        placeholder="Image"
                                                         name="image"
-                                                        // defaultValue={prof.photo}
                                                         className="input focus:outline-none border-none text-white bg-[#35485B]"
-                                                        required
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        name="photo"
+                                                        defaultValue={prof.photo}
                                                     />
                                                 </div>
                                             </div>
