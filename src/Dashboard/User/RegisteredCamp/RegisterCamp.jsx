@@ -197,42 +197,25 @@ const handleSearch = () => {
           </table>
         </Card>
 
-        {/* Pagination Info */}
-      
 
-        {/* Pagination Controls */}
-      {
-        itemsPerPage === 10 && <>
+      
           <div className="mt-4 text-white">
           Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, camps.length)} of {camps.length}
         </div>
           <div className="flex justify-center mt-4">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-            className="px-3 btn btn-ghost border  py-2 bg-blue-500 text-white rounded mr-2 disabled:bg-gray-500"
-          >
-            Previous
-          </button>
+        
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
               onClick={() => handlePageChange(index + 1)}
-              className={`px-3 py-2 btn btn-ghost rounded mx-1 ${currentPage === index + 1 ? 'bg-[#007EFF] text-white' : 'bg-[#04478a] text-white'}`}
+              className={`px-3 py-2 rounded mx-1 ${currentPage === index + 1 ? 'bg-[#007EFF] text-white' : 'bg-[#04478a] text-white'}`}
             >
               {index + 1}
             </button>
           ))}
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-            className="px-3 py-2 btn btn-ghost bg-[#007EFF]  text-white rounded ml-2 disabled:bg-gray-500"
-          >
-            Next
-          </button>
+       
         </div>
-        </>
-      }
+     
       </div>
     </div>
   );

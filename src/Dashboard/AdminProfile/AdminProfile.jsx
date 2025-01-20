@@ -3,10 +3,22 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import { Spinner } from "@material-tailwind/react";
 
 const AdminProfile = () => {
     const { axiosSecure } = useAxiosSecure();
     const { user } = useAuth();
+    const [load, setLoad] = useState(false)
+
+    const handleLoadButton = () => {
+        setLoad(true);
+
+        setTimeout(() => {
+            setLoad(false)
+        },3000)
+    }
+
 
     const fetchAdminProfile = async (email) => {
         const response = await axiosSecure.get(`/admin-profile?email=${email}`);
@@ -172,8 +184,10 @@ const AdminProfile = () => {
                                         </div>
 
                                         <div className="form-control mt-6 col-span-2 mx-auto">
-                                            <button className="btn btn-ghost text-white px-16 text-lg w-full bg-[#0495FF]">
-                                                Submit
+                                            <button onClick={handleLoadButton} className="btn btn-ghost text-white px-16 text-lg w-full bg-[#0495FF]">
+                                                {
+                                                    load ? (<Spinner color="blue" />) : 'Submit'
+                                                }
                                             </button>
                                         </div>
                                     </form>

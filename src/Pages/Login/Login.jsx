@@ -15,21 +15,34 @@ import { FaEyeSlash } from "react-icons/fa6";
 import auth from "../../firebase.init";
 import moment from "moment";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Spinner } from "@material-tailwind/react";
 
 const Login = () => {
   const [togglePassword, setTogglePassword] = useState(false)
-  const { SignInWithEmailPass, setUser, signInWithGoogle } = useAuth();
+  const { SignInWithEmailPass, setUser, signInWithGoogle, setLoading, loading } = useAuth();
   const navigate = useNavigate();
-  const {axiosPublic} = useAxiosPublic()
+  const {axiosPublic} = useAxiosPublic();
+
+
+const handleButtonLoading = () => {
+  setLoading(true);
+
+  setTimeout( () => {
+    setLoading(false)
+  },3000)
+}
+const handleTogglePassword = (e) => {
+  e.preventDefault()
+  setTogglePassword(!togglePassword)
+}
+
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const handleTogglePassword = () => {
-    setTogglePassword(!togglePassword)
-  }
-
+ 
   const onSubmit = (data) => {
     const { email, password } = data;
 

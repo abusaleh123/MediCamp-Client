@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 // import { DocumentIcon } from "@heroicons/react/24/solid";
@@ -8,6 +8,7 @@ import { MdDelete } from "react-icons/md";
 import { Card, IconButton, Typography } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+
  
 const TABLE_HEAD = [
     "Image",
@@ -19,16 +20,31 @@ const TABLE_HEAD = [
   ];
 
 const ManageCamps = () => {
+  const [search, setSearch] = useState('')
     const {axiosSecure} = useAxiosSecure();
+const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
-    const {data : Manage = [], refetch } = useQuery({
-        queryKey: 'manage-camps',
-        queryFn: async() => {
-            const res = await axiosSecure.get('/manage-camps')
-      
-            return res.data
-        }
-    })
+
+
+
+
+
+    const { data: Manage = [], refetch } = useQuery({
+      queryKey: ['manage-camps', search], // Dynamic query key
+      queryFn: async () => {
+          const res = await axiosSecure.get(`/manage-camps`, {
+              params: { search: search } // Pass search term as query parameter
+          });
+          return res.data;
+      }
+  });
+
+  // Handler for search input change
+  // const handleSearchChange = (e) => {
+  //     setSearch(e.target.value); // Update search term
+  //     refetch(); // Refetch data whenever the search term changes
+  // };
 
 
     const handleDelete = (id) => {
@@ -80,17 +96,17 @@ const ManageCamps = () => {
         });
       };
       
-// const handleUpdate = (id) => {
-//     axiosSecure.put(`/update-camp/${id}`)
-//     .then(res => {
-//         console.log(res.data);
-//        return res.data;
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     })
-// }
 
+const totalPages = Math.ceil(Manage.length / itemsPerPage);
+const currentManage = Manage.slice(
+  (currentPage - 1) * itemsPerPage,
+  currentPage * itemsPerPage
+);
+
+// Handle page change
+const handlePageChange = (page) => {
+  setCurrentPage(page);
+};
 
 
    
@@ -99,6 +115,20 @@ const ManageCamps = () => {
           <div>
             <h1 className="text-7xl text-white pt-20 pb-10">Manage Camps </h1>
           </div>
+
+
+          <div className='flex bg-[#35485B] w-3/4 mx-auto mb-10 p-1 rounded-xl '>
+                    <input
+                        type="text"
+                        placeholder="Search Registered  camps"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none  mb-4 md:mb-0"
+                    />
+                     <button className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-white text-lg ">
+                        Search
+                    </button>
+                    </div>
           {/* Camp Table */}
           <div>
           <Card className="h-full w-full overflow-scroll bg-[#1A202E]  text-white ">
@@ -119,7 +149,7 @@ const ManageCamps = () => {
           </tr>
         </thead>
         <tbody className=''>
-          {Manage.map(({ _id, image, name, dateTime, location, professional }) => {
+          {currentManage.map(({ _id, image, name, dateTime, location, professional }) => {
             return (
               <tr key={_id} className='border-t border-dashed border-gray-500'>
                 <td className="p-4">
@@ -179,6 +209,35 @@ const ManageCamps = () => {
         </tbody>
       </table>
     </Card>
+    {
+    itemsPerPage === 10 && <>
+       <div className="flex justify-center mt-4">
+        {/* <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="px-3 py-1 mx-1 bg-gray-500 text-white rounded"
+        >
+          Previous
+        </button> */}
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            className={`px-3 py-1 mx-1 ${currentPage === index + 1 ? 'bg-blue-500' : 'bg-gray-500'} text-white rounded`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        {/* <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="px-3 py-1 mx-1 bg-gray-500 text-white rounded"
+        >
+          Next
+        </button> */}
+      </div>
+    </>
+   }
  
           </div>
         </div>

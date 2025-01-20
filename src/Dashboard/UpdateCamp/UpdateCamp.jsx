@@ -1,3 +1,8 @@
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaUser } from "react-icons/fa";
@@ -13,19 +18,26 @@ import { MdContactEmergency } from "react-icons/md";
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-
-
+import { Spinner } from "@material-tailwind/react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateCamp = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const camp = useLoaderData(); // Load camp data
     const { _id, name, fees, location, professional, dateTime, participants, description, image } = camp;
 
     const { register, handleSubmit, reset } = useForm();
     const [previewImage, setPreviewImage] = useState(image);
+    const [load, setLoad] = useState(false);
+
+    const handleLoadButton = () => {
+        setLoad(true);
+        setTimeout(() => {
+            setLoad(false);
+        }, 4000);
+    };
 
     useEffect(() => {
         if (camp) {
@@ -50,18 +62,28 @@ const UpdateCamp = () => {
             const formData = new FormData();
             formData.append('image', data.image[0]);
 
-            const imageUploadResponse = await fetch(image_hosting_API, {
-                method: 'POST',
-                body: formData,
-            });
-            const imageResult = await imageUploadResponse.json();
+            try {
+                const imageUploadResponse = await fetch(image_hosting_API, {
+                    method: 'POST',
+                    body: formData,
+                });
+                const imageResult = await imageUploadResponse.json();
 
-            if (imageResult.success) {
-                imageUrl = imageResult.data.display_url;
-            } else {
+                if (imageResult.success) {
+                    imageUrl = imageResult.data.display_url;
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Image upload failed.',
+                        icon: 'error',
+                    });
+                    return;
+                }
+            } catch (error) {
+                console.error('Image upload error:', error);
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Image upload failed.',
+                    text: 'An error occurred while uploading the image.',
                     icon: 'error',
                 });
                 return;
@@ -72,13 +94,13 @@ const UpdateCamp = () => {
 
         try {
             const response = await axiosSecure.put(`/dashboard/update-camp/${_id}`, data);
-            if (response.data.modifiedCount > 0) {
+            if (response.status === 200) {
                 Swal.fire({
                     title: 'Success!',
                     text: 'Camp updated successfully!',
                     icon: 'success',
                 });
-                navigate('/dashboard/ManageCamp')
+                navigate('/dashboard/ManageCamp');
             } else {
                 Swal.fire({
                     title: 'Error!',
@@ -96,12 +118,10 @@ const UpdateCamp = () => {
         }
     };
 
-
-
     return (
         <div className='w-11/12 mx-auto'>
             <div>
-                <h1 className='text-7xl text-center pt-20 pb-10 text-white'> Update Camp</h1>
+                <h1 className='text-7xl text-center pt-20 pb-10 text-white'>Update Camp</h1>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
@@ -229,16 +249,16 @@ const UpdateCamp = () => {
                         <input
                             type="file"
                             name="image"
-                     
                             {...register("image")}
                             className="file-input w-full file-input-bordered bg-[#181B23] max-w-xs text-white"
-                            required
                         />
-                        <img className='w-20 h-20 rounded-xl mt-2 object-cover ' src={image} alt="" />
+                        <img className='w-20 h-20 rounded-xl mt-2 object-cover' src={previewImage} alt="Preview" />
                     </div>
 
                     <div className="form-control mt-6 col-span-2">
-                        <button type="submit" className="btn btn-ghost text-white px-16 text-lg w-fit bg-[#0495FF]">Submit</button>
+                        <button onClick={handleLoadButton} type="submit" className="btn btn-ghost text-white px-16 text-lg w-fit bg-[#0495FF]">
+                            {load ? (<Spinner color="blue" />) : ('Update')}
+                        </button>
                     </div>
                 </div>
             </form>
@@ -247,3 +267,5 @@ const UpdateCamp = () => {
 };
 
 export default UpdateCamp;
+
+

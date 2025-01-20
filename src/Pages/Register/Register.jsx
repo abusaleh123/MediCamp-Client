@@ -15,6 +15,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import googleIcon from "../../assets/Images/google.png";
 import auth from '../../firebase.init';
+import { Spinner } from "@material-tailwind/react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -22,12 +23,24 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Register = () => {
   const navigate = useNavigate();
   const [togglePassword, setTogglePassword] = useState(false)
-  const { signUpWithEmailPass, setUser, profileUpdate, signInWithGoogle } = useAuth();
+  const { signUpWithEmailPass, setUser, profileUpdate, signInWithGoogle, setLoading, loading } = useAuth();
   const { axiosPublic } = useAxiosPublic();
   const { register, handleSubmit } = useForm();
+  
 
 
-  const handleTogglePassword = () => {
+  const handleButtonLoading = () => {
+    setLoading(true);
+
+
+    setTimeout(() => {
+      setLoading(false)
+    },3000)
+  }
+
+
+  const handleTogglePassword = (e) => {
+    e.preventDefault()
     setTogglePassword(!togglePassword)
   }
 
@@ -200,7 +213,11 @@ const Register = () => {
                 </div>
                 <div className="form-group md:w-3/4">
                   <button type="submit" className="btn btn-ghost w-full py-2 px-4 bg-[#007EFF] hover:bg-[#007EFF] text-lg text-white rounded-md">
-                    Register
+                  {
+                    loading ? (<Spinner color="blue" />) : (
+                      <span>  Register</span>
+                    )
+                  }
                   </button>
                 </div>
               </form>
