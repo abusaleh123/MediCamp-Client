@@ -1,13 +1,13 @@
+
+
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { Card, IconButton, Typography } from "@material-tailwind/react";
-import { MdModeEditOutline } from "react-icons/md";
+import { Card, Typography } from "@material-tailwind/react";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-
 
 const TABLE_HEAD = [
   "Name",
@@ -19,28 +19,46 @@ const TABLE_HEAD = [
   "Feedback",
 ];
 
+const itemsPerPage = 10; 
+
 const RegisterCamp = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const [payments, setPayments] = useState([]);
   const { user } = useAuth();
   const { axiosSecure } = useAxiosSecure();
+  const [search, setSearch] = useState('');
+  
+const { data: camps = [], refetch } = useQuery({
+  queryKey: ['camps', user.email, search],
+  queryFn: () => axiosSecure.get(`/register?email=${user.email}&search=${search}`).then(res => res.data),
+  enabled: !!user.email, // Only run the query if user email exists
+  refetchOnWindowFocus: false, // Disable refetch on window focus
+  keepPreviousData: true, // Keep previous data while fetching new data
+});
 
-  // Fetch camps data
-  const { data: camps = [], refetch } = useQuery({
-    queryKey: ['camps', user.email],
-    queryFn: () => axiosSecure.get(`/register?email=${user.email}`).then(res => res.data),
-    enabled: !!user.email, // Only run the query if user email exists
-  });
+// Handle search input
+const handleSearchChange = (e) => {
+  setSearch(e.target.value);
+};
 
-  // Fetch payments data
+// Trigger refetch when the search input changes
+const handleSearch = () => {
+  refetch(); // Refetch data with updated search parameter
+};
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     if (user && user.email) {
       axiosSecure.get(`/paymentsByEmail?email=${user.email}`)
-        .then(res => {
-          setPayments(res.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+        .then(res => setPayments(res.data))
+        .catch(error => console.error(error));
     }
   }, [user.email, axiosSecure]);
 
@@ -68,37 +86,44 @@ const RegisterCamp = () => {
         axiosSecure.delete(`/delete-register/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
-              refetch(); // To refresh the data after deletion
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              refetch();
             } else {
-              Swal.fire({
-                title: "Failed!",
-                text: "Could not delete the camp.",
-                icon: "error",
-              });
+              Swal.fire("Failed!", "Could not delete the camp.", "error");
             }
           })
-          .catch((err) => {
-            Swal.fire({
-              icon: "error",
-              title: "Delete Failed",
-              text: "You failed to delete the camp.",
-              confirmButtonText: 'Close',
-              showCancelButton: false,
-            });
-          });
+          .catch(() => Swal.fire("Delete Failed", "You failed to delete the camp.", "error"));
       }
     });
   };
 
-  return (
-    <div className="text-center pt-20 px-10">
-      <h1 className="text-7xl text-white mb-10">Register Camp</h1>
+  // Calculate the items to display on the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = camps.slice(indexOfFirstItem, indexOfLastItem);
 
+  // Calculate total pages
+  const totalPages = Math.ceil(camps.length / itemsPerPage);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <div className="text-center pt-20 px-10 pb-20">
+      
+      <h1 className="text-7xl text-white mb-10">Register Camp</h1>
+      <div className='flex bg-[#35485B] w-3/4 mx-auto mb-10 p-1 rounded-xl '>
+                    <input
+                        type="text"
+                        placeholder="Search Registered  camps"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none  mb-4 md:mb-0"
+                    />
+                     <button onClick={handleSearch} className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-white text-lg ">
+                        Search
+                    </button>
+                    </div>
       {/* Camp Table */}
       <div>
         <Card className="h-full w-full overflow-scroll bg-[#1A202E] text-white">
@@ -115,7 +140,7 @@ const RegisterCamp = () => {
               </tr>
             </thead>
             <tbody>
-              {camps.map(({ _id, name, fees, participantName, status, dateTime }) => {
+              {currentItems.map(({ _id, name, fees, participantName }) => {
                 const paymentStatus = getPaymentStatus(_id);
                 const confirmationStatus = getConfirmationStatus(_id);
                 return (
@@ -148,11 +173,7 @@ const RegisterCamp = () => {
                     </td>
                     <td className="p-4">
                       <Typography variant="small" className="font-normal text-white/80 lg:text-lg">
-                        {confirmationStatus === "Pending" ? (
-                          <p>Pending</p>
-                        ) : (
-                          confirmationStatus
-                        )}
+                        {confirmationStatus === "Pending" ? "Pending" : confirmationStatus}
                       </Typography>
                     </td>
                     <td className="p-4">
@@ -175,9 +196,47 @@ const RegisterCamp = () => {
             </tbody>
           </table>
         </Card>
+
+        {/* Pagination Info */}
+      
+
+        {/* Pagination Controls */}
+      {
+        itemsPerPage === 10 && <>
+          <div className="mt-4 text-white">
+          Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, camps.length)} of {camps.length}
+        </div>
+          <div className="flex justify-center mt-4">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="px-3 btn btn-ghost border  py-2 bg-blue-500 text-white rounded mr-2 disabled:bg-gray-500"
+          >
+            Previous
+          </button>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-3 py-2 btn btn-ghost rounded mx-1 ${currentPage === index + 1 ? 'bg-[#007EFF] text-white' : 'bg-[#04478a] text-white'}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="px-3 py-2 btn btn-ghost bg-[#007EFF]  text-white rounded ml-2 disabled:bg-gray-500"
+          >
+            Next
+          </button>
+        </div>
+        </>
+      }
       </div>
     </div>
   );
 };
 
 export default RegisterCamp;
+

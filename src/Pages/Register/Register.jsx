@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
+import googleIcon from "../../assets/Images/google.png";
+import auth from '../../firebase.init';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -20,7 +22,7 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Register = () => {
   const navigate = useNavigate();
   const [togglePassword, setTogglePassword] = useState(false)
-  const { signUpWithEmailPass, setUser, profileUpdate } = useAuth();
+  const { signUpWithEmailPass, setUser, profileUpdate, signInWithGoogle } = useAuth();
   const { axiosPublic } = useAxiosPublic();
   const { register, handleSubmit } = useForm();
 
@@ -111,15 +113,48 @@ const Register = () => {
     }
   };
 
+    const date = moment().format('MMMM Do YYYY, h:mm:ss a');
+  const handleGoogleSignIn =  () => {
+    signInWithGoogle(auth)
+    .then((result) => {
+      console.log(result.user.displayName);
+        const newUser = {
+          name: result.user.displayName,
+          date,
+          photo: result.user.photoURL,
+          email: result.user.email,
+          lastLogin: result.user.metadata.
+          lastLoginAt,
+          creationTime: result.user.metadata.
+          creationTime,
+          
+        }
+        axiosPublic.post('/users', newUser)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+
+        
+      setUser(result)
+      navigate('/')
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
+
   return (
     <div className="">
       <div className="bg-cover bg-center bg-[#031B33]">
-        <div className="gap-20 mx-auto flex justify-center items-center">
-          <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="min-h-screen flex justify-center items-center w-6/12">
+        <div className="gap-20 mx-auto md:flex justify-center items-center">
+          <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="md:min-h-screen flex justify-center items-center md:w-6/12">
             <Lottie className="w-10/12" animationData={registerAnimation} loop={true} />
           </div>
-          <div className="w-6/12 ">
-            <div className=" shadow-md rounded-lg p-8  py-16 backdrop-blur-2xl  bg-white/10 w-5/6">
+          <div className="md:w-6/12 ">
+            <div className=" shadow-md rounded-lg p-8  py-16 backdrop-blur-2xl  bg-white/10 md:w-5/6">
               <h2 className="md:text-4xl  font-bold text-center py-16 text-white">Register to Medi Camp </h2>
               <form className="w-10/12  mx-auto flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group text-white mb-4 md:w-3/4">
@@ -131,7 +166,7 @@ const Register = () => {
                     className="input bg-[#35485B] w-full px-4 py-2 border  rounded-md"
                   />
                 </div>
-                <div className="form-group mb-4 md:w-3/4">
+                <div className="form-group mb-4 w-8/12 md:w-3/4">
                   <label className="block  font-medium text-gray-400 text-md">Profile Image</label>
                   <input
                     type="file"
@@ -159,7 +194,7 @@ const Register = () => {
                     {...register("password", { required: true })}
                     className="input w-full px-4 py-2 border bg-[#35485B] text-white rounded-md"
                   />
-                  <button onClick={handleTogglePassword} className='text-white absolute right-44 bottom-[186px] '> {togglePassword ? <FaEyeSlash /> : <FaEye />}</button>
+                  <button onClick={handleTogglePassword} className='text-white absolute md:right-44 right-36 bottom-[285px] '> {togglePassword ? <FaEyeSlash /> : <FaEye />}</button>
                   </div>
                   
                 </div>
@@ -173,7 +208,11 @@ const Register = () => {
                 <Link to="/login" className=" text-white ">
                   Already have an account? <span className='text-[#007EFF] text-lg hover:underline'>Login</span>
                 </Link>
-                
+                <div className="x-2 mt-4 text-white ">OR</div>
+                                <button onClick={handleGoogleSignIn} className="mt-4 flex justify-center border w-fit mx-auto py-1 px-6 gap-4 text-white/80 rounded-full items-center">
+                                  <img className="w-8" src={googleIcon } alt="" />
+                                  <p className="">Sign In With Google</p>
+                                </button>
               </div>
             </div>
           </div>

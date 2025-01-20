@@ -28,12 +28,12 @@ const Analytics = () => {
   // Transform data for the chart
   const chartData = camps.map(camp => {
     const nameParts = camp.name.split(' ');
-    const lastTwoWords = nameParts.slice(-2).join(' ');  // Get the last two words
+    const lastTwoWords = nameParts.slice(-2).join(' ');  
   
     return {
-      dateTime: lastTwoWords, // Last two words as the dateTime
-      fees: camp.fees,  // Fees value
-      additionalMetric: camp.additionalMetric || 0  // Additional metric if available, else 0
+      dateTime: lastTwoWords,
+      fees: parseInt( camp.fees),  
+      additionalMetric: camp.additionalMetric || 0
     };
   });
 
@@ -44,7 +44,7 @@ const Analytics = () => {
 
       <p className="text-2xl text-white/70 mb-10 pl-10">Camp Name And Fees</p>
       <ResponsiveContainer width="100%" height={300}>
-     
+     ``
       <LineChart data={chartData}>
         <defs>
           <linearGradient id="colorSales" x1="0" y1="0" x2="1" y2="0">

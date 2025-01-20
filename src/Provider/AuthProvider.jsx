@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
@@ -9,7 +9,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true);
     const {axiosPublic} = useAxiosPublic();
-    
+    const provider = new GoogleAuthProvider();
     
 
     const signUpWithEmailPass = (email, password) => {
@@ -23,6 +23,12 @@ const AuthProvider = ({children}) => {
     const logOut = (auth) => {
         setLoading(true)
         return signOut(auth)
+    }
+
+
+    const signInWithGoogle = ( ) => {
+        setLoading(true)
+        return signInWithPopup(auth, provider)
     }
 
     const profileUpdate = (profileUpdate) => {
@@ -64,6 +70,7 @@ const authInfo = {
     loading,
     logOut,
     SignInWithEmailPass,
+    signInWithGoogle
   
     
 }

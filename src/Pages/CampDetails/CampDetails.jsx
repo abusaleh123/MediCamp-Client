@@ -110,7 +110,7 @@ console.log(gender);
 // Handle updating participants count
 const handleUpdate = async (id) => {
   try {
-    const newCount = participantsCount + 1;
+    const newCount = Number(participantsCount) + 1;
     const res = await axiosPublic.put(`/camps/${id}`, { participantsCount: newCount });
     console.log(res.data);
   } catch (error) {
