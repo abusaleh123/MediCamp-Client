@@ -109,10 +109,11 @@ const handleSearch = () => {
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="text-center pt-20 px-10 pb-20">
+    <div className="text-center w-10/12 mx-auto pt-20 px-10 pb-20">
       
-      <h1 className="text-7xl text-white mb-10">Register Camp</h1>
-      <div className='flex bg-[#35485B] w-3/4 mx-auto mb-10 p-1 rounded-xl '>
+      <h1 className="text-4xl text-white ">Registered Camps</h1>
+      <p className="text-lg mb-10 mt-2 text-white/70">View and manage all your registered camps, track participants, and update camp information seamlessly.</p>
+      <div className='flex bg-[#35485B] w-1/4   mb-10 p-1 rounded-xl '>
                     <input
                         type="text"
                         placeholder="Search Registered  camps"
@@ -126,10 +127,10 @@ const handleSearch = () => {
                     </div>
       {/* Camp Table */}
       <div>
-        <Card className="h-full w-full overflow-scroll bg-[#1A202E] text-white">
+        <Card className="h-full  mx-auto overflow-scroll bg-[#10273D] text-white">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
-              <tr>
+              <tr className="bg-slate-600">
                 {TABLE_HEAD.map((head) => (
                   <th key={head} className="p-4 pt-10">
                     <Typography variant="large" color="white" className="font-bold leading-none">

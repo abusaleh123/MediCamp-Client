@@ -11,8 +11,8 @@ const Payment = () => {
     const data = useLoaderData()
    
     return (
-        <div>
-            <h1 className="text-7xl text-white py-16">Payment Now</h1>
+        <div className="w-10/12 mx-auto"> 
+            <h1 className="text-4xl text-center text-white py-16">Payment Now</h1>
             <div>
             <Elements stripe={stripePromise}>
             <CheckOutForm data={data}></CheckOutForm>

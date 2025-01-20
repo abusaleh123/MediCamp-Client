@@ -64,7 +64,15 @@ const Dashboard = () => {
           <CloseIcon className="text-white" />
         </IconButton>
         <Typography className="text-white" variant="h5" component="div">
-          Dashboard Menu
+        
+
+         {
+          profile.map(prof => <div className="mb-10">
+          <img className="w-40 rounded-full h-40 object-cover p-2 border border-blue-900 bg-blue-900 " src={prof.photo} alt="" />
+          </div>)
+         }
+
+Dashboard Menu
         </Typography>
       </div>
       <Divider />
@@ -87,31 +95,41 @@ const Dashboard = () => {
               <ListItemIcon><MdManageAccounts  className="text-white nav" /></ListItemIcon>
               <ListItemText primary="Manage Registered" />
             </ListItem>
-            <ListItem  button component={NavLink} to="/">
+           
+            <ListItem  button component={NavLink} to="/availableCamp">
               <ListItemIcon><FaHome className="text-white w-fit nav"/></ListItemIcon>
+              <ListItemText primary="Available Camp" />
+            </ListItem>
+            <ListItem   button component={NavLink} to="/">
+              <ListItemIcon><FaHome className="text-white w-fit "/></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
           </>
         ) : (
           <>
-            <ListItem button component={NavLink} to="/dashboard/analytics">
-              <ListItemIcon><IoMdAnalytics /></ListItemIcon>
-              <ListItemText primary="Analytics" />
-            </ListItem>
-            <ListItem button component={NavLink} to="/dashboard/user-profile">
-              <ListItemIcon><CgProfile /></ListItemIcon>
+          <ListItem  button component={NavLink} to="/dashboard/user-profile">
+              <ListItemIcon><CgProfile className="text-white w-fit " /></ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/analytics">
+              <ListItemIcon><IoMdAnalytics className="text-white w-fit " /></ListItemIcon>
+              <ListItemText primary="Analytics" />
+            </ListItem>
+            
             <ListItem button component={NavLink} to="/dashboard/registered">
-              <ListItemIcon><TbCampfireFilled /></ListItemIcon>
+              <ListItemIcon><TbCampfireFilled className="text-white w-fit " /></ListItemIcon>
               <ListItemText primary="Registered Camps" />
             </ListItem>
             <ListItem button component={NavLink} to="/dashboard/paymentHistory">
-              <ListItemIcon><RiSecurePaymentLine className="text-white" /></ListItemIcon>
+              <ListItemIcon><RiSecurePaymentLine className="text-white w-fit" /></ListItemIcon>
               <ListItemText primary="Payment History" />
             </ListItem>
+            <ListItem  button component={NavLink} to="/availableCamp">
+              <ListItemIcon><FaHome className="text-white w-fit nav"/></ListItemIcon>
+              <ListItemText primary="Available Camp" />
+            </ListItem>
             <ListItem button component={NavLink} to="/">
-              <ListItemIcon><FaHome /></ListItemIcon>
+              <ListItemIcon><FaHome  className="text-white w-fit "/></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
           </>

@@ -100,7 +100,11 @@ const UserProfile = () => {
   if (error) return <div>Error loading profile</div>;
 
   return (
-    <div className="text-white my-20 bg-[#232B3E] rounded-xl ml-12 py-10 w-8/12">
+    <div className="text-white my-20  mx-auto  py-10 w-10/12">
+      <h1 className="text-4xl text-center mb-10">My Profile</h1>
+      <div className="bg-[#10273D] py-10  rounded-xl">
+
+      
       <div>
         {profile.map((prof) => (
           <div className="flex flex-col items-center" key={prof._id}>
@@ -217,6 +221,7 @@ const UserProfile = () => {
           </div>
         </div>
       </dialog>
+      </div>
     </div>
   );
 };

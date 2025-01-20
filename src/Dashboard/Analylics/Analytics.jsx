@@ -38,8 +38,9 @@ const Analytics = () => {
   });
 
   return (
-    <div className="w-11/12  mx-auto  pt-20 ">
-      <h2 className='text-7xl text-white mb-10'>Analytics</h2>
+    <div className="w-10/12  mx-auto  pt-20 ">
+      <h2 className='text-4xl text-center text-white '>Analytics</h2>
+      <p className="text-lg mb-10 mt-2 text-center text-white/70">View camp analytics, including camp names and fees for joining, to make informed decisions.</p>
       <div className='bg-[#10273D] py-6 pr-8 rounded-xl '>
 
       <p className="text-2xl text-white/70 mb-10 pl-10">Camp Name And Fees</p>

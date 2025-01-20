@@ -112,33 +112,41 @@ useEffect(() => {
     }
 
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
-           <CardElement
-           className=" border p-4 "
-        options={{
-          style: {
-            base: {
-              fontSize: '16px',
-              color: '#424770',
-              '::placeholder': {
-                color: '#aab7c4',
+      <div className=" mx-auto p-6 bg-[#10273D] shadow-md rounded-lg">
+      <form onSubmit={handleSubmit} className=" gap-4">
+        <div className="w-2/4 mx-auto mb-10 text-white">
+          <CardElement
+            className="border-none bg-[#35485B] text-white p-4 rounded"
+            options={{
+              style: {
+                base: {
+                  fontSize: '16px',
+                  color: '#FFFFFF',
+                  '::placeholder': {
+                    color: '#aab7c4',
+                  },
+                },
+                invalid: {
+                  color: '#9e2146',
+                },
               },
-            },
-            invalid: {
-              color: '#9e2146',
-            },
-          },
-        }}
-      />
-      <button className="btn btn-ghost border border-blue-500 text-white my-4" type="submit " disabled={!stripe || !clientSecret }>
-        Pay
-      </button>
-      <p className="text-red-500"> {err}</p>
-      {transactionId && <p className="text-green-400"> YOur Transaction Id : {transactionId} </p>}
-
-        </form>
+            }}
+          />
         </div>
+        <div className="w-fit mx-auto flex flex-col justify-between">
+          <button 
+            className="btn btn-primary w-full text-white bg-[#007EFF] hover:bg-[#007EFF] border border-blue-500 py-2 px-4 rounded"
+            type="submit" 
+            disabled={!stripe || !clientSecret}
+          >
+            Pay
+          </button>
+          {err && <p className="text-red-500 mt-2">{err}</p>}
+          {transactionId && <p className="text-green-500 mt-2">Your Transaction ID: {transactionId}</p>}
+        </div>
+      </form>
+    </div>
+    
     );
 };
 

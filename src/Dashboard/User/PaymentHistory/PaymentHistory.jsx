@@ -55,9 +55,10 @@ const PaymentHistory = () => {
   };
 
   return (
-    <div className='px-10'>
-      <h1 className='text-7xl text-white text-center pt-20 mb-10'>History</h1>
-      <div className='flex bg-[#35485B] w-3/4 mx-auto mb-10 p-1 rounded-xl '>
+    <div className='px-10 w-10/12 mx-auto pt-20' >
+      <h1 className='text-4xl text-white text-center '>History</h1>
+      <p className="text-lg mb-10 mt-2 text-center text-white/70">Access your payment history to review past transactions, track payments, and ensure accurate financial records.</p>
+      <div className='flex bg-[#35485B] w-1/4 mb-10 p-1 rounded-xl '>
                     <input
                         type="text"
                         placeholder="Search Registered  camps"
@@ -69,10 +70,10 @@ const PaymentHistory = () => {
                         Search
                     </button>
                     </div>
-      <Card className="h-full w-full overflow-scroll bg-[#1A202E] text-white">
+      <Card className="h-full w-full overflow-scroll bg-[#10273D] text-white">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
-            <tr>
+            <tr className='bg-slate-600'>
               {TABLE_HEAD.map((head) => (
                 <th key={head} className="p-4 pt-10">
                   <Typography

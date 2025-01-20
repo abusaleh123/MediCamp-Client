@@ -63,9 +63,10 @@ const AddCamp = () => {
     
 }
     return (
-        <div className='w-11/12 mx-auto'>
-            <div>
-                <h1 className='text-7xl text-center pt-20 pb-10 text-white'> Add Camp</h1>
+        <div className='w-10/12 mx-auto'>
+            <div className='text-4xl text-center pt-20 pb-10'>
+                <h1 className=' text-white'> Add Camp</h1>
+                <p className="text-lg mt-2 text-white/70">Add your camp to showcase its unique features, activities, and facilities to potential participants</p>
             </div>
              <form onSubmit={handleSubmit(onSubmit)}>
       
@@ -74,7 +75,7 @@ const AddCamp = () => {
                    <label className="label">
                      <span className="label-text text-white/80 text-lg">Camp Name</span>
                    </label>
-                   <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                   <div className=' flex items-center px-3 bg-[#10273D]  rounded-full'>
                    <FaBookmark  className='text-[#0495FF]'/>
                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
                    <input
@@ -83,7 +84,7 @@ const AddCamp = () => {
                      name="name"
                     //  defaultValue={data.name}
                     {...register("name" , {required: true})} 
-                     className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                     className="input focus:outline-none border-none w-full text-white bg-[#10273D]"
                      required
                    />
                    </div>
@@ -94,7 +95,7 @@ const AddCamp = () => {
                    <label className="label">
                      <span className="label-text text-white/80 text-lg">Camp Fees</span>
                    </label>
-                   <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                   <div className=' flex items-center px-3 bg-[#10273D]  rounded-full'>
                    <ImPriceTag className='text-[#0495FF]' />
                    <input
                      type="text"
@@ -102,7 +103,7 @@ const AddCamp = () => {
                      name="fees"
                     //  defaultValue={data.fees}
                     {...register("fees" , {required: true})} 
-                     className="input focus:outline-none border-none  w-full   text-white bg-[#181B23]"
+                     className="input focus:outline-none border-none  w-full   text-white bg-[#10273D]"
                      required
                    />
                    </div>
@@ -112,7 +113,7 @@ const AddCamp = () => {
                    <label className="label">
                      <span className="label-text text-white/80 text-lg">Location</span>
                    </label>
-                   <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                   <div className=' flex items-center px-3 bg-[#10273D] rounded-full'>
                    <FaLocationDot   className='text-[#0495FF]'/>
                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
                    <input
@@ -121,7 +122,7 @@ const AddCamp = () => {
                      name="location"
                     //  defaultValue={data.location}
                     {...register("location" , {required: true})} 
-                     className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                     className="input focus:outline-none border-none w-full text-white bg-[#10273D]"
                      required
                    />
                    </div>
@@ -131,7 +132,7 @@ const AddCamp = () => {
                    <label className="label">
                      <span className="label-text text-white/80 text-lg">Healthcare Professional</span>
                    </label>
-                   <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                   <div className=' flex items-center px-3 bg-[#10273D]  rounded-full'>
                    <FaUserDoctor  className='text-[#0495FF]' />
                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
                    <input
@@ -140,7 +141,7 @@ const AddCamp = () => {
                      name="professional"
                     //  defaultValue={data.professional}
                     {...register("professional" , {required: true})} 
-                     className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                     className="input focus:outline-none border-none w-full text-white bg-[#10273D]"
                      required
                    />
                    </div>
@@ -154,14 +155,14 @@ const AddCamp = () => {
                    <label className="label">
                      <span className="label-text text-white/80 text-lg">Date & Time </span>
                    </label>
-                   <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                   <div className=' flex items-center px-3 bg-[#10273D]  rounded-full'>
                    <FaCalendarAlt  className='text-[#0495FF]'/>
                    <input
                      type="text"
                      placeholder="Date & Time"
                      name="dateTime"
                      {...register("dateTime" , {required: true})} 
-                     className="input focus:outline-none border-none outline-none w-full focus:bg-[#181B23] rounded-full  text-white bg-[#181B23]"
+                     className="input focus:outline-none border-none outline-none w-full focus:bg-[#181B23] rounded-full  text-white bg-[#10273D]"
                      required
                    />
                    </div>
@@ -172,14 +173,14 @@ const AddCamp = () => {
                      <span className="label-text text-white/80 text-lg">Participants Count</span>
                    </label>
                   
-                    <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                    <div className=' flex items-center px-3 bg-[#10273D] rounded-full'>
                     <MdOutlineSupervisorAccount className='text-[#0495FF] text-xl' />
                    <input
                      type="text"
                      placeholder="Participants Count"
                      name="number"
                      {...register("participants" , {required: true})} 
-                     className="input focus:outline-none border-none w-full  text-white bg-[#181B23]"
+                     className="input focus:outline-none border-none w-full  text-white bg-[#10273D]"
                      required
                    />
                    </div>
@@ -191,10 +192,10 @@ const AddCamp = () => {
                      <span className="label-text text-white/80 text-lg">Description</span>
                    </label>
                  
-                   <div className=' flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                   <div className=' flex items-center px-3 bg-[#10273D]  rounded-full'>
                    <MdDescription  className='text-[#0495FF] text-xl'/>
                    <textarea 
-                   className='focus:outline-none border-none w-full rounded-full flex items-center px-2  text-white bg-[#181B23]'
+                   className='focus:outline-none border-none w-full rounded-full flex items-center px-2  text-white bg-[#10273D]'
                    name="description" 
                    {...register("description", {required: true})} 
                    
@@ -203,7 +204,7 @@ const AddCamp = () => {
                  </div>
 
 
-                 <div className="">
+                 <div className="col-span-2 mx-auto">
                    <label className="label">
                      <span className="label-text text-white/80 b text-lg">Camp Image</span>
                    </label>
@@ -216,7 +217,7 @@ const AddCamp = () => {
                      name="image"
                     //  defaultValue={data.name}
                     {...register("image" , {required: true})} 
-                     className="file-input w-full file-input-bordered bg-[#181B23]   max-w-xs text-white  "
+                     className="file-input w-full file-input-bordered bg-[#10273D]   max-w-xs text-white  "
                      required
                    />
                    </div>
