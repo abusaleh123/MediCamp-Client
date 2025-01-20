@@ -98,7 +98,7 @@ const AdminProfile = () => {
     if (error) return <div>Error loading profile</div>;
 
     return (
-        <div className="text-white my-20 bg-[#232B3E] rounded-xl ml-12 py-10 w-8/12">
+        <div className="text-white w-10/12 my-20 bg-[#10273D] rounded-xl ml-12 py-10 mx-auto">
             <div>
                 {profile.map((prof) => (
                     <div className="flex flex-col items-center" key={prof._id}>

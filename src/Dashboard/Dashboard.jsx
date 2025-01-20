@@ -1,8 +1,8 @@
 
+
+import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { IoMdAnalytics } from "react-icons/io";
-import './././../index.css'
-// import '../Dashboard/Analylics/dashboard.css'
 import { CgProfile } from "react-icons/cg";
 import { TbCampfireFilled } from "react-icons/tb";
 import { RiSecurePaymentLine } from "react-icons/ri";
@@ -15,94 +15,140 @@ import useAdmin from "../Hooks/useAdmin";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { IoMdMenu } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
+
+import {
+  Drawer,
+  Button,
+  IconButton,
+  Typography,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 
 const Dashboard = () => {
-  //? TODO : get isAdmin value from the database
-const [isAdmin] = useAdmin()
-const {axiosSecure} = useAxiosSecure()
-const {user} = useAuth();
-const fetchAdminProfile = async (email) => {
+  const [isAdmin] = useAdmin();
+  const { axiosSecure } = useAxiosSecure();
+  const { user, open, setOpen } = useAuth();
+  // const [open, setOpen] = React.useState(false);
+
+ 
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
+
+  const fetchAdminProfile = async (email) => {
     const response = await axiosSecure.get(`/profilePublic?email=${email}`);
-    // refetch()
     return response.data;
   };
-const { data: profile, error, isLoading, refetch } = useQuery({
+
+  const { data: profile, error, isLoading, refetch } = useQuery({
     queryKey: ['profile', user?.email],
     queryFn: () => fetchAdminProfile(user.email),
-    enabled: !!user?.email, // Only run the query if user.email is defined
+    enabled: !!user?.email,
   });
 
-  refetch()
+  refetch();
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading profile</div>;
 
-  return (
-    <div className="lg:flex bg-[#1A202E]">
- 
-      {/* Dashboard side bar */}
-      <div className="w-96 min-h-screen  shadow-2xl shadow-[#383F52] pt-10  bg-[#1A202E] text-center ">
-        <div className=" flex justify-center">
-          {
-            profile.map(prof => <div key={prof._id}>
-              <img className="lg:w-52 border-2 p-2 border-blue-500 lg:h-52 w-28 h-28 object-cover rounded-full" src={prof.photo} alt="" />
-              <h1 className="text-2xl text-blue-500 mt-4">{prof.name}</h1>
-              <p className="text-lg text-blue-500">{isAdmin && 'Admin'}</p>
-            </div>)
-          }
-        </div>
-        
-        <ul className="menu flex justify-center text-start w-11/12 mx-auto gap-4 py-10 px-6">
-
-
-
-        {
-          isAdmin ? <><NavLink className={'flex items-center nav gap-1  text-lg text-white'} to="/dashboard/admin-profile"><MdAdminPanelSettings /> Admin Profile</NavLink>
-          
-          
-          <NavLink  className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/AddCamp"><IoAddCircleSharp />Add Camp</NavLink>
-       
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/ManageCamp"><MdManageHistory /> Manage Camps</NavLink>
-       
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/ManageRegisteredCamp"><MdManageAccounts /> Manage Registered </NavLink>
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/"><MdManageAccounts /> Home </NavLink>
-          
-          </> 
-          : 
-          
-          <>
-          
-          
-          <NavLink className={'flex items-center nav gap-1  text-lg text-white'} to={'/dashboard/analytics'}><IoMdAnalytics className="" />Analytics</NavLink>
-          
-          
-          <NavLink  className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/user-profile"><CgProfile /> Profile</NavLink>
-       
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/registered"><TbCampfireFilled /> Registered Camps</NavLink>
-       
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/dashboard/paymentHistory"><RiSecurePaymentLine /> Payment History</NavLink>
-         
-          <NavLink className={'flex items-center nav gap-1 text-lg text-white'}  to="/"><FaHome />Home</NavLink>
-          </>
-        }
-  
-
-
-        {/* <div className="divider border-t-2 text-white"></div> */}
-
-
-
-        
-        </ul>
-       
+  const drawerContent = (
+    <div className="bg-[#031B33] min-h-screen">
+      <div className="p-4 text-white bg-[#031B33]">
+        <IconButton className="bg-white" onClick={closeDrawer}>
+          <CloseIcon className="text-white" />
+        </IconButton>
+        <Typography className="text-white" variant="h5" component="div">
+          Dashboard Menu
+        </Typography>
       </div>
-      {/* Dashboard Content */}
-      <div className="w-full">
-     
-        <Outlet />
+      <Divider />
+      <List className="text-white ">
+        {isAdmin ? (
+          <>
+            <ListItem className="" button component={NavLink} to="/dashboard/admin-profile">
+              <ListItemIcon className=""><MdAdminPanelSettings  className="text-white " /></ListItemIcon>
+              <ListItemText primary="Admin Profile" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/AddCamp">
+              <ListItemIcon><IoAddCircleSharp  className="text-white nav"/></ListItemIcon>
+              <ListItemText primary="Add Camp" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/ManageCamp">
+              <ListItemIcon><MdManageHistory  className="text-white nav"/></ListItemIcon>
+              <ListItemText primary="Manage Camps" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/ManageRegisteredCamp">
+              <ListItemIcon><MdManageAccounts  className="text-white nav" /></ListItemIcon>
+              <ListItemText primary="Manage Registered" />
+            </ListItem>
+            <ListItem  button component={NavLink} to="/">
+              <ListItemIcon><FaHome className="text-white w-fit nav"/></ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </>
+        ) : (
+          <>
+            <ListItem button component={NavLink} to="/dashboard/analytics">
+              <ListItemIcon><IoMdAnalytics /></ListItemIcon>
+              <ListItemText primary="Analytics" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/user-profile">
+              <ListItemIcon><CgProfile /></ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/registered">
+              <ListItemIcon><TbCampfireFilled /></ListItemIcon>
+              <ListItemText primary="Registered Camps" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/dashboard/paymentHistory">
+              <ListItemIcon><RiSecurePaymentLine className="text-white" /></ListItemIcon>
+              <ListItemText primary="Payment History" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/">
+              <ListItemIcon><FaHome /></ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </>
+        )}
+      </List>
+    </div>
+  );
+
+  return (
+    <div className="bg-[#031B33] min-h-screen">
+      <div className="lg:flex justify-end ">
+        {/* Drawer Button */}
+       <div className={`${open  ?"w-96" : 'w-fit'} flex mt-6 justify-end`}>
+      {
+        open ? '' :  <Button className={`h-fit  text-end `} variant="" onClick={openDrawer}>
+        <IoMdMenu className="text-white text-2xl" />
+        </Button>
+      }
+       </div>
+        <Drawer
+        className=""
+          anchor="left"
+          open={open}
+          onClose={closeDrawer}
+          ModalProps={{ keepMounted: true }} // Improve performance on mobile
+        >
+          {drawerContent}
+        </Drawer>
+        {/* Dashboard Content */}
+        <div className="w-full">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
 };
 
 export default Dashboard;
+
 

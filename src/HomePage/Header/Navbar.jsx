@@ -11,7 +11,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 // import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, open, setOpen } = useAuth();
   const {axiosPublic} = useAxiosPublic()
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,6 +19,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [users, setUsers] = useState([])
 
+  const openDrawer = () => setOpen(true);
   useEffect(() => {
     if (user?.email) { // Ensure email exists before making the request
       axiosPublic.get(`/profilePublic?email=${user.email}`)
@@ -184,7 +185,7 @@ const Navbar = () => {
                   <div className="px-4 py-2 text-white font-semibold">
                     {user.displayName}
                   </div>
-                <Link className="text-left px-4 py-2 text-white " to={`${ '/dashboard'}`}>Dashboard</Link>
+                <Link onClick={openDrawer} className="text-left px-4 py-2 text-white " to={`${ '/dashboard'}`}>Dashboard</Link>
 
                   <button
                     onClick={handleLogOut}

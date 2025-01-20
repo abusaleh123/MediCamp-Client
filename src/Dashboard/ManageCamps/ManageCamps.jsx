@@ -111,13 +111,13 @@ const handlePageChange = (page) => {
 
    
     return (
-        <div className='w-full px-10 mx-auto text-center'>
+        <div className='w-10/12 px-10 mx-auto text-center'>
           <div>
-            <h1 className="text-7xl text-white pt-20 pb-10">Manage Camps </h1>
+            <h1 className="text-4xl text-white pt-20 pb-10">Manage Camps </h1>
           </div>
 
 
-          <div className='flex bg-[#35485B] w-3/4 mx-auto mb-10 p-1 rounded-xl '>
+          <div className='flex bg-[#35485B] w-1/4  mb-10 p-1 rounded-xl '>
                     <input
                         type="text"
                         placeholder="Search Registered  camps"
@@ -131,10 +131,10 @@ const handlePageChange = (page) => {
                     </div>
           {/* Camp Table */}
           <div>
-          <Card className="h-full w-full overflow-scroll bg-[#1A202E]  text-white ">
+          <Card className="h-full w-full overflow-scroll bg-[#10273D]  text-white ">
       <table className="w-full min-w-max table-auto text-left">
         <thead>
-          <tr>
+          <tr className='bg-slate-600'>
             {TABLE_HEAD.map((head) => (
               <th key={head} className="p-4 pt-10">
                 <Typography
@@ -212,13 +212,7 @@ const handlePageChange = (page) => {
     {
     itemsPerPage === 10 && <>
        <div className="flex justify-center mt-4">
-        {/* <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-3 py-1 mx-1 bg-gray-500 text-white rounded"
-        >
-          Previous
-        </button> */}
+       
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
@@ -228,13 +222,7 @@ const handlePageChange = (page) => {
             {index + 1}
           </button>
         ))}
-        {/* <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 mx-1 bg-gray-500 text-white rounded"
-        >
-          Next
-        </button> */}
+        
       </div>
     </>
    }

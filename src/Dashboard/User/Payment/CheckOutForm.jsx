@@ -81,7 +81,7 @@ useEffect(() => {
 
                     }
                     const res = await axiosSecure.post('/payments', payment);
-                    if(res.data?.result?.insertedId){
+                    if(res.data){
                         navigate('/dashboard/registered')
  Swal.fire({
         icon: "success",
@@ -112,8 +112,10 @@ useEffect(() => {
     }
 
     return (
+      <div>
         <form onSubmit={handleSubmit}>
            <CardElement
+           className=" border p-4 "
         options={{
           style: {
             base: {
@@ -136,6 +138,7 @@ useEffect(() => {
       {transactionId && <p className="text-green-400"> YOur Transaction Id : {transactionId} </p>}
 
         </form>
+        </div>
     );
 };
 

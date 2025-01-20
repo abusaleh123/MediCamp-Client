@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaUser } from "react-icons/fa";
@@ -25,7 +20,7 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdateCamp = () => {
     const navigate = useNavigate();
-    const camp = useLoaderData(); // Load camp data
+    const camp = useLoaderData(); 
     const { _id, name, fees, location, professional, dateTime, participants, description, image } = camp;
 
     const { register, handleSubmit, reset } = useForm();
@@ -121,7 +116,7 @@ const UpdateCamp = () => {
     return (
         <div className='w-11/12 mx-auto'>
             <div>
-                <h1 className='text-7xl text-center pt-20 pb-10 text-white'>Update Camp</h1>
+                <h1 className='text-4xl text-center pt-20 pb-10 text-white'>Update Camp</h1>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
@@ -129,14 +124,14 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Camp Name</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B] rounded-full'>
                             <FaBookmark className='text-[#0495FF]' />
                             <input
                                 type="text"
                                 placeholder="Camp Name"
                                 name="name"
                                 {...register("name", { required: true })}
-                                className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                                className="input focus:outline-none border-none w-full text-white bg-[#35485B]"
                                 required
                             />
                         </div>
@@ -146,14 +141,14 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Camp Fees</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B] rounded-full'>
                             <ImPriceTag className='text-[#0495FF]' />
                             <input
                                 type="text"
                                 placeholder="Camp Fees"
                                 name="fees"
                                 {...register("fees", { required: true })}
-                                className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                                className="input focus:outline-none border-none w-full text-white bg-[#35485B]"
                                 required
                             />
                         </div>
@@ -163,14 +158,14 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Location</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B]  rounded-full'>
                             <FaLocationDot className='text-[#0495FF]' />
                             <input
                                 type="text"
                                 placeholder="Location"
                                 name="location"
                                 {...register("location", { required: true })}
-                                className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                                className="input focus:outline-none border-none w-full text-white bg-[#35485B]"
                                 required
                             />
                         </div>
@@ -180,14 +175,14 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Healthcare Professional</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B]  rounded-full'>
                             <FaUserDoctor className='text-[#0495FF]' />
                             <input
                                 type="text"
                                 placeholder="Healthcare Professional"
                                 name="professional"
                                 {...register("professional", { required: true })}
-                                className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                                className="input focus:outline-none border-none w-full text-white bg-[#35485B]"
                                 required
                             />
                         </div>
@@ -197,14 +192,14 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Date & Time</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B] rounded-full'>
                             <FaCalendarAlt className='text-[#0495FF]' />
                             <input
                                 type="text"
                                 placeholder="Date & Time"
                                 name="dateTime"
                                 {...register("dateTime", { required: true })}
-                                className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                                className="input focus:outline-none border-none w-full text-white bg-[#35485B]"
                                 required
                             />
                         </div>
@@ -214,14 +209,14 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Participants Count</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B]  rounded-full'>
                             <MdOutlineSupervisorAccount className='text-[#0495FF]' />
                             <input
                                 type="text"
                                 placeholder="Participants Count"
                                 name="participants"
                                 {...register("participants", { required: true })}
-                                className="input focus:outline-none border-none w-full text-white bg-[#181B23]"
+                                className="input focus:outline-none border-none w-full text-white bg-[#35485B]"
                                 required
                             />
                         </div>
@@ -231,10 +226,10 @@ const UpdateCamp = () => {
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Description</span>
                         </label>
-                        <div className='flex items-center px-3 bg-[#181B23] border-b rounded-xl'>
+                        <div className='flex items-center px-3 bg-[#35485B] rounded-full'>
                             <MdDescription className='text-[#0495FF]' />
                             <textarea
-                                className='focus:outline-none border-none w-full rounded-xl flex items-center px-2 text-white bg-[#181B23]'
+                                className='focus:outline-none border-none w-full rounded-xl flex items-center px-2 text-white bg-[#35485B]'
                                 name="description"
                                 {...register("description", { required: true })}
                                 cols={10}
@@ -242,7 +237,7 @@ const UpdateCamp = () => {
                         </div>
                     </div>
 
-                    <div className="">
+                    <div className="flex flex-col items-center col-span-2">
                         <label className="label">
                             <span className="label-text text-white/80 text-lg">Camp Image</span>
                         </label>
@@ -250,7 +245,7 @@ const UpdateCamp = () => {
                             type="file"
                             name="image"
                             {...register("image")}
-                            className="file-input w-full file-input-bordered bg-[#181B23] max-w-xs text-white"
+                            className="file-input w-full file-input-bordered bg-[#35485B] max-w-xs text-white"
                         />
                         <img className='w-20 h-20 rounded-xl mt-2 object-cover' src={previewImage} alt="Preview" />
                     </div>

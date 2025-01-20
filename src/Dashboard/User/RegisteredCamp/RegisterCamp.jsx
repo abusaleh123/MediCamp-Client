@@ -220,6 +220,4 @@ const handleSearch = () => {
     </div>
   );
 };
-
 export default RegisterCamp;
-

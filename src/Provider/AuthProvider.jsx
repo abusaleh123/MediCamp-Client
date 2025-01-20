@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import React from "react";
 
 export const AuthContext = createContext()
 
@@ -10,6 +11,7 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const {axiosPublic} = useAxiosPublic();
     const provider = new GoogleAuthProvider();
+    const [open, setOpen] = React.useState(false);
     
 
     const signUpWithEmailPass = (email, password) => {
@@ -70,7 +72,9 @@ const authInfo = {
     loading,
     logOut,
     SignInWithEmailPass,
-    signInWithGoogle
+    signInWithGoogle,
+    open,
+    setOpen
   
     
 }
