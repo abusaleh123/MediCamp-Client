@@ -17,6 +17,7 @@ import useAuth from "../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { IoBasketball } from "react-icons/io5";
 
 import {
   Drawer,
@@ -97,7 +98,7 @@ Dashboard Menu
             </ListItem>
            
             <ListItem  button component={NavLink} to="/availableCamp">
-              <ListItemIcon><FaHome className="text-white w-fit nav"/></ListItemIcon>
+              <ListItemIcon><IoBasketball className="text-white" /></ListItemIcon>
               <ListItemText primary="Available Camp" />
             </ListItem>
             <ListItem   button component={NavLink} to="/">
@@ -125,7 +126,7 @@ Dashboard Menu
               <ListItemText primary="Payment History" />
             </ListItem>
             <ListItem  button component={NavLink} to="/availableCamp">
-              <ListItemIcon><FaHome className="text-white w-fit nav"/></ListItemIcon>
+              <ListItemIcon><IoBasketball className="text-white" /></ListItemIcon>
               <ListItemText primary="Available Camp" />
             </ListItem>
             <ListItem button component={NavLink} to="/">

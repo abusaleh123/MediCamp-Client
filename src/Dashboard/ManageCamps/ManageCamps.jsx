@@ -113,7 +113,8 @@ const handlePageChange = (page) => {
     return (
         <div className='w-10/12 px-10 mx-auto text-center'>
           <div>
-            <h1 className="text-4xl text-white pt-20 pb-10">Manage Camps </h1>
+            <h1 className="text-4xl text-white pt-20 ">Manage Camps </h1>
+            <p className="text-lg mt-2 mb-10 text-white/70"> Manage your camps by updating details, monitoring registrations, and tracking camp status efficiently</p>
           </div>
 
 

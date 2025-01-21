@@ -59,13 +59,14 @@ const currentRegister = camps.slice(
   currentPage * itemsPerPage
 );
 
-// Handle page change
+
 const handlePageChange = (page) => {
   setCurrentPage(page);
 };
   return (
     <div className="text-center pt-20 w-10/12 mx-auto px-10">
-      <h1 className="text-4xl text-white  mb-10">Registered Camps</h1>
+      <h1 className="text-4xl text-white  ">Registered Camps</h1>
+      <p className="text-lg mt-2 mb-10 text-white/70"> Manage your camps by updating details, monitoring registrations, and tracking camp status efficiently</p>
       <div className='flex bg-[#35485B] justify-start  w-1/4  mb-10 p-1 rounded-xl '>
                     <input
                         type="text"

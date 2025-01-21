@@ -212,7 +212,7 @@ const Register = () => {
                   
                 </div>
                 <div className="form-group md:w-3/4">
-                  <button type="submit" className="btn btn-ghost w-full py-2 px-4 bg-[#007EFF] hover:bg-[#007EFF] text-lg text-white rounded-md">
+                  <button onClick={handleButtonLoading} type="submit" className="btn btn-ghost w-full py-2 px-4 bg-[#007EFF] hover:bg-[#007EFF] text-lg text-white rounded-md">
                   {
                     loading ? (<Spinner color="blue" />) : (
                       <span>  Register</span>

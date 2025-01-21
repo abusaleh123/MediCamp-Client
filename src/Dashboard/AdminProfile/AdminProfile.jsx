@@ -164,7 +164,7 @@ const AdminProfile = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="form-control">
+                                            <div className="form-control col-span-2">
                                                 <label className="label">
                                                     <span className="label-text text-white/80 text-lg">Photo</span>
                                                 </label>
@@ -172,7 +172,7 @@ const AdminProfile = () => {
                                                     <input
                                                         type="file"
                                                         name="image"
-                                                        className="input focus:outline-none border-none text-white bg-[#35485B]"
+                                                        className="input py-2 focus:outline-none file-input-ghost focus:text-white outline-none border-none text-white bg-[#35485B]"
                                                     />
                                                     <input
                                                         type="hidden"

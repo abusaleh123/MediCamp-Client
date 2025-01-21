@@ -1,4 +1,13 @@
-
+import { FaUser } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa";
+import { ImPriceTag } from "react-icons/im";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaUserDoctor } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { FaCalendarAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaTransgenderAlt } from "react-icons/fa";
+import { MdContactEmergency } from "react-icons/md";
 
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
@@ -31,9 +40,9 @@ const RegisterCamp = () => {
 const { data: camps = [], refetch } = useQuery({
   queryKey: ['camps', user.email, search],
   queryFn: () => axiosSecure.get(`/register?email=${user.email}&search=${search}`).then(res => res.data),
-  enabled: !!user.email, // Only run the query if user email exists
-  refetchOnWindowFocus: false, // Disable refetch on window focus
-  keepPreviousData: true, // Keep previous data while fetching new data
+  enabled: !!user.email,
+  refetchOnWindowFocus: false, 
+  keepPreviousData: true, 
 });
 
 // Handle search input
@@ -41,9 +50,8 @@ const handleSearchChange = (e) => {
   setSearch(e.target.value);
 };
 
-// Trigger refetch when the search input changes
 const handleSearch = () => {
-  refetch(); // Refetch data with updated search parameter
+  refetch();
 };
 
 
@@ -107,6 +115,13 @@ const handleSearch = () => {
 
   // Handle page change
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
+
+
+  const handleFeedback = (e) => {
+    e.preventDefault()
+
+  }
 
   return (
     <div className="text-center w-10/12 mx-auto pt-20 px-10 pb-20">
@@ -188,7 +203,7 @@ const handleSearch = () => {
                     </td>
                     <td className="p-4">
                       {confirmationStatus === "Confirmed" && (
-                        <button className="btn btn-ghost bg-[#007EFF] text-white text-lg hover:border-[#007EFF]">Leave Feedback</button>
+                        <button onClick={(()=>document.getElementById('my_modal_4').showModal())} className="btn btn-ghost bg-[#007EFF] text-white text-lg hover:border-[#007EFF]">Leave Feedback</button>
                       )}
                     </td>
                   </tr>
@@ -218,6 +233,198 @@ const handleSearch = () => {
         </div>
      
       </div>
+
+      
+      <dialog id="my_modal_4" className="modal">
+        <div className="modal-box w-full max-w-5xl bg-[#1E3348]">
+          <div className="flex justify-center items-center ">
+            <div className="hero-content    p-8 rounded-lg">
+              <div className="card w-full">
+                <form onSubmit={handleFeedback} className="card-body">
+                  <div className=' grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Camp Name</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <FaBookmark  className='text-[#0495FF]'/>
+                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
+                    <input
+                      type="text"
+                      placeholder="Camp Name"
+                      name="name"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Camp Fees</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <ImPriceTag className='text-[#0495FF]' />
+                    <input
+                      type="text"
+                      placeholder="Camp Fees"
+                      name="fees"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Location</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <FaLocationDot   className='text-[#0495FF]'/>
+                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
+                    <input
+                      type="text"
+                      placeholder="Location"
+                      name="location"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Healthcare Professional</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <FaUserDoctor  className='text-[#0495FF]' />
+                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
+                    <input
+                      type="text"
+                      placeholder="Healthcare Professional"
+                      name="professional"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Participant Name</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <FaUser  className='text-[#0495FF]'/>
+                    <input
+                      type="text"
+                      placeholder="Participant Name"
+                      name="participantName"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <MdEmail className='text-[#0495FF]' />
+                    {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      name="email"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Your Age</span>
+                    </label>
+                    <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                    <FaCalendarAlt  className='text-[#0495FF]'/>
+                    <input
+                      type="text"
+                      placeholder="Age"
+                      name="age"
+                     
+                      className="input focus:outline-none border-none outline-none focus:bg-[#35485B] rounded-full  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Phone Number</span>
+                    </label>
+                   
+                     <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                     <FaPhoneAlt className='text-[#0495FF]' />
+                    <input
+                      type="text"
+                      placeholder="Phone Number"
+                      name="number"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Gender</span>
+                    </label>
+                   
+                     <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                     <FaTransgenderAlt className='text-[#0495FF]' />
+                   <select className='bg-[#35485B]  input focus:outline-none outline-none border-none text-white' name="gender" id="">
+                    <option selected disabled value="Select Your Gender">Select Your Gender</option>
+                    <option  value="Male">Male</option>
+                    <option  value="FeMale">FeMale</option>
+                    <option  value="Custom">Custom</option>
+                   </select>
+                    </div>
+                  </div>
+      
+                  <div className="form-control col-span-2 md:col-span-1">
+                    <label className="label">
+                      <span className="label-text text-white/80 text-lg">Emergency Contact</span>
+                    </label>
+                  
+                     <div className=' flex items-center px-3 bg-[#35485B] rounded-full'>
+                     <MdContactEmergency className='text-[#0495FF]' />
+                    <input
+                     type="text"
+                     placeholder="Emergency Contact Info"
+                     name="eContact"
+                      className="input focus:outline-none border-none  text-white bg-[#35485B]"
+                      required
+                    />
+                    </div>
+                  </div>
+      
+                  <div className="form-control mt-6 col-span-2  mx-auto">
+                    <button className="btn btn-ghost text-white px-16 text-lg w-fit bg-[#0495FF]">Submit</button>
+                  </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+      
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle text-white btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };
