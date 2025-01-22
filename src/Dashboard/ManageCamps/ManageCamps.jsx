@@ -111,22 +111,22 @@ const handlePageChange = (page) => {
 
    
     return (
-        <div className='w-10/12 px-10 mx-auto text-center'>
+        <div className='lg:w-10/12 px-10 mx-auto text-center'>
           <div>
             <h1 className="text-4xl text-white pt-20 ">Manage Camps </h1>
-            <p className="text-lg mt-2 mb-10 text-white/70"> Manage your camps by updating details, monitoring registrations, and tracking camp status efficiently</p>
+            <p className="md:text-lg text-sm mt-2 mb-10 text-white/70"> Manage your camps by updating details, monitoring registrations, and tracking camp status efficiently</p>
           </div>
 
 
-          <div className='flex bg-[#35485B] w-1/4  mb-10 p-1 rounded-xl '>
+          <div className='flex bg-[#35485B] lg:w-1/4  mb-10 p-1 rounded-xl '>
                     <input
                         type="text"
                         placeholder="Search Registered  camps"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none  mb-4 md:mb-0"
+                        className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none   md:mb-0"
                     />
-                     <button className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-white text-lg ">
+                     <button className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-white md:text-lg ">
                         Search
                     </button>
                     </div>

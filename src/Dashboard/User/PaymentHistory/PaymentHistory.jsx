@@ -55,18 +55,18 @@ const PaymentHistory = () => {
   };
 
   return (
-    <div className='px-10 w-10/12 mx-auto pt-20' >
-      <h1 className='text-4xl text-white text-center '>History</h1>
-      <p className="text-lg mb-10 mt-2 text-center text-white/70">Access your payment history to review past transactions, track payments, and ensure accurate financial records.</p>
-      <div className='flex bg-[#35485B] w-1/4 mb-10 p-1 rounded-xl '>
+    <div className='px-10 lg:w-10/12 mx-auto pt-20' >
+      <h1 className='text-4xl text-white text-center '>Payment History</h1>
+      <p className="md:text-lg mb-10 mt-2 text-center text-white/70">Access your payment history to review past transactions, track payments, and ensure accurate financial records.</p>
+      <div className='flex bg-[#35485B] lg:w-1/4 mb-10 p-1 rounded-xl '>
                     <input
                         type="text"
                         placeholder="Search Registered  camps"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none  mb-4 md:mb-0"
+                        className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none md:mb-0"
                     />
-                     <button className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-white text-lg ">
+                     <button className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-white lg:text-lg ">
                         Search
                     </button>
                     </div>

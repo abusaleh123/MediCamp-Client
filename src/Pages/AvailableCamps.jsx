@@ -40,14 +40,14 @@ const AvailableCamps = () => {
             <div style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="py-28 relative object-cover">
                 <div className="absolute inset-0 bg-[#0a1f31] bg-opacity-90"></div>
                 <div className="relative z-10 text-white p-8 flex flex-col justify-center items-center text-center mx-auto">
-                    <h1 className="text-7xl font-bold">Available Camp</h1>
-                    <p className="mt-4 text-xl">Join us for an enriching experience at our medical camps.</p>
+                    <h1 className="lg:text-7xl text-4xl md:text-5xl font-bold">Available Camp</h1>
+                    <p className="mt-4 text-sm md:text-lg lg:text-xl">Join us for an enriching experience at our medical camps.</p>
                     <p className="flex justify-center items-center gap-1 mt-2">
-                        <span className="flex justify-center items-center text-xl text-[#3E8BFF]">
+                        <span className="flex justify-center items-center text-sm md:text-lg lg:text-xl text-[#3E8BFF]">
                             <Link to="/">Home</Link>
                         </span>
                         <MdKeyboardDoubleArrowRight className="text-2xl" />
-                        <span className="text-xl">Available Camp</span>
+                        <span className="text-sm md:text-lg lg:text-xl">Available Camp</span>
                     </p>
                     <div className="w-10/12 mx-auto my-4">
                 <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
@@ -57,9 +57,9 @@ const AvailableCamps = () => {
                         placeholder="Search camps..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="input input-bordered bg-[#35485B] placeholder:text-white w-full focus-border-none  mb-4 md:mb-0"
+                        className="input focus:outline-none bg-[#35485B] placeholder:text-white w-full focus:border-none   md:mb-0"
                     />
-                     <button onClick={handleSearch} className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF]  text-lg ">
+                     <button onClick={handleSearch} className="btn btn-ghost border-none hover:bg-[#007EFF] bg-[#007EFF] text-sm md:text-lg ">
                         Search
                     </button>
                     </div>
@@ -106,7 +106,7 @@ const AvailableCamps = () => {
                             </div>
                         ))
                     ) : (
-                        <p className="text-center text-gray-600 mt-4">No camps found.</p>
+                        <p className="text-center h-96 text-xl text-blue-500 col-span-3 items-center flex justify-center   mt-4">There is no camp added</p>
                     )}
                     
                     

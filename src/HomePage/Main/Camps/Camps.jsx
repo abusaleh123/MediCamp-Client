@@ -21,9 +21,10 @@ const{data: campss = []} = useQuery({
 
   return (
     <div className="bg-slate-100">
-    <section className="py-20 w-11/12 mx-auto  ">
-      <h2 className="text-6xl font-semibold text-center ">Popular Medical Camps</h2>
-      <p className="text-lg text-center text-gray-600 mb-6 mt-1">Explore top-rated medical camps offering specialized care, expert consultations, and health services to improve community well-being.</p>
+    <section className="py-14 w-11/12 mx-auto  ">
+      <h2 className="lg:text-7xl text-4xl md:text-5xl
+ font-semibold text-center ">Popular Medical Camps</h2>
+      <p className="lg:text-lg text-sm md:text-md text-center text-gray-600 mb-6 mt-1">Explore top-rated medical camps offering specialized care, expert consultations, and health services to improve community well-being.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {campss.map((camp, index) => (
           <div key={index} className="bg-[#ECF7FF] p-6 rounded-lg shadow-lg ">

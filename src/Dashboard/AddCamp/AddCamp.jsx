@@ -66,7 +66,7 @@ const AddCamp = () => {
         <div className='w-10/12 mx-auto'>
             <div className='text-4xl text-center pt-20 pb-10'>
                 <h1 className=' text-white'> Add Camp</h1>
-                <p className="text-lg mt-2 text-white/70">Add your camp to showcase its unique features, activities, and facilities to potential participants</p>
+                <p className="md:text-lg text-sm mt-2 text-white/70">Add your camp to showcase its unique features, activities, and facilities to potential participants</p>
             </div>
              <form onSubmit={handleSubmit(onSubmit)}>
       
@@ -204,20 +204,17 @@ const AddCamp = () => {
                  </div>
 
 
-                 <div className="col-span-2 mx-auto">
+                 <div className="col-span-2   ">
                    <label className="label">
                      <span className="label-text text-white/80 b text-lg">Camp Image</span>
                    </label>
-                   <div className='   '>
-                   {/* <FaBookmark  className='text-[#0495FF]'/> */}
-                   {/* <p className='text-3xl text-white/30 mx-auto text-center'>|</p> */}
+                   <div className=' rounded-full  '>
                    <input
                      type="file"
-                    //  placeholder="Image"
                      name="image"
                     //  defaultValue={data.name}
                     {...register("image" , {required: true})} 
-                     className="file-input w-full file-input-bordered bg-[#10273D]   max-w-xs text-white  "
+                     className="file-input w-full  bg-[#10273D]  lg:max-w-xs   text-white  "
                      required
                    />
                    </div>

@@ -380,12 +380,14 @@ const Navbar = () => {
                 }}
               >
                 <MenuItem>
-                  <Avatar
-                    className="bg-black"
-                    src={user?.photoURL}
-                    alt="User"
-                    sx={{ marginRight: 2 }}
-                  />
+                {
+                  users.map((prof) =>   <Avatar
+                  className="bg-black"
+                  src={prof?.photo}
+                  alt="User"
+                  sx={{ marginRight: 2 }}
+                />)
+                }
                   {user.displayName}
                 </MenuItem>
                 <MenuItem onClick={openDrawer}>
@@ -400,10 +402,8 @@ const Navbar = () => {
               </Menu>
             </div>
           ) : (
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              <Button variant="contained" color="primary">
-                Join Us
-              </Button>
+            <Link to="/register" >
+           <button className="btn btn-ghost bg-[#007EFF] md:text-lg text-md px-8 text-white">Join Us</button>
             </Link>
           )}
 

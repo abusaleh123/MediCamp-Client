@@ -65,11 +65,11 @@ const Analytics = () => {
   return (
     <div className="w-10/12 mx-auto pt-20">
       <h2 className='text-4xl text-center text-white'>Analytics</h2>
-      <p className="text-lg mb-10 mt-2 text-center text-white/70">
+      <p className="md:text-lg mb-10 mt-2 text-center text-white/70">
         View camp analytics, including camp names and fees for joining, to make informed decisions.
       </p>
       <div className='bg-[#10273D] py-6 pr-8 rounded-xl'>
-        <p className="text-2xl text-white/70 mb-10 pl-10">Camp Name And Fees</p>
+        <p className="md:text-2xl text-xl text-white/70 mb-10 pl-10">Camp Name And Fees</p>
 
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={chartData}>

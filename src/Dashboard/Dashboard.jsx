@@ -141,15 +141,16 @@ Dashboard Menu
 
   return (
     <div className="bg-[#031B33] min-h-screen">
-      <div className="lg:flex justify-end ">
+      <div className="lg:flex  ">
         {/* Drawer Button */}
-       <div className={`${open  ?"w-96" : 'w-fit'} flex mt-6 justify-end`}>
+       <div className={`${open  ?"w-96" : 'w-fit'}  flex pt-6 justify-end`}>
       {
-        open ? '' :  <Button className={`h-fit  text-end `} variant="" onClick={openDrawer}>
+        open ? '' :  <Button className={`h-fit w-fit  text-end `} variant="" onClick={openDrawer}>
         <IoMdMenu className="text-white text-2xl" />
         </Button>
       }
        </div>
+       
         <Drawer
         className=""
           anchor="left"

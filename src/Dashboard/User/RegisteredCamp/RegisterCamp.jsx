@@ -207,19 +207,19 @@ const RegisterCamp = () => {
   };
 
   return (
-    <div className="text-center w-10/12 mx-auto pt-20 px-10 pb-20">
+    <div className="text-center md:w-10/12 mx-auto pt-20 px-10 pb-20">
       <h1 className="text-4xl text-white ">Registered Camps</h1>
-      <p className="text-lg mb-10 mt-2 text-white/70">
+      <p className="md:text-lg mb-10 mt-2 text-white/70">
         View and manage all your registered camps, track participants, and
         update camp information seamlessly.
       </p>
-      <div className="flex bg-[#35485B] w-1/4   mb-10 p-1 rounded-xl ">
+      <div className="flex bg-[#35485B] lg:w-1/4   mb-10 p-1 rounded-xl ">
         <input
           type="text"
           placeholder="Search Registered  camps"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="input input-bordered bg-[#35485B] placeholder:text-white text-white w-full focus-border-none  mb-4 md:mb-0"
+          className="input focus:outline-none border-none  bg-[#35485B] placeholder:text-white text-white w-full focus-border-none   md:mb-0"
         />
         <button
           onClick={handleSearch}

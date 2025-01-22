@@ -89,8 +89,8 @@ const UserProfile = () => {
         buttonsStyling: true,
       });
 
-      refetch(); 
-      document.getElementById("my_modal_4").close(); 
+      refetch();
+      document.getElementById("my_modal_4").close();
     } catch (error) {
       console.error("Error updating profile:", error);
     }
@@ -100,127 +100,131 @@ const UserProfile = () => {
   if (error) return <div>Error loading profile</div>;
 
   return (
-    <div className="text-white my-20  mx-auto  py-10 w-10/12">
+    <div className="text-white my-20  mx-auto  py-10 md:w-10/12">
       <h1 className="text-4xl text-center mb-10">My Profile</h1>
       <div className="bg-[#10273D] py-10  rounded-xl">
-
-      
-      <div>
-        {profile.map((prof) => (
-          <div className="flex flex-col items-center" key={prof._id}>
-            <div>
-              <img
-                className="lg:w-52 border-2 p-2 border-blue-500 lg:h-52 w-28 h-28 object-cover rounded-full"
-                src={prof.photo}
-                alt=""
-              />
-            </div>
-            <h1 className="text-2xl mt-6">{prof.name}</h1>
-            <div className="flex items-center mt-4 gap-6">
-              <p className="text-gray-400">Email: {prof.email}</p>
-              <p className="text-gray-400">Creation: {prof.creationTime}</p>
-            </div>
-            <button
-              onClick={() => document.getElementById("my_modal_4").showModal()}
-              className="btn btn-ghost bg-[#0495FF] text-lg mt-8"
-            >
-              Update
-            </button>
-          </div>
-        ))}
-      </div>
-
-      <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-full max-w-5xl bg-[#1E3348]">
-          <div className="flex justify-center items-center">
-            <div className="hero-content p-8 rounded-lg">
-              {profile.map((prof) => (
-                <div key={prof._id}>
-                  <form
-                    onSubmit={(e) => handleUpdate(e, prof._id)}
-                    className="card-body"
-                  >
-                    <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-6">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text text-white/80 text-lg">
-                            Name
-                          </span>
-                        </label>
-                        <div className="flex items-center px-3 bg-[#35485B] rounded-full">
-                          <input
-                            type="text"
-                            placeholder="Name"
-                            name="name"
-                            defaultValue={prof.name}
-                            className="input focus:outline-none border-none text-white bg-[#35485B]"
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text text-white/80 text-lg">
-                            Email
-                          </span>
-                        </label>
-                        <div className="flex items-center px-3 bg-[#35485B] rounded-full">
-                          <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            defaultValue={prof.email}
-                            className="input focus:outline-none border-none text-white bg-[#35485B]"
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="form-control col-span-2">
-                        <label className="label">
-                          <span className="label-text text-white/80 text-lg">
-                            Image
-                          </span>
-                        </label>
-                        <div className="flex items-center px-3 bg-[#35485B] rounded-full">
-                          <input
-                            type="file"
-                            name="image"
-                            className="py-3 px-3 file-input-ghost rounded-full focus:text-white focus:outline-none border-none text-white bg-[#35485B]"
-                          />
-                          <input
-                            type="hidden"
-                            name="photo"
-                            defaultValue={prof.photo}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      onClick={handleClick}
-                      className="form-control mt-6 col-span-2 mx-auto"
-                    >
-                      <button className="btn btn-ghost text-white px-16 text-lg w-full bg-[#0495FF]">
-                        {load ? <Spinner color="blue" /> : <span>Submit</span>}
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle text-white btn-ghost absolute right-2 top-2">
-                ✕
+        <div>
+          {profile.map((prof) => (
+            <div className="flex flex-col items-center" key={prof._id}>
+              <div>
+                <img
+                  className="lg:w-52 border-2 p-2 border-blue-500 lg:h-52 w-28 h-28 object-cover rounded-full"
+                  src={prof.photo}
+                  alt=""
+                />
+              </div>
+              <h1 className="text-2xl mt-6">{prof.name}</h1>
+              <div className="md:flex justify-center md:justify-normal text-center items-center mt-4 gap-6">
+                <p className="text-gray-400">Email: {prof.email}</p>
+                <p className="text-gray-400">Creation: {prof.creationTime}</p>
+              </div>
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_4").showModal()
+                }
+                className="btn btn-ghost bg-[#0495FF] text-lg mt-8"
+              >
+                Update
               </button>
-            </form>
-          </div>
+            </div>
+          ))}
         </div>
-      </dialog>
+
+        <dialog id="my_modal_4" className="modal">
+          <div className="modal-box w-full max-w-5xl bg-[#1E3348]">
+            <div className="flex justify-center items-center">
+              <div className="hero-content p-8 rounded-lg">
+                {profile.map((prof) => (
+                  <div key={prof._id}>
+                    <form
+                      onSubmit={(e) => handleUpdate(e, prof._id)}
+                      className="card-body"
+                    >
+                      <div className=" gap-6">
+                        <div className="form-control col-span-1">
+                          <label className="label">
+                            <span className="label-text text-white/80 text-lg">
+                              Name
+                            </span>
+                          </label>
+                          <div className="flex items-center px-3 bg-[#35485B] rounded-full">
+                            <input
+                              type="text"
+                              placeholder="Name"
+                              name="name"
+                              defaultValue={prof.name}
+                              className="input focus:outline-none w-full border-none text-white bg-[#35485B]"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="form-control col-span-1">
+                          <label className="label">
+                            <span className="label-text text-white/80 text-lg">
+                              Email
+                            </span>
+                          </label>
+                          <div className="flex items-center px-3 bg-[#35485B] rounded-full">
+                            <input
+                              type="email"
+                              placeholder="Email"
+                              name="email"
+                              defaultValue={prof.email}
+                              className="input focus:outline-none w-full border-none text-white bg-[#35485B]"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="form-control col-span-2">
+                          <label className="label">
+                            <span className="label-text text-white/80 text-lg">
+                              Image
+                            </span>
+                          </label>
+                          <div className="flex items-center px-3 bg-[#35485B] rounded-full">
+                            <input
+                              type="file"
+                              name="image"
+                              className="py-3 px-3 file-input-ghost w-full cursor-pointer rounded-full focus:text-white focus:outline-none border-none text-white bg-[#35485B]"
+                            />
+                            <input
+                              type="hidden"
+                              name="photo"
+                              defaultValue={prof.photo}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        onClick={handleClick}
+                        className="form-control mt-6 col-span-2 mx-auto"
+                      >
+                        <button className="btn btn-ghost text-white px-16 text-lg w-full bg-[#0495FF]">
+                          {load ? (
+                            <Spinner color="blue" />
+                          ) : (
+                            <span>Submit</span>
+                          )}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="btn btn-sm btn-circle text-white btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </div>
   );

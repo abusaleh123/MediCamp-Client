@@ -119,40 +119,40 @@ const handleTogglePassword = (e) => {
   return (
     <div className="">
       <div className="bg-cover bg-center bg-[#031B33]">
-        <div className="gap-20 mx-auto md:flex  justify-center items-center">
-          <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="md:min-h-screen flex justify-center items-center md:w-6/12">
+        <div className="gap-20 mx-auto lg:flex  justify-center items-center">
+          <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="md:min-h-screen flex justify-center items-center lg:w-6/12">
             <Lottie className="w-10/12" animationData={registerAnimation} loop={true} />
           </div>
-          <div className="md:w-6/12 ">
-            <div className=" shadow-md rounded-lg p-8  pb-28 backdrop-blur-2xl  bg-white/10 md:w-5/6">
-              <h2 className="md:text-4xl  font-bold text-center py-16 text-white">Login to Medi Camp </h2>
-              <form className="w-10/12  mx-auto flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
+          <div className="lg:w-6/12 ">
+            <div className=" shadow-md rounded-lg p-8  pb-28 backdrop-blur-2xl  bg-white/10 lg:w-5/6">
+              <h2 className="md:text-4xl text-2xl  font-bold text-center py-16 text-white">Login to Medi Camp </h2>
+              <form className="lg:w-10/12   mx-auto flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
                
               
-                <div className="form-group mb-4 md:w-3/4">
+                <div className="form-group mb-4  sm:w-3/4 w-[250px]">
                   <label className="block  font-medium text-gray-400">Email</label>
                   <input
                     type="email"
                     placeholder="Email"
                     {...register("email", { required: true })}
-                    className="input bg-[#35485B] w-full px-4 py-2 border text-white rounded-md"
+                    className="input bg-[#35485B] w-full  px-4 py-2 border text-white rounded-md"
                   />
                 </div>
-                <div className="form-group mb-4 md:w-3/4">
+                <div className="form-group mb-4 sm:w-3/4">
                   <label className="block  font-medium text-gray-400">Password</label>
-                  <div>
+                  <div className="rounded-xl flex bg-[#35485B]">
 
                   <input
                     type={togglePassword ? 'text' : 'password'}
                     placeholder="Password"
                     {...register("password", { required: true })}
-                    className="input w-full px-4 py-2 border bg-[#35485B] text-white rounded-md"
+                    className="input w-full px-4   py-2 border bg-[#35485B] text-white rounded-md"
                   />
-                  <button onClick={handleTogglePassword} className='text-white absolute md:right-44 right-36 bottom-[333px] '> {togglePassword ? <FaEyeSlash /> : <FaEye />}</button>
+                  <button className="text-white pr-2 abso " onClick={handleTogglePassword} > {togglePassword ? <FaEyeSlash /> : <FaEye />}</button>
                   </div>
                   
                 </div>
-                <div className="form-group md:w-3/4">
+                <div className="form-group sm:w-3/4">
                   <button type="submit" className="btn btn-ghost w-full py-2 px-4 bg-[#007EFF] hover:bg-[#007EFF] text-lg text-white rounded-md">
                     Login
                   </button>

@@ -30,8 +30,9 @@ const Feedback = () => {
     return (
         <div className="bg-slate-100">
         <div className='w-11/12 mx-auto py-14 '>
-        <h1 className="text-7xl text-center font-semibold ">Feedback And Rating</h1>
-        <p className='mb-16 text-center text-lg text-gray-500 mt-4'>Feedback and Rating allows participants to share opinions, helping organizers improve services and guiding others through shared experiences and ratings.</p>
+        <h1 className="lg:text-7xl text-4xl md:text-5xl
+ text-center font-semibold ">Feedback And Rating</h1>
+        <p className='mb-16 text-center text-sm md:text-md lg:text-lg text-gray-500 mt-1'>Feedback and Rating allows participants to share opinions, helping organizers improve services and guiding others through shared experiences and ratings.</p>
             <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center gap-10'>
             {
                 feedback.map(feed => 
