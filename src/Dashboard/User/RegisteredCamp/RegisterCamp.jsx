@@ -164,7 +164,7 @@ const RegisterCamp = () => {
         });
         return;
       }
-      console.log(rating);
+      // console.log(rating);
       const imageUrl = imageResult.data.display_url;
 
       // Collect all form data

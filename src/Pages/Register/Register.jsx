@@ -95,8 +95,12 @@ const Register = () => {
           };
 
           axiosPublic.post('/users', newUser)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
+            .then(res => {
+
+            })
+            .catch(err => {
+              
+            });
 
           profileUpdate({ displayName: name, photoURL: imageUrl });
           Swal.fire({
@@ -119,9 +123,9 @@ const Register = () => {
             window.location.reload();
           }, 1000);
         })
-        .catch(error => console.log(error));
+        
     } catch (error) {
-      console.error('Image upload failed:', error);
+      // console.error('Image upload failed:', error);
       toast.error('Image upload failed. Please try again.');
     }
   };
@@ -130,7 +134,7 @@ const Register = () => {
   const handleGoogleSignIn =  () => {
     signInWithGoogle(auth)
     .then((result) => {
-      console.log(result.user.displayName);
+    
         const newUser = {
           name: result.user.displayName,
           date,
@@ -143,8 +147,10 @@ const Register = () => {
           
         }
         axiosPublic.post('/users', newUser)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
+            .then(res => {
+
+            })
+          
 
         
       setUser(result)
@@ -153,9 +159,7 @@ const Register = () => {
         window.location.reload();
       }, 1000);
     })
-    .catch(error => {
-      console.log(error);
-    })
+    
   }
 
 

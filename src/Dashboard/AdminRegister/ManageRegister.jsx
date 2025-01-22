@@ -46,7 +46,7 @@ const RegisterCamp = () => {
       .then(() => {
         refetch(); // Refetch the updated data to ensure the UI reflects the change
       })
-      .catch(error => console.error('Error updating status:', error));
+      // .catch(error => console.error('Error updating status:', error));
   };
 
 

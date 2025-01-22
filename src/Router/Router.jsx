@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: '/camp-details/:id',
                 element: <CampDetails></CampDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/camp-details/${params.id}`),
+                loader: ({ params }) => fetch(`https://medical-camp-server-indol.vercel.app/camp-details/${params.id}`),
             },
           
             
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/registerById/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/dashboard/registerById/${params.id}`)
+                loader: ({params}) => fetch(`https://medical-camp-server-indol.vercel.app/dashboard/registerById/${params.id}`)
             },
             {
                 path: '/dashboard/paymentHistory',
@@ -104,7 +104,7 @@ const router = createBrowserRouter([
                   <UpdateCamp></UpdateCamp>
                   
                 </AdminRoute>,
-                loader : ({ params }) => fetch(`http://localhost:5000/dashboard/update-camp/${params.id}`)
+                loader : ({ params }) => fetch(`https://medical-camp-server-indol.vercel.app/dashboard/update-camp/${params.id}`)
             },
             {
                 path: '/dashboard/admin-profile',

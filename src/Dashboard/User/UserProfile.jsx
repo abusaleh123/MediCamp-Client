@@ -92,7 +92,7 @@ const UserProfile = () => {
       refetch();
       document.getElementById("my_modal_4").close();
     } catch (error) {
-      console.error("Error updating profile:", error);
+      // console.error("Error updating profile:", error);
     }
   };
 

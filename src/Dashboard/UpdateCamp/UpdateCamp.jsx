@@ -75,7 +75,7 @@ const UpdateCamp = () => {
                     return;
                 }
             } catch (error) {
-                console.error('Image upload error:', error);
+                // console.error('Image upload error:', error);
                 Swal.fire({
                     title: 'Error!',
                     text: 'An error occurred while uploading the image.',
@@ -104,7 +104,7 @@ const UpdateCamp = () => {
                 });
             }
         } catch (err) {
-            console.error('Error updating camp:', err);
+            // console.error('Error updating camp:', err);
             Swal.fire({
                 title: 'Error!',
                 text: 'An error occurred while updating the camp.',

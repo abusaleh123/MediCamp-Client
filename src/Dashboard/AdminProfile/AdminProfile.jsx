@@ -98,7 +98,7 @@ const AdminProfile = () => {
       refetch(); // Refetch the profile data after updating
       document.getElementById("my_modal_4").close(); // Close the modal
     } catch (error) {
-      console.error("Error updating profile:", error);
+      // console.error("Error updating profile:", error);
     }
   };
 

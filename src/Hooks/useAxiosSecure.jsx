@@ -6,7 +6,7 @@ import auth from "../firebase.init";
  const axiosSecure= axios.create(
     
     {
-        baseURL: 'http://localhost:5000'
+        baseURL: 'https://medical-camp-server-indol.vercel.app'
     }
 )
 

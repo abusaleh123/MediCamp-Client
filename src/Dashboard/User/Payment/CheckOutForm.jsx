@@ -19,12 +19,12 @@ const CheckOutForm = ({data}) => {
     const navigate = useNavigate()
   const {fees} = data;
   const Fee = parseInt(fees);
-console.log(data._id);
+// console.log(data._id);
 useEffect(() => {
  if(Fee > 0){
     axiosSecure.post('/create-payment-intent', {fees : Fee})
     .then(res => {
-      console.log(res.data.clientSecret);
+      // console.log(res.data.clientSecret);
       setClientSecret(res.data.clientSecret)
     })
  }
@@ -47,10 +47,10 @@ useEffect(() => {
                 card
         })
         if(error) {
-            console.log("Payment Error", error);
+            // console.log("Payment Error", error);
             setErr(error.message)
         }else{
-            console.log("Payment Method", paymentMethod);
+            // console.log("Payment Method", paymentMethod);
             setErr("")
         }
         const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(clientSecret, {
@@ -63,11 +63,11 @@ useEffect(() => {
             }
         })
         if(confirmError){
-            console.log('Confirm Error', );
+            // console.log('Confirm Error', );
         }else{
-            console.log('Payment-Intent', paymentIntent);
+            // console.log('Payment-Intent', paymentIntent);
             if(paymentIntent.status === 'succeeded'){
-                console.log('Transaction Id', paymentIntent.id);
+                // console.log('Transaction Id', paymentIntent.id);
                 setTransactionId(paymentIntent.id)
 
                     const payment = {

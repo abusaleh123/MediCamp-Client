@@ -71,7 +71,7 @@ const AddCamp = () => {
               }
           }
       } catch (error) {
-          console.error("Error submitting the camp:", error);
+          // console.error("Error submitting the camp:", error);
       } finally {
           setLoad(false); // Set loading to false after the operation completes
       }

@@ -15,7 +15,7 @@ const Analytics = () => {
           setCamps(res.data);
         })
         .catch(error => {
-          console.error(error);
+          // console.error(error);
         });
     }
   }, [user.email, axiosSecure]);

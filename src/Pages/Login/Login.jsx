@@ -88,7 +88,7 @@ const handleTogglePassword = (e) => {
   const handleGoogleSignIn =  () => {
     signInWithGoogle(auth)
     .then((result) => {
-      console.log(result.user.displayName);
+      // console.log(result.user.displayName);
         const newUser = {
           name: result.user.displayName,
           date,
@@ -101,8 +101,12 @@ const handleTogglePassword = (e) => {
           
         }
         axiosPublic.post('/users', newUser)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
+            .then(res =>{
+
+            } )
+            .catch(err =>{
+              
+            });
 
         
       setUser(result)
@@ -112,7 +116,7 @@ const handleTogglePassword = (e) => {
       }, 1000);
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
     })
   }
 

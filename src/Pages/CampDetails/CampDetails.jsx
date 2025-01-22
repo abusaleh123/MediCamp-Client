@@ -42,7 +42,7 @@ const handleSubmit = async (event) => {
   const participantName = form.participantName.value;
   const email = form.email.value;
   const date = moment().format('MMMM Do YYYY, h:mm:ss a');
-console.log(gender);
+// console.log(gender);
   // Optionally close the modal after submission
   document.getElementById('my_modal_4').close();
 
@@ -65,7 +65,7 @@ console.log(gender);
 
   try {
     const res = await axiosPublic.post('/registeredCamps', registeredCamp);
-    console.log(res.data);
+    // console.log(res.data);
 
     Swal.fire({
       icon: 'success',
@@ -112,9 +112,9 @@ const handleUpdate = async (id) => {
   try {
     const newCount = Number(participantsCount) + 1;
     const res = await axiosPublic.put(`/camps/${id}`, { participantsCount: newCount });
-    console.log(res.data);
+    // console.log(res.data);
   } catch (error) {
-    console.log('Error updating participants count:', error);
+    // console.log('Error updating participants count:', error);
   }
 };
 

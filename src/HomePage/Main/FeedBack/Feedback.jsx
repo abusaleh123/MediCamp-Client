@@ -26,7 +26,7 @@ const Feedback = () => {
       if (error) {
         return <div>Error loading feedback: {error.message}</div>;
       }
-    console.log(feedback);
+    // console.log(feedback);
     return (
         <div className="bg-slate-100">
         <div className='w-11/12 mx-auto py-14 '>
