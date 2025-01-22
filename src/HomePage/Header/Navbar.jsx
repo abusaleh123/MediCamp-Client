@@ -146,7 +146,9 @@ const Navbar = () => {
                   sx={{ marginRight: 2 }}
                 />)
                 }
-                  {user.displayName}
+                  {
+                    users.map(prof => <>{prof.name}</>) 
+                  }
                 </MenuItem>
                 <MenuItem onClick={openDrawer}>
                   <Link
