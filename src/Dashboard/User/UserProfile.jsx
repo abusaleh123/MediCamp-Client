@@ -89,8 +89,8 @@ const UserProfile = () => {
         buttonsStyling: true,
       });
 
-      refetch(); // Refetch the profile data after updating
-      document.getElementById("my_modal_4").close(); // Close the modal
+      refetch(); 
+      document.getElementById("my_modal_4").close(); 
     } catch (error) {
       console.error("Error updating profile:", error);
     }

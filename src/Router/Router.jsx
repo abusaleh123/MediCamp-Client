@@ -70,7 +70,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/registered',
-                element: <RegisterCamp></RegisterCamp>
+                element: <RegisterCamp></RegisterCamp>,
+                
             },
             {
                 path:'/dashboard/registerById/:id',
