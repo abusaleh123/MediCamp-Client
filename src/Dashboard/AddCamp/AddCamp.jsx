@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaUser } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
@@ -13,6 +13,7 @@ import { MdContactEmergency } from "react-icons/md";
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Spinner } from "@material-tailwind/react";
 
 
 
@@ -21,47 +22,60 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const AddCamp = () => {
     const { register, handleSubmit , reset} = useForm();
     const {axiosPublic} = useAxiosPublic()
-    const {axiosSecure} = useAxiosSecure()
-  const onSubmit = async(data) => {
-    const imageFile = {image : data.image[0]}
-    const res = await axiosPublic.post(image_hosting_API,  imageFile, {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    })
-    if(res.data.success){
-        const campData ={
-            name: data.name,
-            image: res.data.data.display_url,
-            participants: data.participants,
-            fees: data.fees,
-            dateTime: data.dateTime,
-            location: data.location,
-            professional: data.professional,
-            description: data.description,
+    const {axiosSecure} = useAxiosSecure();
+    const [load, setLoad] = useState(false)
 
-        }
-        const campResponse = await axiosSecure.post('/camps', campData);
-        console.log(campResponse);
-        if(campResponse.data.insertedId){
-            reset()
-             Swal.fire({
-                  icon: 'success',
-                  title: 'Camp Submit Successful!',
-                  text: 'Your Camp Successfully Submitted',
-                  confirmButtonText: 'Close',
-                  customClass: {
-                    confirmButton: 'custom-confirm-button',
-                    popup: 'custom-popup',
-                    title: 'custom-title',
-                    icon: 'custom-icon',
-                  },
-                  buttonsStyling: true,
-                });
-        }
-    }
-    
-}
+   
+
+
+    const onSubmit = async (data) => {
+      setLoad(true); // Set loading to true when the operation starts
+  
+      try {
+          const imageFile = { image: data.image[0] };
+          const res = await axiosPublic.post(image_hosting_API, imageFile, {
+              headers: {
+                  'content-type': 'multipart/form-data'
+              }
+          });
+  
+          if (res.data.success) {
+              const campData = {
+                  name: data.name,
+                  image: res.data.data.display_url,
+                  participants: parseInt(data.participants),
+                  fees: parseInt(data.fees),
+                  dateTime: data.dateTime,
+                  location: data.location,
+                  professional: data.professional,
+                  description: data.description,
+              };
+  
+              const campResponse = await axiosSecure.post('/camps', campData);
+  
+              if (campResponse.data.insertedId) {
+                  reset();
+                  Swal.fire({
+                      icon: 'success',
+                      title: 'Camp Submit Successful!',
+                      text: 'Your Camp Successfully Submitted',
+                      confirmButtonText: 'Close',
+                      customClass: {
+                          confirmButton: 'custom-confirm-button',
+                          popup: 'custom-popup',
+                          title: 'custom-title',
+                          icon: 'custom-icon',
+                      },
+                      buttonsStyling: true,
+                  });
+              }
+          }
+      } catch (error) {
+          console.error("Error submitting the camp:", error);
+      } finally {
+          setLoad(false); // Set loading to false after the operation completes
+      }
+  };
     return (
         <div className='w-10/12 mx-auto'>
             <div className='text-4xl text-center pt-20 pb-10'>
@@ -98,7 +112,7 @@ const AddCamp = () => {
                    <div className=' flex items-center px-3 bg-[#10273D]  rounded-full'>
                    <ImPriceTag className='text-[#0495FF]' />
                    <input
-                     type="text"
+                     type="number"
                      placeholder="Camp Fees"
                      name="fees"
                     //  defaultValue={data.fees}
@@ -221,7 +235,9 @@ const AddCamp = () => {
                  </div>
      
                  <div className="form-control mt-6 col-span-2  ">
-                   <button className="btn btn-ghost text-white px-16 text-lg w-fit bg-[#0495FF]">Submit</button>
+                   <button  className="btn btn-ghost text-white px-16 text-lg w-fit bg-[#0495FF]">{
+                        load ? <Spinner color="blue" /> : 'Submit'
+                    }</button>
                  </div>
                  </div>
     

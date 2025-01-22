@@ -124,7 +124,7 @@ const handlePageChange = (page) => {
                   <Typography variant="small" className="font-normal text-white/80 lg:text-lg">
                     {status === "pending" ? (
                       <Button onClick={() => handleConfirm(_id)} className="btn  btn-ghost bg-[#007EFF] text-white">
-                        Confirm
+                        Pending
                       </Button>
                     ) : (
                       "Confirmed"

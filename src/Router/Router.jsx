@@ -18,6 +18,7 @@ import RegisterCamp from "../Dashboard/User/RegisteredCamp/RegisterCamp";
 import Payment from "../Dashboard/User/Payment/Payment";
 import PaymentHistory from "../Dashboard/User/PaymentHistory/PaymentHistory";
 import ManageRegister from "../Dashboard/AdminRegister/ManageRegister";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Base></Base>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
