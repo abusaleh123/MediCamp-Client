@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import registerAnimation from '../../assets/Json/Registeer.json';
 import bg from '../../assets/Images/19373.jpg';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
@@ -22,7 +22,10 @@ const Login = () => {
   const { SignInWithEmailPass, setUser, signInWithGoogle, setLoading, loading } = useAuth();
   const navigate = useNavigate();
   const {axiosPublic} = useAxiosPublic();
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || '/';
+  console.log(location.state);
 
 const handleButtonLoading = () => {
   setLoading(true);
@@ -62,7 +65,7 @@ const handleTogglePassword = (e) => {
           },
           buttonsStyling: true,
         });
-        navigate("/");
+        navigate(from, {replace : true});
         setTimeout(() => {
           window.location.reload();
         }, 1000);
@@ -110,7 +113,7 @@ const handleTogglePassword = (e) => {
 
         
       setUser(result)
-      navigate('/')
+      navigate(from, {replace: true})
       setTimeout(() => {
         window.location.reload();
       }, 1000);

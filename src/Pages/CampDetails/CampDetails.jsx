@@ -164,7 +164,7 @@ const formSubmit = async (e) => {
     <p className="text-gray-600 mb-6 text-lg">
       {data.description}
     </p>
-    <Link to={user || '/login'}  onClick={user && (()=>document.getElementById('my_modal_4').showModal()) } className="px-6 py-3 bg-blue-500 text-lg text-white rounded-lg hover:bg-blue-600 transition duration-300">
+    <Link to={user || '/login'} state={{from : location}}  onClick={user && (()=>document.getElementById('my_modal_4').showModal()) } className="px-6 py-3 bg-blue-500 text-lg text-white rounded-lg hover:bg-blue-600 transition duration-300">
       Join Camp
     </Link>
   </div>
