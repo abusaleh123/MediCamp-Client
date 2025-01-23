@@ -5,17 +5,26 @@ const ChooseUs = () => {
   return (
     <div className=" bg-[#031B33]">
       <div className="w-11/12  mx-auto py-16 ">
-        <div className="mx-auto text-center mb-10">
+        <div data-aos="fade-down"
+        data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+        className="mx-auto text-center mb-10">
           <h1 className="lg:text-7xl text-white text-4xl md:text-5xl
 ">Have Any Question</h1>
           <p className="text-sm text-white/40 md:text-lg mt-2">Find below our frequently asked questions. If you have other questions please contact us.</p>
         </div>
 
         <div className="gap-10 xl:flex  ">
-          <div className="xl:w-8/12 border p-4 mb-8 md:mb-0 rounded-xl">
+          <div data-aos="fade-up"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+          className="xl:w-8/12 border p-4 mb-8 md:mb-0 rounded-xl">
             <img className="rounded-xl w-full h-full object-cover" src={question} alt="" />
           </div>
-          <div className="xl:w-9/12">
+          <div data-aos="fade-up"
+               data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+          className="xl:w-9/12">
             <div className="collapse collapse-plus border">
               <input type="radio" name="my-accordion-3" defaultChecked />
               <div className="collapse-title text-white text-lg lg:text-lg font-medium">

@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Spinner } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 
 const TABLE_HEAD = [
   "Name",
@@ -208,6 +209,9 @@ const RegisterCamp = () => {
 
   return (
     <div className="text-center md:w-10/12 mx-auto pt-20 px-10 pb-20">
+      <Helmet>
+        <title>Registered Camp | MediCamp</title>
+      </Helmet>
       <h1 className="text-4xl text-white ">Registered Camps</h1>
       <p className="md:text-lg mb-10 mt-2 text-white/70">
         View and manage all your registered camps, track participants, and
@@ -392,11 +396,11 @@ const RegisterCamp = () => {
                         <div className="form-control col-span-2">
                           <label className="label">
                             <span className="label-text text-white/80 text-lg">
-                              Description
+                              Feedback
                             </span>
                           </label>
                           <textarea
-                            placeholder="Enter description here..."
+                            placeholder="Enter Feedback here..."
                             name="description"
                             className="textarea focus:outline-none border-none text-white bg-[#35485B]"
                             required

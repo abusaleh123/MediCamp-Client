@@ -16,6 +16,7 @@ import auth from "../../firebase.init";
 import moment from "moment";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Spinner } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [togglePassword, setTogglePassword] = useState(false)
@@ -125,6 +126,9 @@ const handleTogglePassword = (e) => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Login | MediCamp</title>
+      </Helmet>
       <div className="bg-cover bg-center bg-[#031B33]">
         <div className="gap-20 mx-auto lg:flex  justify-center items-center">
           <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="md:min-h-screen flex justify-center items-center lg:w-6/12">

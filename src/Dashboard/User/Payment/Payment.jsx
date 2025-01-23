@@ -2,6 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckOutForm from "./CheckOutForm";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 
@@ -12,6 +13,9 @@ const Payment = () => {
    
     return (
         <div className="w-10/12 mx-auto"> 
+        <Helmet>
+            <title>Payment | MediCamp</title>
+        </Helmet>
             <h1 className="text-4xl text-center text-white py-16">Payment Now</h1>
             <div>
             <Elements stripe={stripePromise}>

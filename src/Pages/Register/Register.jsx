@@ -16,6 +16,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import googleIcon from "../../assets/Images/google.png";
 import auth from '../../firebase.init';
 import { Spinner } from "@material-tailwind/react";
+import { Helmet } from 'react-helmet';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -165,6 +166,9 @@ const Register = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Register | MediCamp</title>
+      </Helmet>
       <div className="bg-cover bg-center bg-[#031B33]">
         <div className="gap-20 mx-auto lg:flex justify-center items-center">
           <div style={{ backgroundImage: `url(${bg})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="md:min-h-screen flex justify-center items-center lg:w-6/12">
@@ -249,7 +253,7 @@ const Register = () => {
                 <div className="x-2 mt-4 text-white ">OR</div>
                                 <button onClick={handleGoogleSignIn} className="mt-4 flex justify-center border w-fit mx-auto py-1 px-6 gap-4 text-white/80 rounded-full items-center">
                                   <img className="w-8" src={googleIcon } alt="" />
-                                  <p className="">Sign In With Google</p>
+                                  <p className="">Sign Up With Google</p>
                                 </button>
               </div>
             </div>

@@ -31,6 +31,7 @@ import {
   ListItemText
 } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -141,6 +142,9 @@ Dashboard Menu
 
   return (
     <div className="bg-[#031B33] min-h-screen">
+      <Helmet> 
+        <title>Dashboard | MediCamp</title>
+      </Helmet>
       <div className="lg:flex  ">
         {/* Drawer Button */}
        <div className={`${open  ?"w-96" : 'w-fit'}  flex pt-6 justify-end`}>

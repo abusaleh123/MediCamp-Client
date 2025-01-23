@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { Spinner } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 
 const UserProfile = () => {
   const { axiosSecure } = useAxiosSecure();
@@ -101,6 +102,9 @@ const UserProfile = () => {
 
   return (
     <div className="text-white my-20  mx-auto  py-10 md:w-10/12">
+      <Helmet>
+        <title>Profile | MediCamp</title>
+      </Helmet>
       <h1 className="text-4xl text-center mb-10">My Profile</h1>
       <div className="bg-[#10273D] py-10  rounded-xl">
         <div>

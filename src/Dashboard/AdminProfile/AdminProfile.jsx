@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { Spinner } from "@material-tailwind/react";
+import { Helmet } from "react-helmet";
 
 const AdminProfile = () => {
   const { axiosSecure } = useAxiosSecure();
@@ -107,6 +108,9 @@ const AdminProfile = () => {
 
   return (
     <div className="text-white md:w-10/12 w-11/12 my-20 bg-[#10273D] rounded-xl  py-10 mx-auto">
+      <Helmet>
+        <title>Profile | MediCamp</title>
+      </Helmet>
       <div>
         {profile.map((prof) => (
           <div className="flex flex-col items-center" key={prof._id}>
@@ -200,25 +204,25 @@ const AdminProfile = () => {
                           />
                         </div>
                       </div> */}
-                       <div className="form-control col-span-2">
-                          <label className="label">
-                            <span className="label-text text-white/80 text-lg">
-                              Image
-                            </span>
-                          </label>
-                          <div className="flex items-center px-3 bg-[#35485B] rounded-full">
-                            <input
-                              type="file"
-                              name="image"
-                              className="py-3 px-3 file-input-ghost w-full cursor-pointer rounded-full focus:text-white focus:outline-none border-none text-white bg-[#35485B]"
-                            />
-                            <input
-                              type="hidden"
-                              name="photo"
-                              defaultValue={prof.photo}
-                            />
-                          </div>
+                      <div className="form-control col-span-2">
+                        <label className="label">
+                          <span className="label-text text-white/80 text-lg">
+                            Image
+                          </span>
+                        </label>
+                        <div className="flex items-center px-3 bg-[#35485B] rounded-full">
+                          <input
+                            type="file"
+                            name="image"
+                            className="py-3 px-3 file-input-ghost w-full cursor-pointer rounded-full focus:text-white focus:outline-none border-none text-white bg-[#35485B]"
+                          />
+                          <input
+                            type="hidden"
+                            name="photo"
+                            defaultValue={prof.photo}
+                          />
                         </div>
+                      </div>
                     </div>
 
                     <div className="form-control mt-6 col-span-2 mx-auto">

@@ -4,7 +4,10 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import useCamps from "../../../Hooks/useCamps";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const MedicalCamps = () => {
 const [camps, setCamps] = useState([]);
 const {axiosPublic} = useAxiosPublic()
@@ -27,7 +30,9 @@ const{data: campsss = []} = useQuery({
       <p className="lg:text-lg text-sm md:text-md text-center text-gray-600 mb-6 mt-1">Explore top-rated medical camps offering specialized care, expert consultations, and health services to improve community well-being.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {campsss.map((camp, index) => (
-          <div key={index} className="bg-[#ECF7FF] p-6 rounded-lg shadow-lg ">
+          <div  data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000" key={index} className="bg-[#ECF7FF] p-6 rounded-lg shadow-lg ">
             <img src={camp.image} alt={camp.name} className="w-full h-96  object-cover rounded-lg mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-2">{camp.name}</h3>
             <div className="flex justify-between items-center">

@@ -14,6 +14,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { Spinner } from "@material-tailwind/react";
+import { Helmet } from 'react-helmet';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -115,6 +116,9 @@ const UpdateCamp = () => {
 
     return (
         <div className='w-11/12 mx-auto'>
+            <Helmet>
+                <title>Update Camp | MediCamp</title>
+            </Helmet>
             <div>
                 <h1 className='text-4xl text-center pt-20 pb-10 text-white'>Update Camp</h1>
             </div>

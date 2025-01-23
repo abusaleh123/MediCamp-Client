@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, BarChart, Bar, Cell } from 'recharts';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const Analytics = () => {
   const { user } = useAuth();
@@ -64,6 +65,9 @@ const Analytics = () => {
 
   return (
     <div className="w-10/12 mx-auto pt-20">
+      <Helmet>
+        <title>Analytics | MediCamp</title>
+      </Helmet>
       <h2 className='text-4xl text-center text-white'>Analytics</h2>
       <p className="md:text-lg mb-10 mt-2 text-center text-white/70">
         View camp analytics, including camp names and fees for joining, to make informed decisions.

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { TfiLayoutGrid2Alt } from "react-icons/tfi";
 import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import useAuth from '../Hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const AvailableCamps = () => {
     const { axiosPublic } = useAxiosPublic();
@@ -37,6 +38,9 @@ const AvailableCamps = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Available Camp | MediCamp</title>
+            </Helmet>
             <div style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="py-28 relative object-cover">
                 <div className="absolute inset-0 bg-[#0a1f31] bg-opacity-90"></div>
                 <div className="relative z-10 text-white p-8 flex flex-col justify-center items-center text-center mx-auto">

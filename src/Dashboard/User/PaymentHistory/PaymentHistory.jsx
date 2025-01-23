@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { Card, Typography } from "@material-tailwind/react";
+import { Helmet } from 'react-helmet';
 
 const TABLE_HEAD = [
   "Name",
@@ -56,6 +57,9 @@ const PaymentHistory = () => {
 
   return (
     <div className='px-10 lg:w-10/12 mx-auto pt-20' >
+      <Helmet>
+        <title>Payment History | MediCamp</title>
+      </Helmet>
       <h1 className='text-4xl text-white text-center '>Payment History</h1>
       <p className="md:text-lg mb-10 mt-2 text-center text-white/70">Access your payment history to review past transactions, track payments, and ensure accurate financial records.</p>
       <div className='flex bg-[#35485B] lg:w-1/4 mb-10 p-1 rounded-xl '>

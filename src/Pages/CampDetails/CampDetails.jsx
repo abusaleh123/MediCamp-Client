@@ -18,6 +18,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const CampDetails = () => {
 
@@ -133,6 +134,9 @@ const formSubmit = async (e) => {
 
     return (
         <div>
+          <Helmet>
+            <title>Camp Details | MediCamp</title>
+          </Helmet>
         <div style={{backgroundImage: `url(${bg})`, backgroundSize:'cover', backgroundPosition: 'center'}} className='py-28 relative  object-cover'>
            <div class="absolute inset-0 bg-[#0a1f31] bg-opacity-90 "></div>
     <div class="relative z-10 text-white p-8 flex flex-col justify-center items-center text-center mx-auto">

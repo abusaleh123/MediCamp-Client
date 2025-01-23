@@ -3,6 +3,7 @@ import { Card, Typography, Button } from "@material-tailwind/react";
 import { MdDelete } from "react-icons/md";
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 const TABLE_HEAD = [
   "Camp Name",
@@ -65,6 +66,9 @@ const handlePageChange = (page) => {
 };
   return (
     <div className="text-center pt-20 w-10/12 mx-auto px-10">
+      <Helmet> 
+        <title>Manage Registered Camp | MediCamp</title>
+      </Helmet>
       <h1 className="text-4xl text-white  ">Registered Camps</h1>
       <p className="md:text-lg text-sm mt-2 mb-10 text-white/70"> Manage your camps by updating details, monitoring registrations, and tracking camp status efficiently</p>
       <div className='flex bg-[#35485B] justify-start  lg:w-1/4  mb-10 p-1 rounded-xl '>

@@ -7,7 +7,7 @@ const ErrorPage = () => {
         <div  className='flex  flex-col min-h-screen ' data-theme="light">
              <Helmet>
              
-             <title>MediCamp || Error</title>
+             <title>Error | MediCamp </title>
             
          </Helmet>
            

@@ -5,6 +5,7 @@ import useAuth from "../../../Hooks/useAuth";
 import moment from "moment";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 
@@ -113,6 +114,9 @@ useEffect(() => {
 
     return (
       <div className=" mx-auto p-6 bg-[#10273D] shadow-md rounded-lg">
+        <Helmet> 
+          <title>Payment Form | MediCamp</title>
+        </Helmet>
       <form onSubmit={handleSubmit} className=" gap-4">
         <div className="w-2/4 mx-auto mb-10 text-white">
           <CardElement
