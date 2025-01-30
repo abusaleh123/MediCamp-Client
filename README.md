@@ -2,6 +2,11 @@
 
 A streamlined Medical Camp Management System (MCMS) for efficient camp scheduling, patient registration, treatment tracking, and resource management.
 
+
+
+
+![Alt text](https://github.com/abusaleh123/MediCamp-Client/blob/5b8c10e2681e94c76d8ee60b50c762aa3528fe8d/Screenshot%202025-01-30%20080752.png)
+
 ## Live Link : 
 
 - https://medicamp-a1652.web.app
