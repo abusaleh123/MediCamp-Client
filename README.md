@@ -40,50 +40,56 @@ Participants can view lifetime camp analytics, such as registered camps and fees
 The entire website is responsive across mobile, tablet, and desktop, including dashboards and modals. Sweet alerts and toasts improve user experience during CRUD operations and authentication.
 
 
-## dependencies
+## Dependencies
 
-  "aos": "^2.3.4",
-  "axios": "^1.7.9",
-  "emailjs-com": "^4.0.3",
-  "firebase": "^11.0.2",
-  "framer-motion": "^11.15.0",
-  "ka-table": "^11.3.0",
-  "localforage": "^1.10.0",
-  "lottie-react": "^2.4.0",
-  "match-sorter": "^8.0.0",
-  "moment": "^2.30.1",
-  "react": "^18.3.1",
-  "react-awesome-reveal": "^4.3.1",
-  "react-data-table-component": "^7.6.2",
-  "react-dom": "^18.3.1",
-  "react-helmet": "^6.1.0",
-  "react-icons": "^5.4.0",
-  "react-intersection-observer": "^9.14.0",
-  "react-loading-skeleton": "^3.5.0",
-  "react-photo-view": "^1.2.6",
-  "react-router-dom": "^7.1.0",
-  "react-toastify": "^11.0.2",
-  "sort-by": "^1.2.0",
-  "sweetalert2": "^11.15.3",
-  "swiper": "^11.1.15"
+
+- [@emotion/react](https://www.npmjs.com/package/@emotion/react) - ^11.14.0
+- [@emotion/styled](https://www.npmjs.com/package/@emotion/styled) - ^11.14.0
+- [@material-tailwind/react](https://www.npmjs.com/package/@material-tailwind/react) - ^2.1.10
+- [@mui/icons-material](https://www.npmjs.com/package/@mui/icons-material) - ^6.4.0
+- [@mui/material](https://www.npmjs.com/package/@mui/material) - ^6.4.0
+- [@stripe/react-stripe-js](https://www.npmjs.com/package/@stripe/react-stripe-js) - ^3.1.1
+- [@stripe/stripe-js](https://www.npmjs.com/package/@stripe/stripe-js) - ^5.5.0
+- [@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query) - ^5.64.1
+- [aos](https://www.npmjs.com/package/aos) - ^3.0.0-beta.6
+- [axios](https://www.npmjs.com/package/axios) - ^1.7.9
+- [firebase](https://www.npmjs.com/package/firebase) - ^11.1.0
+- [framer-motion](https://www.npmjs.com/package/framer-motion) - ^11.17.0
+- [localforage](https://www.npmjs.com/package/localforage) - ^1.10.0
+- [lottie-react](https://www.npmjs.com/package/lottie-react) - ^2.4.0
+- [match-sorter](https://www.npmjs.com/package/match-sorter) - ^8.0.0
+- [moment](https://www.npmjs.com/package/moment) - ^2.30.1
+- [motion](https://www.npmjs.com/package/motion) - ^11.17.0
+- [react](https://www.npmjs.com/package/react) - ^18.3.1
+- [react-dom](https://www.npmjs.com/package/react-dom) - ^18.3.1
+- [react-helmet](https://www.npmjs.com/package/react-helmet) - ^6.1.0
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form) - ^7.54.2
+- [react-icons](https://www.npmjs.com/package/react-icons) - ^5.4.0
+- [react-rating](https://www.npmjs.com/package/react-rating) - ^2.0.5
+- [react-rating-stars-component](https://www.npmjs.com/package/react-rating-stars-component) - ^2.2.0
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - ^7.1.1
+- [react-toastify](https://www.npmjs.com/package/react-toastify) - ^11.0.2
+- [recharts](https://www.npmjs.com/package/recharts) - ^2.15.0
+- [sort-by](https://www.npmjs.com/package/sort-by) - ^1.2.0
+- [sweetalert2](https://www.npmjs.com/package/sweetalert2) - ^11.15.10
 
 
   ## DevDependencies
 
-    "@eslint/js": "^9.17.0",
-  "@types/react": "^18.3.18",
-  "@types/react-dom": "^18.3.5",
-  "@vitejs/plugin-react": "^4.3.4",
-  "autoprefixer": "^10.4.20",
-  "daisyui": "^4.12.23",
-  "eslint": "^9.17.0",
-  "eslint-plugin-react": "^7.37.2",
-  "eslint-plugin-react-hooks": "^5.0.0",
-  "eslint-plugin-react-refresh": "^0.4.16",
-  "globals": "^15.14.0",
-  "postcss": "^8.4.49",
-  "tailwindcss": "^3.4.17",
-  "vite": "^6.0.5"
+   - [@eslint/js](https://www.npmjs.com/package/@eslint/js) - ^9.17.0
+- [@types/react](https://www.npmjs.com/package/@types/react) - ^18.3.18
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom) - ^18.3.5
+- [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react) - ^4.3.4
+- [autoprefixer](https://www.npmjs.com/package/autoprefixer) - ^10.4.20
+- [daisyui](https://www.npmjs.com/package/daisyui) - ^4.12.23
+- [eslint](https://www.npmjs.com/package/eslint) - ^9.17.0
+- [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react) - ^7.37.2
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) - ^5.0.0
+- [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh) - ^0.4.16
+- [globals](https://www.npmjs.com/package/globals) - ^15.14.0
+- [postcss](https://www.npmjs.com/package/postcss) - ^8.4.49
+- [tailwindcss](https://www.npmjs.com/package/tailwindcss) - ^3.4.17
+- [vite](https://www.npmjs.com/package/vite) - ^6.0.5
 
 
 
