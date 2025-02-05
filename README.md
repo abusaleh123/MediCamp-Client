@@ -7,14 +7,7 @@ A streamlined Medical Camp Management System (MCMS) for efficient camp schedulin
 
 ![Alt text](https://github.com/abusaleh123/MediCamp-Client/blob/5b8c10e2681e94c76d8ee60b50c762aa3528fe8d/Screenshot%202025-01-30%20080752.png)
 
-## Live Link : 
 
-- https://medicamp-a1652.web.app
-- https://medicamp-a1652.firebaseapp.com
-
-## Organizer Email & Password : 
-- Email : abusaleh88889@gmail.com
-- Password : `123456As#`
 
 ## Key Features :
 
@@ -45,3 +38,60 @@ Participants can view lifetime camp analytics, such as registered camps and fees
 
 - Responsive Design and Accessibility :
 The entire website is responsive across mobile, tablet, and desktop, including dashboards and modals. Sweet alerts and toasts improve user experience during CRUD operations and authentication.
+
+
+## dependencies
+
+  "aos": "^2.3.4",
+  "axios": "^1.7.9",
+  "emailjs-com": "^4.0.3",
+  "firebase": "^11.0.2",
+  "framer-motion": "^11.15.0",
+  "ka-table": "^11.3.0",
+  "localforage": "^1.10.0",
+  "lottie-react": "^2.4.0",
+  "match-sorter": "^8.0.0",
+  "moment": "^2.30.1",
+  "react": "^18.3.1",
+  "react-awesome-reveal": "^4.3.1",
+  "react-data-table-component": "^7.6.2",
+  "react-dom": "^18.3.1",
+  "react-helmet": "^6.1.0",
+  "react-icons": "^5.4.0",
+  "react-intersection-observer": "^9.14.0",
+  "react-loading-skeleton": "^3.5.0",
+  "react-photo-view": "^1.2.6",
+  "react-router-dom": "^7.1.0",
+  "react-toastify": "^11.0.2",
+  "sort-by": "^1.2.0",
+  "sweetalert2": "^11.15.3",
+  "swiper": "^11.1.15"
+
+
+  ## DevDependencies
+
+    "@eslint/js": "^9.17.0",
+  "@types/react": "^18.3.18",
+  "@types/react-dom": "^18.3.5",
+  "@vitejs/plugin-react": "^4.3.4",
+  "autoprefixer": "^10.4.20",
+  "daisyui": "^4.12.23",
+  "eslint": "^9.17.0",
+  "eslint-plugin-react": "^7.37.2",
+  "eslint-plugin-react-hooks": "^5.0.0",
+  "eslint-plugin-react-refresh": "^0.4.16",
+  "globals": "^15.14.0",
+  "postcss": "^8.4.49",
+  "tailwindcss": "^3.4.17",
+  "vite": "^6.0.5"
+
+
+
+  ## Live Link : 
+
+- https://medicamp-a1652.web.app
+- https://medicamp-a1652.firebaseapp.com
+
+## Organizer Email & Password : 
+- Email : abusaleh88889@gmail.com
+- Password : `123456As#`
