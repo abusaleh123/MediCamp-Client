@@ -39,11 +39,42 @@ Participants can view lifetime camp analytics, such as registered camps and fees
 - Responsive Design and Accessibility :
 The entire website is responsive across mobile, tablet, and desktop, including dashboards and modals. Sweet alerts and toasts improve user experience during CRUD operations and authentication.
 
+## NPM Packages :
+
+- Tailwind
+- DaisyUI
+- React-Toastify
+- React-photo-view
+- React-loading-skeleton
+- React-data-table
+- React-Icons
+- React-intersection-observer
+
+
+
+  # Main Technology:
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg" height="40" alt="tailwindcss logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="40" alt="firebase logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" height="40" alt="mongodb logo"  />
+
+</div>
+
+#
+
 
 ## Dependencies
 
 
-- [@emotion/react](https://www.npmjs.com/package/@emotion/react) - ^11.14.0
+ - [@emotion/react](https://www.npmjs.com/package/@emotion/react) - ^11.14.0
 - [@emotion/styled](https://www.npmjs.com/package/@emotion/styled) - ^11.14.0
 - [@material-tailwind/react](https://www.npmjs.com/package/@material-tailwind/react) - ^2.1.10
 - [@mui/icons-material](https://www.npmjs.com/package/@mui/icons-material) - ^6.4.0
@@ -76,7 +107,7 @@ The entire website is responsive across mobile, tablet, and desktop, including d
 
   ## DevDependencies
 
-   - [@eslint/js](https://www.npmjs.com/package/@eslint/js) - ^9.17.0
+ - [@eslint/js](https://www.npmjs.com/package/@eslint/js) - ^9.17.0
 - [@types/react](https://www.npmjs.com/package/@types/react) - ^18.3.18
 - [@types/react-dom](https://www.npmjs.com/package/@types/react-dom) - ^18.3.5
 - [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react) - ^4.3.4
@@ -92,7 +123,7 @@ The entire website is responsive across mobile, tablet, and desktop, including d
 - [vite](https://www.npmjs.com/package/vite) - ^6.0.5
 
 
-
+#
   ## Live Link : 
 
 - https://medicamp-a1652.web.app
@@ -101,3 +132,7 @@ The entire website is responsive across mobile, tablet, and desktop, including d
 ## Organizer Email & Password : 
 - Email : abusaleh88889@gmail.com
 - Password : `123456As#`
+
+
+##
+MediCamp is a dynamic platform offering easy navigation with features like camp management, participant registration, and secure payment integration via Stripe. Organizers can manage camp details, while participants can register and provide feedback through a modal form. The site allows users to search, sort, and view camps by various criteria. Separate dashboards for participants and organizers offer insights into profile management, analytics, and payment history. JWT-based authentication ensures secure access, while social logins simplify the process. The platform is responsive, accessible, and enhanced with sweet alerts and toasts to improve user experience.
