@@ -39,17 +39,6 @@ Participants can view lifetime camp analytics, such as registered camps and fees
 - Responsive Design and Accessibility :
 The entire website is responsive across mobile, tablet, and desktop, including dashboards and modals. Sweet alerts and toasts improve user experience during CRUD operations and authentication.
 
-## NPM Packages :
-
-- Tailwind
-- DaisyUI
-- React-Toastify
-- React-photo-view
-- React-loading-skeleton
-- React-data-table
-- React-Icons
-- React-intersection-observer
-
 
 
   # Main Technology:
