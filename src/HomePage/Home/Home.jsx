@@ -8,6 +8,7 @@ import AccordionCustomIcon from '../Choose/ChooseUs';
 import { Helmet } from 'react-helmet';
 import AboutMe from '../AboutMediCamp/AboutMe';
 import WhyChoose from '../Choose/WhyChoose';
+import ContactUs from '../Contact Us/ContactUs';
 
 const Home = () => {
     return (
@@ -23,7 +24,9 @@ const Home = () => {
 
           <ChooseUs></ChooseUs>
           <WhyChoose></WhyChoose>
+
             <Feedback></Feedback>
+            <ContactUs></ContactUs>
         </div>
     );
 };
