@@ -12,6 +12,22 @@ const AuthProvider = ({children}) => {
     const {axiosPublic} = useAxiosPublic();
     const provider = new GoogleAuthProvider();
     const [open, setOpen] = React.useState(false);
+    const [theme, setTheme] = useState("light")
+
+
+
+
+    useEffect(() => {
+     if (theme === "dark") {
+         document.documentElement.classList.add("dark");
+     } else {
+         document.documentElement.classList.remove("dark");
+     }
+ }, [theme]);
+ 
+ const toggleTheme = () => {
+     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+ };
     
 
     const signUpWithEmailPass = (email, password) => {
@@ -74,7 +90,9 @@ const authInfo = {
     SignInWithEmailPass,
     signInWithGoogle,
     open,
-    setOpen
+    setOpen,
+    theme,
+    toggleTheme
   
     
 }

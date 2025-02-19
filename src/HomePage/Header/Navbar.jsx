@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Navbar = () => {
-  const { user, logOut, open, setOpen } = useAuth();
+  const { user, logOut, open, setOpen, toggleTheme, theme } = useAuth();
   const { axiosPublic } = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
@@ -100,6 +100,7 @@ const Navbar = () => {
         <div className="navbar-end gap-1 md:gap-2">
           <div className="hidden md:flex">
             <ul className="menu menu-horizontal md:gap-6 lg:gap-8 px-3 lg:text-xl font-semibold">
+              <input onClick={toggleTheme} type="checkbox" className="toggle toggle-info" defaultChecked />
               <NavLink className="nav" to={"/"}>
                 Home
               </NavLink>
@@ -196,6 +197,7 @@ const Navbar = () => {
             }}
           >
             <MenuItem onClick={handleMobileMenuClose}>
+            <input onClick={toggleTheme} type="checkbox" className="toggle toggle-info" defaultChecked />
               <NavLink className="nav" to={"/"} style={{ color: "inherit", textDecoration: "none" }}>
                 Home
               </NavLink>

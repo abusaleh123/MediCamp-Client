@@ -9,6 +9,8 @@ import { Helmet } from 'react-helmet';
 import AboutMe from '../AboutMediCamp/AboutMe';
 import WhyChoose from '../Choose/WhyChoose';
 import ContactUs from '../Contact Us/ContactUs';
+import App from '../Provide/Provide';
+import Provide from '../Provide/Provide';
 
 const Home = () => {
     return (
@@ -24,7 +26,7 @@ const Home = () => {
 
           <ChooseUs></ChooseUs>
           <WhyChoose></WhyChoose>
-
+     <Provide></Provide>
             <Feedback></Feedback>
             <ContactUs></ContactUs>
         </div>
