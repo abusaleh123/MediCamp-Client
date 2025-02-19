@@ -6,6 +6,7 @@ import Feedback from '../Main/FeedBack/Feedback';
 import ChooseUs from '../Choose/ChooseUs';
 import AccordionCustomIcon from '../Choose/ChooseUs';
 import { Helmet } from 'react-helmet';
+import AboutMe from '../AboutMediCamp/AboutMe';
 
 const Home = () => {
     return (
@@ -15,7 +16,9 @@ const Home = () => {
             </Helmet>
             {/* <Navbar></Navbar> */}
             <Banner></Banner>
+
             <MedicalCamps></MedicalCamps>
+            <AboutMe></AboutMe>
           <ChooseUs></ChooseUs>
             <Feedback></Feedback>
         </div>
