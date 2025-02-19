@@ -12,7 +12,7 @@ const AuthProvider = ({children}) => {
     const {axiosPublic} = useAxiosPublic();
     const provider = new GoogleAuthProvider();
     const [open, setOpen] = React.useState(false);
-    const [theme, setTheme] = useState("light")
+    const [theme, setTheme] = useState("dark")
 
 
 

@@ -1,10 +1,12 @@
 import image1 from '../../assets/Images/about_thumb (1).jpg'
 import image2 from '../../assets/Images/about-img.png'
 import { FaCheck } from "react-icons/fa6";
+import useAuth from '../../Hooks/useAuth';
 
 const AboutMe = () => {
+  const {theme} = useAuth()
     return (
-        <div className=' mx-auto py-20'>
+        <div className={`mx-auto ${theme === 'dark' ? 'bg-white' : 'bg-black text-white'} py-20`}>
             <div className='w-11/12 mx-auto'>
             <div 
         className="mx-auto text-center mb-16">
