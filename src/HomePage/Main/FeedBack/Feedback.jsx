@@ -4,8 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import ReactRating from 'react-rating';
 import { IoStar } from "react-icons/io5";
 import { div } from 'framer-motion/client';
+import useAuth from '../../../Hooks/useAuth';
 
 const Feedback = () => {
+  const {theme } = useAuth()
     const {axiosPublic} = useAxiosPublic();
     const { data: feedback = [], isLoading, error } = useQuery({
         queryKey: 'feedback',  
@@ -28,7 +30,7 @@ const Feedback = () => {
       }
     // console.log(feedback);
     return (
-        <div className="bg-slate-100">
+        <div className={` ${theme === 'dark' ? 'bg-slate-100' : 'bg-black text-white/90'}`}>
         <div className='w-11/12 mx-auto py-14 '>
         <h1 className="lg:text-7xl text-4xl md:text-5xl
  text-center font-semibold ">Feedback And Rating</h1>
@@ -36,7 +38,7 @@ const Feedback = () => {
             <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center gap-10'>
             {
                 feedback.map(feed => 
-                    <div className=' flex flex-col items-center rounded-xl overflow-scroll h-96 bg-[#ECF7FF] p-10 shadow-xl text-center space-y-3'>
+                    <div className={`${theme === 'dark' ? 'bg-[#ECF7FF]': 'bg-gray-950'} flex flex-col items-center rounded-xl overflow-scroll h-96  p-10 shadow-xl text-center space-y-3`}>
                        <img className='w-32 h-32 object-cover rounded-full' src={feed.imageUrl} alt="" />
                         <h1 className="text-2xl">{feed.participantName}</h1>
                         <div className="flex items-center space-x-1">

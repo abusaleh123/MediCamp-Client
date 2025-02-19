@@ -1,8 +1,9 @@
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 
 const ContactUs = () => {
-
+const {theme } = useAuth()
 
     const onSubmit = async (event) => {
       event.preventDefault();
@@ -30,10 +31,10 @@ const ContactUs = () => {
       }
     };
       return (
-          <div className="bg-[#FCFCFF] py-20">
+          <div className={` ${theme === 'dark' ? 'bg-[#FCFCFF]' : 'bg-black text-white/90'} py-20`}>
               <section id="contact" class=" p-8">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="lg:text-6xl md:text-4xl text-2xl  font-bold text-gray-800 mb-4">Contact Us</h2>
+      <h2 class="lg:text-6xl md:text-4xl text-2xl  font-bold  mb-4">Contact Us</h2>
       <p class="text-lg text-gray-600 mb-6">Have any questions or feedback? We would love to hear from you!</p>
   
       <form onSubmit={onSubmit} method="POST" class="space-y-4">
