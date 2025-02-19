@@ -7,10 +7,12 @@ import { GiMedicines } from "react-icons/gi";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const WhyChoose = () => {
+   const {theme } = useAuth()
     return (
-        <div className='bg-[#ECF7FF] '>
+        <div className={` ${theme === 'dark' ? 'bg-[#ECF7FF ]' : 'bg-black text-white/90'} `}>
             <section className='w-11/12 mx-auto py-20'>
                <div className='flex flex-col lg:flex-row justify-between gap-4'>
 
@@ -90,7 +92,7 @@ const WhyChoose = () => {
   >
    <div className='z-10 flex flex-col items-center '>
    <p className="bg-[#DBE9A1] inset-2 w-fit p-2 rounded-full"><FaRegStar className='text-5xl' /></p>
-   <h1 className="text-4xl text-white mt-6 text-center">Being Your Journey with Mediket</h1>
+   <h1 className="text-4xl text-white mt-6 text-center">Being Your Journey with MediCamp</h1>
    <p className="text-lg text-gray-400 mt-6 text-center">Completely enable covalent function positioning infomediarie</p>
    <Link to={'/availableCamp'} className="mt-28 btn btn-ghost bg-[#007EFF] text-white text-lg rounded-full px-12">Available</Link>
    </div>

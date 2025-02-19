@@ -9,18 +9,18 @@ const AboutMe = () => {
         <div className={`mx-auto ${theme === 'dark' ? 'bg-white' : 'bg-black text-white'} py-20`}>
             <div className='w-11/12 mx-auto'>
             <div 
-        className="mx-auto text-center mb-16">
+        className="mx-auto text-center mb-10 lg:mb-16">
           <h1 className="lg:text-7xl  text-4xl md:text-5xl
 ">About MediCamp</h1>
-          <p className="text-sm  md:text-lg mt-2">MediCamp is a non-profit healthcare initiative dedicated to providing free medical aid, wellness, and treatment to underserved communities.</p>
+          <p className="text-sm md:text-lg mt-2">MediCamp is a non-profit healthcare initiative dedicated to providing free medical aid, wellness, and treatment to underserved communities.</p>
         </div>
 
 
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-center'>
             {/* Text */}
             <div className=''>
-            <h1 className="text-5xl font-semibold">Delivering Quality Health?s Care for Generations</h1>
+            <h1 className="lg:text-5xl text-center lg:text-start md:text-3xl text-2xl font-semibold">Delivering Quality Health?s Care for Generations</h1>
             <img src={image2} alt="" className=" mt-6 rounded-xl" />
             </div>
             {/* text-2 */}
