@@ -7,6 +7,7 @@ import ChooseUs from '../Choose/ChooseUs';
 import AccordionCustomIcon from '../Choose/ChooseUs';
 import { Helmet } from 'react-helmet';
 import AboutMe from '../AboutMediCamp/AboutMe';
+import WhyChoose from '../Choose/WhyChoose';
 
 const Home = () => {
     return (
@@ -19,7 +20,9 @@ const Home = () => {
 
             <MedicalCamps></MedicalCamps>
             <AboutMe></AboutMe>
+
           <ChooseUs></ChooseUs>
+          <WhyChoose></WhyChoose>
             <Feedback></Feedback>
         </div>
     );

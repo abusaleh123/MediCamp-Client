@@ -7,7 +7,7 @@ const AboutMe = () => {
         <div className=' mx-auto py-16'>
             <div className='w-11/12 mx-auto'>
             <div 
-        className="mx-auto text-center mb-10">
+        className="mx-auto text-center mb-16">
           <h1 className="lg:text-7xl  text-4xl md:text-5xl
 ">About MediCamp</h1>
           <p className="text-sm  md:text-lg mt-2">MediCamp is a non-profit healthcare initiative dedicated to providing free medical aid, wellness, and treatment to underserved communities.</p>
@@ -45,7 +45,7 @@ const AboutMe = () => {
                 <p className="text-lg">From Prevention to Recovery</p>
                 </div>
               </section>
-              <p className="border-t mt-6"></p>
+             
               
             </div>
             <div>
@@ -59,3 +59,4 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
+
