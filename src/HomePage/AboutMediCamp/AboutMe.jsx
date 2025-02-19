@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa6";
 
 const AboutMe = () => {
     return (
-        <div className=' mx-auto py-16'>
+        <div className=' mx-auto py-20'>
             <div className='w-11/12 mx-auto'>
             <div 
         className="mx-auto text-center mb-16">

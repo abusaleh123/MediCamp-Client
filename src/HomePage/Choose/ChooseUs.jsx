@@ -4,7 +4,7 @@ import question from '../../assets/Images/question.jpg'
 const ChooseUs = () => {
   return (
     <div className=" bg-[#031B33]">
-      <div className="w-11/12  mx-auto py-16 ">
+      <div className="w-11/12  mx-auto py-20 ">
         <div data-aos="fade-down"
         data-aos-easing="ease-out-cubic"
           data-aos-duration="1000"

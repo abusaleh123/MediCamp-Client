@@ -11,12 +11,12 @@ import { Link } from 'react-router-dom';
 const WhyChoose = () => {
     return (
         <div className='bg-[#ECF7FF] '>
-            <section className='w-11/12 mx-auto py-16'>
-               <div className='flex justify-between gap-4'>
+            <section className='w-11/12 mx-auto py-20'>
+               <div className='flex flex-col lg:flex-row justify-between gap-4'>
 
 
-               <div className='w-9/12' >
-                <div className='flex items-center gap-2 text-xl '>
+               <div className='lg:w-9/12' >
+                <div className='flex items-center gap-2 text-xl text-center justify-center lg:justify-start '>
                     <motion.p
                     initial={{ scale: 1, rotateY: 0 }}
                     animate={{ scale: [1, 1, 1], rotateY: [0, 180, 360] }}
@@ -25,11 +25,11 @@ const WhyChoose = () => {
                       ease: "easeInOut",
                       repeat: Infinity,
                     }}
-                    className='w-fit'
+                    className='w-fit '
                     ><FaHeartPulse className='text-blue-600' /> </motion.p>
-                    <p className="text-blue-600"> Why Choose Us</p>
+                    <p className="text-blue-600 text-center"> Why Choose Us</p>
                 </div>
-                    <h1 className="text-5xl font-semibold mt-6 w-3/4">Advanced Treatments
+                    <h1 className="text-5xl font-semibold mt-6 lg:w-3/4 text-center lg:text-start">Advanced Treatments
                     Compassionate Care</h1>
                     <p className="text-lg text-gray-600 mt-10 w-3/4">Completely e-enable covalent functionalities and market positioning infomediaries. Interactively initiate exceptional</p>
 <p className="border-t-2 my-10"></p>
@@ -83,7 +83,7 @@ const WhyChoose = () => {
 
                 </div>
 
-                <div className='w-3/12 flex items-end justify-center  rounded-xl'>
+                <div className='lg:w-3/12 flex items-end justify-center  rounded-xl'>
   <div
     
     className='flex bg-[#24425e] rounded-xl w-full justify-center py-10 px-5 relative before:absolute before:inset-0  before:opacity-50 before:w-full before:h-full'
