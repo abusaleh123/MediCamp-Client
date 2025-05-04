@@ -78,8 +78,8 @@ const Navbar = () => {
   const navStyle = (() => {
     if (location.pathname === "/") {
       return scrollPosition === 0
-        ? "sticky top-0 z-10 bg-[#10273D] md:text-white w-11/12"
-        : "sticky top-0 z-50 bg-[#031B33] w-11/12 text-white mx-auto shadow-md";
+        ? "sticky top-0 z-10  md:text-white mx-auto"  // bg-[#031B33] 
+        : "sticky top-0 z-50  text-white mx-auto shadow-md";
     } else {
       return "bg-[#031B33] text-white";
     }
@@ -87,24 +87,24 @@ const Navbar = () => {
 
   return (
     <div className={`w-full ${navStyle} sticky top-0 z-50`}>
-      <div className="navbar w-11/12 z-50 mx-auto flex justify-between py-8">
+      <div className="navbar w-9/12 z-50 mx-auto flex justify-between py-8">
         <div className="navbar-start">
           <Link to={"/"} className="flex items-center gap-2 justify-center">
-            <img className="w-14" src={logo} alt="Logo" />
-            <span className="font-semibold text-white hidden text-5xl md:inline-block">
-              MediCamp
+         
+            <span className="font-semibold logo_text  text-sky-500 hidden text-5xl md:inline-block">
+              <span className="logo_text2 text-red-500">BME </span> শপ
             </span>
           </Link>
         </div>
 
         <div className="navbar-end gap-1 md:gap-2">
           <div className="hidden md:flex">
-            <ul className="menu menu-horizontal md:gap-6 lg:gap-8 px-3 lg:text-xl font-semibold">
+            <ul className="menu menu-horizontal md:gap-6 lg:gap-8 px-3 lg:text-lg ">
               <input onClick={toggleTheme} type="checkbox" className="toggle toggle-info" defaultChecked />
               <NavLink className="nav" to={"/"}>
                 Home
               </NavLink>
-              <NavLink className="nav" to={"/availableCamp"}>
+              <NavLink className="nav text-black" to={"/availableCamp"}>
                 Available Camps
               </NavLink>
             </ul>

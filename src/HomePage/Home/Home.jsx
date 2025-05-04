@@ -21,13 +21,13 @@ const Home = () => {
             {/* <Navbar></Navbar> */}
             <Banner></Banner>
 
-            <MedicalCamps></MedicalCamps>
+            {/* <MedicalCamps></MedicalCamps>
             <AboutMe></AboutMe>
 
           <ChooseUs></ChooseUs>
           <WhyChoose></WhyChoose>
      <Provide></Provide>
-            <Feedback></Feedback>
+            <Feedback></Feedback> */}
             <ContactUs></ContactUs>
         </div>
     );
